@@ -1,0 +1,91 @@
+{
+  "header": {
+    "logo": "LOGO",
+    "navigation": [
+      {
+        "name": "Home",
+        "href": "#"
+      },
+      {
+        "name": "About Us",
+        "href": "#about"
+      },
+      {
+        "name": "What We Do",
+        "href": "#services"
+      },
+      {
+        "name": "Case Studies",
+        "href": "#case-studies"
+      },
+      {
+        "name": "Contact",
+        "href": "#contact"
+      }
+    ],
+    "ctaButton": {
+      "text": "Book a Call",
+      "href": "#contact"
+    }
+  },
+  "hero": {
+    "title": "Olympio Sumbilon Jr",
+    "subtitle": "Professional Web Developer",
+    "ctaButton": {
+      "text": "Get in Touch",
+      "href": "#contact"
+    }
+  },
+  "about": {
+    "title": "About Us",
+    "content": [
+      "Your compelling story and professional journey goes here. Share your passion, expertise, and what makes you unique in your field.",
+      "Highlight your key achievements and the value you bring to your clients or organization."
+    ],
+    "image": {
+      "src": "/path-to-your-image.jpg",
+      "alt": "Your Name or Company"
+    }
+  },
+  "services": {
+    "title": "What We Do",
+    "items": [
+      {
+        "title": "Service 1",
+        "description": "Detailed description of your service offering. Explain the value and benefits you provide to your clients."
+      },
+      {
+        "title": "Service 2",
+        "description": "Detailed description of your service offering. Explain the value and benefits you provide to your clients."
+      },
+      {
+        "title": "Service 3",
+        "description": "Detailed description of your service offering. Explain the value and benefits you provide to your clients."
+      }
+    ]
+  },
+  "caseStudies": {
+    "title": "Case Studies",
+    "items": [
+      {
+        "title": "Case Study 1",
+        "description": "Showcase your successful projects and client work here. Include key metrics and results achieved."
+      },
+      {
+        "title": "Case Study 2",
+        "description": "Showcase your successful projects and client work here. Include key metrics and results achieved."
+      }
+    ]
+  },
+  "contact": {
+    "title": "Let's Connect",
+    "description": "Interested in working together? I'd love to hear from you.",
+    "ctaButton": {
+      "text": "Contact Me",
+      "href": "#contact"
+    }
+  },
+  "footer": {
+    "copyright": "Your Name. All rights reserved."
+  }
+} 

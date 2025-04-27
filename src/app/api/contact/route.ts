@@ -3,14 +3,22 @@ import nodemailer from 'nodemailer'
 
 export async function POST(request: Request) {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
+    console.error('Email configuration is missing')
     return NextResponse.json(
-      { message: 'Email configuration is missing' },
+      { message: 'Email configuration is missing. Please check your environment variables.' },
       { status: 500 }
     )
   }
 
   try {
     const { name, email, message } = await request.json()
+
+    if (!name || !email || !message) {
+      return NextResponse.json(
+        { message: 'Missing required fields' },
+        { status: 400 }
+      )
+    }
 
     // Create a transporter using your email service
     const transporter = nodemailer.createTransport({

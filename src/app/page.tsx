@@ -1,11 +1,17 @@
 'use client'
-import React from 'react'
+import React, { useEffect } from 'react'
 import Header from '@/components/Header'
 import ContactForm from '@/components/ContactForm'
 import SocialLinks from '@/components/SocialLinks'
 import content from '@/data/content.json'
+import Image from 'next/image'
 
 export default function Home() {
+  useEffect(() => {
+    // Add smooth scrolling behavior
+    document.documentElement.style.scrollBehavior = 'smooth'
+  }, [])
+
   return (
     <main className="min-h-screen bg-[#EFF3FF]">
       <Header />
@@ -15,9 +21,12 @@ export default function Home() {
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-5xl md:text-6xl font-bold mb-6">{content.hero.title}</h1>
           <p className="text-xl md:text-2xl mb-8">{content.hero.subtitle}</p>
-          <button className="bg-[#6BAED6] hover:bg-[#BDD7E7] text-white font-bold py-3 px-8 rounded-full transition-colors">
+          <a 
+            href={content.hero.ctaButton.href}
+            className="inline-block bg-[#6BAED6] hover:bg-[#BDD7E7] text-white font-bold py-3 px-8 rounded-full transition-colors"
+          >
             {content.hero.ctaButton.text}
-          </button>
+          </a>
         </div>
       </section>
 
@@ -33,9 +42,20 @@ export default function Home() {
                 </p>
               ))}
             </div>
-            <div className="relative h-[400px] rounded-lg overflow-hidden">
-              <div className="absolute inset-0 bg-[#BDD7E7]"></div>
-              {/* Add your image here */}
+            <div className="relative h-[500px] rounded-lg overflow-hidden">
+              <Image
+                src="/images/me.jpg"
+                alt="Olympio Sumbilon"
+                width={600}
+                height={800}
+                className="object-cover rounded-lg w-full"
+                style={{ height: '150%' }}
+                priority
+                quality={100}
+                onError={(e) => {
+                  console.error('Error loading image:', e);
+                }}
+              />
             </div>
           </div>
         </div>

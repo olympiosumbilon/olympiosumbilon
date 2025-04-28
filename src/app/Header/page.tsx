@@ -1,25 +1,41 @@
 'use client'
 import React from 'react'
+import content from '@/data/content.json'
 
 const Header = () => {
+  const scrollToContact = (e: React.MouseEvent) => {
+    e.preventDefault()
+    const contactSection = document.getElementById('contact')
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' })
+    }
+  }
+
   return (
     <header className="fixed w-full bg-white shadow-md z-50">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
           <div className="flex items-center">
-            <div className="text-2xl font-bold text-[#2171B5]">LOGO</div>
+            <div className="text-2xl font-bold text-[#2171B5]">{content.header.logo}</div>
           </div>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <a href="#" className="text-gray-700 hover:text-[#2171B5] transition-colors">Home</a>
-            <a href="#about" className="text-gray-700 hover:text-[#2171B5] transition-colors">About Us</a>
-            <a href="#services" className="text-gray-700 hover:text-[#2171B5] transition-colors">What We Do</a>
-            <a href="#case-studies" className="text-gray-700 hover:text-[#2171B5] transition-colors">Case Studies</a>
-            <a href="#contact" className="text-gray-700 hover:text-[#2171B5] transition-colors">Contact</a>
-            <button className="bg-[#2171B5] hover:bg-[#6BAED6] text-white font-bold py-2 px-6 rounded-full transition-colors">
-              Book a Call
+            {content.header.navigation.map((item, index) => (
+              <a 
+                key={index}
+                href={item.href} 
+                className="text-gray-700 hover:text-[#2171B5] transition-colors"
+              >
+                {item.name}
+              </a>
+            ))}
+            <button 
+              onClick={scrollToContact}
+              className="bg-[#2171B5] hover:bg-[#6BAED6] text-white font-bold py-2 px-6 rounded-full transition-colors"
+            >
+              {content.header.ctaButton.text}
             </button>
           </nav>
 

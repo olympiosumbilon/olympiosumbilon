@@ -215,6 +215,10 @@ export default function Home() {
                 )}
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{tier.name}</h3>
+                  <div className="mb-1">
+                    <span className="text-lg text-gray-400 line-through mr-2">{tier.originalPrice}</span>
+                    <span className="inline-block bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold px-2 py-1 rounded-full">{tier.savings}</span>
+                  </div>
                   <div className={`text-4xl font-bold mb-2 ${tier.popular ? 'text-[#e8a030]' : 'text-[#2f4a8a] dark:text-[#4a6cb3]'}`}>{tier.price}</div>
                   <p className="text-gray-600 dark:text-gray-400 text-sm">{tier.description}</p>
                 </div>

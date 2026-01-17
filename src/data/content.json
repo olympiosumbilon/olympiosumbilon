@@ -119,6 +119,8 @@
       {
         "name": "Free Consultation",
         "price": "Free",
+        "originalPrice": "$150",
+        "savings": "Save $150",
         "description": "Let's discuss your project and see how I can help",
         "features": [
           "30-minute discovery call",
@@ -132,6 +134,8 @@
       {
         "name": "Basic Package",
         "price": "$997",
+        "originalPrice": "$1,997",
+        "savings": "Save $1,000",
         "description": "Perfect for small businesses and startups",
         "features": [
           "Up to 5 pages",
@@ -147,6 +151,8 @@
       {
         "name": "Advanced Package",
         "price": "$2,497",
+        "originalPrice": "$4,997",
+        "savings": "Save $2,500",
         "description": "For businesses ready to scale and dominate",
         "features": [
           "Up to 15 pages",

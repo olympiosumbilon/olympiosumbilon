@@ -134,7 +134,6 @@ export default function Home() {
         <div className="absolute inset-0 bg-mesh opacity-10"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-16">
-            <span className="inline-block bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold mb-4">The Real Cost</span>
             <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.regrets.title}</h2>
             <p className="text-white/70 max-w-2xl mx-auto">{content.regrets.subtitle}</p>
           </div>

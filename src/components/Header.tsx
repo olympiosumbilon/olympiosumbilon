@@ -25,16 +25,7 @@ const Header = () => {
     <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center space-x-3 group">
-            <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
-              <Image 
-                src="/favicon.png" 
-                alt="Pyow Digitals" 
-                width={40} 
-                height={40}
-                className="rounded-full"
-              />
-            </div>
+          <Link href="/" className="flex items-center group">
             <div className="flex flex-col">
               <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled ? 'text-[#2f4a8a] dark:text-[#4a6cb3]' : 'text-white'}`}>
                 PYOW

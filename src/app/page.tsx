@@ -405,14 +405,7 @@ export default function Home() {
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">
-              <div className="flex items-center space-x-3 mb-4">
-                <Image 
-                  src="/favicon.png" 
-                  alt="Pyow Digitals" 
-                  width={48} 
-                  height={48}
-                  className="rounded-full"
-                />
+              <div className="flex items-center mb-4">
                 <div>
                   <span className="font-bold text-xl text-white">PYOW</span>
                   <span className="block text-sm font-semibold tracking-wider text-[#e8a030]">DIGITALS</span>

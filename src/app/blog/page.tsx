@@ -73,14 +73,7 @@ export default function BlogPage() {
       <footer className="bg-gray-900 dark:bg-slate-950 text-white py-16 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="flex items-center space-x-3 mb-4 md:mb-0">
-              <Image 
-                src="/favicon.png" 
-                alt="Pyow Digitals" 
-                width={40} 
-                height={40}
-                className="rounded-full"
-              />
+            <div className="flex items-center mb-4 md:mb-0">
               <div>
                 <span className="font-bold text-lg text-white">PYOW</span>
                 <span className="block text-xs font-semibold tracking-wider text-[#e8a030]">DIGITALS</span>

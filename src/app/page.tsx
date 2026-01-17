@@ -174,7 +174,6 @@ export default function Home() {
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Why Us</span>
             <h2 className="section-title">{content.usp.title}</h2>
             <p className="section-subtitle">{content.usp.subtitle}</p>
           </div>
@@ -208,7 +207,6 @@ export default function Home() {
         <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-6">The Solution</span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-shadow">
               {content.transition.title}
             </h2>
@@ -295,7 +293,6 @@ export default function Home() {
       <section id="services" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 bg-mesh transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Our Services</span>
             <h2 className="section-title">{content.services.title}</h2>
             <p className="section-subtitle">{content.services.subtitle}</p>
           </div>
@@ -358,7 +355,6 @@ export default function Home() {
       <section className="py-20 bg-gradient-to-b from-[#F8FAFC] dark:from-slate-800 to-white dark:to-slate-900 overflow-hidden transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Tech Stack</span>
             <h2 className="section-title">{content.tools.title}</h2>
             <p className="section-subtitle">{content.tools.subtitle}</p>
           </div>
@@ -386,7 +382,6 @@ export default function Home() {
       <section id="pricing" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Pricing</span>
             <h2 className="section-title">{content.pricing.title}</h2>
             <p className="section-subtitle">{content.pricing.subtitle}</p>
           </div>
@@ -430,7 +425,6 @@ export default function Home() {
       <section id="portfolio" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Portfolio</span>
             <h2 className="section-title">{content.portfolio.title}</h2>
             <p className="section-subtitle">{content.portfolio.subtitle}</p>
           </div>
@@ -469,7 +463,6 @@ export default function Home() {
       <section id="testimonials" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Testimonials</span>
             <h2 className="section-title">{content.testimonials.title}</h2>
             <p className="section-subtitle">{content.testimonials.subtitle}</p>
           </div>
@@ -503,7 +496,6 @@ export default function Home() {
       <section id="faq" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">FAQ</span>
             <h2 className="section-title">{content.faq.title}</h2>
             <p className="section-subtitle">{content.faq.subtitle}</p>
           </div>
@@ -517,7 +509,6 @@ export default function Home() {
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Blog</span>
             <h2 className="section-title">{content.blog.title}</h2>
             <p className="section-subtitle">{content.blog.subtitle}</p>
           </div>
@@ -561,7 +552,6 @@ export default function Home() {
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-6">Get In Touch</span>
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-shadow">{content.contact.title}</h2>
               <p className="text-lg text-white/90 max-w-2xl mx-auto">{content.contact.subtitle}</p>
             </div>

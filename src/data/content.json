@@ -25,6 +25,33 @@
       { "number": "3+", "label": "Years Experience" }
     ]
   },
+  "problem": {
+    "title": "Does This Sound Familiar?",
+    "subtitle": "Many business owners struggle with these challenges every day",
+    "items": [
+      {
+        "icon": "frustrated",
+        "title": "Your website looks outdated",
+        "description": "First impressions matter. An old, unprofessional website drives potential customers away before they even see what you offer."
+      },
+      {
+        "icon": "invisible",
+        "title": "You're invisible online",
+        "description": "Your competitors show up on Google, but you don't. You're missing out on customers who are actively searching for your services."
+      },
+      {
+        "icon": "confused",
+        "title": "Visitors leave without taking action",
+        "description": "People visit your site but don't contact you, buy, or sign up. Your website isn't converting visitors into customers."
+      },
+      {
+        "icon": "time",
+        "title": "You don't have time to figure it out",
+        "description": "You're busy running your business. Learning web design, SEO, and development isn't something you have time for."
+      }
+    ],
+    "cta": "If you're nodding your head, you're in the right place. I solve these problems every day."
+  },
   "services": {
     "title": "How I Can Help You",
     "subtitle": "Professional web solutions tailored to your business needs",

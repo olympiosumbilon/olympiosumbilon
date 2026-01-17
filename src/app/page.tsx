@@ -60,6 +60,52 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
       </section>
 
+      {/* Problem Section */}
+      <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-red-500/10 text-red-500 px-4 py-1 rounded-full text-sm font-semibold mb-4">The Problem</span>
+            <h2 className="section-title">{content.problem.title}</h2>
+            <p className="section-subtitle">{content.problem.subtitle}</p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+            {content.problem.items.map((item, index) => (
+              <div key={index} className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 border border-gray-100 dark:border-slate-700 hover:border-red-200 dark:hover:border-red-900 transition-all duration-300 group">
+                <div className="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-500/20 transition-colors">
+                  {item.icon === 'frustrated' && (
+                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {item.icon === 'invisible' && (
+                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                    </svg>
+                  )}
+                  {item.icon === 'confused' && (
+                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                    </svg>
+                  )}
+                  {item.icon === 'time' && (
+                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto italic">
+              {content.problem.cta}
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
       <section id="services" className="section-padding bg-white dark:bg-slate-900 bg-mesh transition-colors duration-300">
         <div className="container mx-auto px-4">

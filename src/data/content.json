@@ -124,6 +124,20 @@
     ],
     "cta": "This isn't a dream. This is what I deliver to my clients every month."
   },
+  "founder": {
+    "tagline": "Meet the Founder",
+    "title": "Hi, I'm Olympio",
+    "subtitle": "The person behind Pyow Digitals",
+    "description": "I'm a passionate web designer and developer who believes every business deserves a stunning online presence. With over 3 years of experience, I've helped dozens of entrepreneurs and small businesses transform their digital footprint and attract more customers.",
+    "story": "I started Pyow Digitals because I saw too many talented business owners struggling with outdated websites and missed opportunities. My mission is simple: to give you a website that works as hard as you do.",
+    "highlights": [
+      "50+ successful projects delivered",
+      "Clients across multiple industries",
+      "Full-stack expertise from design to deployment",
+      "Dedicated to your long-term success"
+    ],
+    "image": "/images/me.jpg"
+  },
   "services": {
     "title": "How I Can Help You",
     "subtitle": "Professional web solutions tailored to your business needs",

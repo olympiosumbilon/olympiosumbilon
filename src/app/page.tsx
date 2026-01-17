@@ -238,8 +238,64 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Founder Section */}
+      <section id="about" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <div className="max-w-6xl mx-auto">
+            <div className="grid lg:grid-cols-2 gap-12 items-center">
+              <div className="relative">
+                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-3xl"></div>
+                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#e8a030] rounded-full opacity-50"></div>
+                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
+                  <Image 
+                    src={content.founder.image}
+                    alt="Olympio - Founder of Pyow Digitals"
+                    width={500}
+                    height={600}
+                    className="w-full h-auto object-cover"
+                  />
+                </div>
+              </div>
+              <div>
+                <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                  {content.founder.tagline}
+                </span>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                  {content.founder.title}
+                </h2>
+                <p className="text-lg text-[#2f4a8a] dark:text-[#4a6cb3] font-medium mb-6">
+                  {content.founder.subtitle}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 mb-6 leading-relaxed">
+                  {content.founder.description}
+                </p>
+                <p className="text-gray-600 dark:text-gray-400 mb-8 leading-relaxed">
+                  {content.founder.story}
+                </p>
+                <div className="grid grid-cols-2 gap-4 mb-8">
+                  {content.founder.highlights.map((highlight, index) => (
+                    <div key={index} className="flex items-center">
+                      <svg className="w-5 h-5 text-[#e8a030] mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                      <span className="text-sm text-gray-700 dark:text-gray-300">{highlight}</span>
+                    </div>
+                  ))}
+                </div>
+                <a href="#contact" className="btn-accent inline-flex items-center">
+                  Let's Work Together
+                  <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                  </svg>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Services Section */}
-      <section id="services" className="section-padding bg-white dark:bg-slate-900 bg-mesh transition-colors duration-300">
+      <section id="services" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 bg-mesh transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Our Services</span>

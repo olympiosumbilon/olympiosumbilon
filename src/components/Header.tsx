@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import content from '@/data/content.json'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -20,21 +21,36 @@ const Header = () => {
   }
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="bg-[#2171B5] text-white px-2.5 py-1.5 rounded font-bold text-sm">{content.header.logo}</span>
-            <span className={`font-semibold text-lg ${isScrolled ? 'text-gray-900' : 'text-white'}`}>{content.header.name}</span>
+          <Link href="/" className="flex items-center space-x-3 group">
+            <div className="relative w-10 h-10 transition-transform duration-300 group-hover:scale-110">
+              <Image 
+                src="/favicon.png" 
+                alt="Pyow Digitals" 
+                width={40} 
+                height={40}
+                className="rounded-full"
+              />
+            </div>
+            <div className="flex flex-col">
+              <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled ? 'text-[#2f4a8a]' : 'text-white'}`}>
+                PYOW
+              </span>
+              <span className={`text-xs font-semibold tracking-wider transition-colors ${isScrolled ? 'text-[#e8a030]' : 'text-[#f0b840]'}`}>
+                DIGITALS
+              </span>
+            </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-6">
+          <nav className="hidden lg:flex items-center space-x-1">
             {content.header.navigation.map((item, index) => (
               item.href.startsWith('/') ? (
                 <Link
                   key={index}
                   href={item.href}
-                  className={`font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#2171B5]' : 'text-white/90 hover:text-white'}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 hover:text-[#2f4a8a] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'}`}
                 >
                   {item.name}
                 </Link>
@@ -42,7 +58,7 @@ const Header = () => {
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`font-medium transition-colors ${isScrolled ? 'text-gray-700 hover:text-[#2171B5]' : 'text-white/90 hover:text-white'}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 hover:text-[#2f4a8a] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'}`}
                 >
                   {item.name}
                 </a>
@@ -50,63 +66,59 @@ const Header = () => {
             ))}
             <a 
               href={content.header.ctaButton.href}
-              className="bg-[#2171B5] hover:bg-[#08519c] text-white font-semibold py-2.5 px-6 rounded-full transition-all shadow-lg hover:shadow-xl"
+              className="ml-4 bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] hover:from-[#243b6e] hover:to-[#3d5a96] text-white font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
             >
               {content.header.ctaButton.text}
             </a>
           </nav>
 
           <button 
-            className="lg:hidden"
+            className="lg:hidden relative w-10 h-10 flex items-center justify-center"
             onClick={toggleMobileMenu}
             aria-label="Toggle mobile menu"
           >
-            <svg className={`w-6 h-6 ${isScrolled ? 'text-gray-700' : 'text-white'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              {isMobileMenuOpen ? (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-              ) : (
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              )}
-            </svg>
+            <div className="relative w-6 h-5">
+              <span className={`absolute left-0 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-700' : 'bg-white'} ${isMobileMenuOpen ? 'top-2 rotate-45' : 'top-0'}`}></span>
+              <span className={`absolute left-0 top-2 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-700' : 'bg-white'} ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+              <span className={`absolute left-0 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-700' : 'bg-white'} ${isMobileMenuOpen ? 'top-2 -rotate-45' : 'top-4'}`}></span>
+            </div>
           </button>
         </div>
 
-        {isMobileMenuOpen && (
-          <div className="lg:hidden bg-white rounded-b-2xl shadow-xl">
-            <nav className="flex flex-col py-4">
-              {content.header.navigation.map((item, index) => (
-                item.href.startsWith('/') ? (
-                  <Link
-                    key={index}
-                    href={item.href}
-                    className="text-gray-700 hover:text-[#2171B5] hover:bg-gray-50 px-4 py-3 font-medium transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </Link>
-                ) : (
-                  <a 
-                    key={index}
-                    href={item.href} 
-                    className="text-gray-700 hover:text-[#2171B5] hover:bg-gray-50 px-4 py-3 font-medium transition-colors"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.name}
-                  </a>
-                )
-              ))}
-              <div className="px-4 pt-4">
-                <a 
-                  href={content.header.ctaButton.href}
-                  className="block text-center bg-[#2171B5] hover:bg-[#08519c] text-white font-semibold py-3 px-6 rounded-full transition-all"
+        <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
+          <nav className="bg-white/95 backdrop-blur-md rounded-2xl shadow-xl mb-4 overflow-hidden">
+            {content.header.navigation.map((item, index) => (
+              item.href.startsWith('/') ? (
+                <Link
+                  key={index}
+                  href={item.href}
+                  className="block text-gray-700 hover:text-[#2f4a8a] hover:bg-[#2f4a8a]/5 px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 last:border-b-0"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
-                  {content.header.ctaButton.text}
+                  {item.name}
+                </Link>
+              ) : (
+                <a 
+                  key={index}
+                  href={item.href} 
+                  className="block text-gray-700 hover:text-[#2f4a8a] hover:bg-[#2f4a8a]/5 px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 last:border-b-0"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.name}
                 </a>
-              </div>
-            </nav>
-          </div>
-        )}
+              )
+            ))}
+            <div className="p-4">
+              <a 
+                href={content.header.ctaButton.href}
+                className="block text-center bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                {content.header.ctaButton.text}
+              </a>
+            </div>
+          </nav>
+        </div>
       </div>
     </header>
   )

@@ -22,69 +22,74 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-20">
-        <div className="absolute inset-0 bg-black/10"></div>
+      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-20 overflow-hidden">
+        <div className="absolute inset-0 bg-mesh opacity-30"></div>
+        <div className="absolute top-20 right-10 w-72 h-72 bg-[#e8a030]/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-8 animate-fadeInUp">
               {content.hero.tagline}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow animate-fadeInUp" style={{animationDelay: '0.1s'}}>
               {content.hero.title}
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto">
+            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fadeInUp" style={{animationDelay: '0.2s'}}>
               {content.hero.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
-              <a href={content.hero.ctaButton.href} className="btn-white">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
+              <a href={content.hero.ctaButton.href} className="btn-accent">
                 {content.hero.ctaButton.text}
               </a>
-              <a href={content.hero.secondaryButton.href} className="btn-secondary border-white text-white hover:bg-white hover:text-[#2171B5]">
+              <a href={content.hero.secondaryButton.href} className="btn-secondary border-white text-white hover:bg-white hover:text-[#2f4a8a]">
                 {content.hero.secondaryButton.text}
               </a>
             </div>
-            <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto">
+            <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto animate-fadeInUp" style={{animationDelay: '0.4s'}}>
               {content.hero.stats.map((stat, index) => (
-                <div key={index} className="text-center">
-                  <div className="text-3xl md:text-4xl font-bold">{stat.number}</div>
+                <div key={index} className="text-center glass-effect rounded-xl py-4 px-2 hover-lift">
+                  <div className="text-3xl md:text-4xl font-bold text-[#f0b840]">{stat.number}</div>
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="section-padding bg-white">
+      <section id="services" className="section-padding bg-white bg-mesh">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
+            <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-4 py-1 rounded-full text-sm font-semibold mb-4">Our Services</span>
             <h2 className="section-title">{content.services.title}</h2>
             <p className="section-subtitle">{content.services.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {content.services.items.map((service, index) => (
-              <div key={index} className="card card-hover border border-gray-100">
-                <div className="w-14 h-14 bg-[#EFF3FF] rounded-xl flex items-center justify-center mb-6">
+              <div key={index} className="interactive-card card border border-gray-100 group">
+                <div className="w-16 h-16 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   {service.icon === 'design' ? (
-                    <svg className="w-7 h-7 text-[#2171B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
                     </svg>
                   ) : (
-                    <svg className="w-7 h-7 text-[#2171B5]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
                     </svg>
                   )}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4">{service.title}</h3>
+                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#2f4a8a] transition-colors">{service.title}</h3>
                 <p className="text-gray-600 mb-6">{service.description}</p>
-                <ul className="space-y-2">
+                <ul className="space-y-3">
                   {service.features.map((feature, i) => (
                     <li key={i} className="flex items-center text-gray-700">
-                      <svg className="w-5 h-5 text-green-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
+                      <div className="w-5 h-5 bg-[#e8a030]/20 rounded-full flex items-center justify-center mr-3">
+                        <svg className="w-3 h-3 text-[#e8a030]" fill="currentColor" viewBox="0 0 20 20">
+                          <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
+                        </svg>
+                      </div>
                       {feature}
                     </li>
                   ))}
@@ -96,19 +101,22 @@ export default function Home() {
       </section>
 
       {/* Tools Carousel Section */}
-      <section className="py-16 bg-[#F8FAFC]">
+      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-white overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
+            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Tech Stack</span>
             <h2 className="section-title">{content.tools.title}</h2>
             <p className="section-subtitle">{content.tools.subtitle}</p>
           </div>
-          <div className="overflow-hidden">
+          <div className="overflow-hidden relative">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
             <div className="tools-carousel">
               {[...content.tools.items, ...content.tools.items].map((tool, index) => (
-                <div key={index} className="flex-shrink-0 mx-4">
-                  <div className="bg-white rounded-xl shadow-md px-8 py-6 min-w-[180px] text-center hover:shadow-lg transition-shadow">
-                    <div className="font-semibold text-gray-900">{tool.name}</div>
-                    <div className="text-sm text-[#2171B5]">{tool.category}</div>
+                <div key={index} className="flex-shrink-0 mx-3">
+                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl px-8 py-6 min-w-[180px] text-center transition-all duration-300 hover:-translate-y-1 border border-gray-100">
+                    <div className="font-bold text-gray-900">{tool.name}</div>
+                    <div className="text-sm text-[#2f4a8a] font-medium">{tool.category}</div>
                   </div>
                 </div>
               ))}
@@ -121,33 +129,34 @@ export default function Home() {
       <section id="pricing" className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
+            <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-4 py-1 rounded-full text-sm font-semibold mb-4">Pricing</span>
             <h2 className="section-title">{content.pricing.title}</h2>
             <p className="section-subtitle">{content.pricing.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.pricing.tiers.map((tier, index) => (
-              <div key={index} className={`card relative ${tier.popular ? 'border-2 border-[#2171B5] scale-105' : 'border border-gray-100'}`}>
+              <div key={index} className={`interactive-card card relative ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10' : 'border border-gray-100'}`}>
                 {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 bg-[#2171B5] text-white px-4 py-1 rounded-full text-sm font-medium">
+                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 accent-gradient text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg">
                     Most Popular
                   </div>
                 )}
                 <div className="text-center mb-6">
                   <h3 className="text-xl font-bold text-gray-900 mb-2">{tier.name}</h3>
-                  <div className="text-4xl font-bold text-[#2171B5] mb-2">{tier.price}</div>
+                  <div className={`text-4xl font-bold mb-2 ${tier.popular ? 'text-[#e8a030]' : 'text-[#2f4a8a]'}`}>{tier.price}</div>
                   <p className="text-gray-600 text-sm">{tier.description}</p>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, i) => (
                     <li key={i} className="flex items-start text-gray-700">
-                      <svg className="w-5 h-5 text-green-500 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <svg className={`w-5 h-5 mr-3 mt-0.5 flex-shrink-0 ${tier.popular ? 'text-[#e8a030]' : 'text-green-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
                       {feature}
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" className={`block text-center py-3 px-6 rounded-full font-semibold transition-all ${tier.popular ? 'bg-[#2171B5] text-white hover:bg-[#08519c]' : 'bg-gray-100 text-gray-900 hover:bg-gray-200'}`}>
+                <a href="#contact" className={`block text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${tier.popular ? 'accent-gradient text-white hover:shadow-lg hover:scale-105' : 'bg-gray-100 text-gray-900 hover:bg-[#2f4a8a] hover:text-white'}`}>
                   {tier.ctaText}
                 </a>
               </div>
@@ -160,6 +169,7 @@ export default function Home() {
       <section id="portfolio" className="section-padding bg-[#F8FAFC]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
+            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Portfolio</span>
             <h2 className="section-title">{content.portfolio.title}</h2>
             <p className="section-subtitle">{content.portfolio.subtitle}</p>
           </div>
@@ -168,7 +178,7 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2 rounded-full font-medium transition-all ${activeCategory === category ? 'bg-[#2171B5] text-white' : 'bg-white text-gray-700 hover:bg-gray-100'}`}
+                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md hover:shadow-lg'}`}
               >
                 {category}
               </button>
@@ -176,15 +186,16 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="card card-hover overflow-hidden p-0">
-                <div className="h-48 bg-gradient-to-br from-[#2171B5] to-[#6BAED6] flex items-center justify-center">
-                  <span className="text-white/50 text-sm">Project Image</span>
+              <div key={index} className="interactive-card card overflow-hidden p-0 group">
+                <div className="h-48 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
                 </div>
                 <div className="p-6">
-                  <span className="inline-block bg-[#EFF3FF] text-[#2171B5] px-3 py-1 rounded-full text-sm font-medium mb-3">
+                  <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-3 py-1 rounded-full text-sm font-medium mb-3">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{project.title}</h3>
+                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2f4a8a] transition-colors">{project.title}</h3>
                   <p className="text-gray-600">{project.description}</p>
                 </div>
               </div>
@@ -197,27 +208,28 @@ export default function Home() {
       <section id="testimonials" className="section-padding bg-white">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
+            <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-4 py-1 rounded-full text-sm font-semibold mb-4">Testimonials</span>
             <h2 className="section-title">{content.testimonials.title}</h2>
             <p className="section-subtitle">{content.testimonials.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.testimonials.items.map((testimonial, index) => (
-              <div key={index} className="card border border-gray-100">
+              <div key={index} className="interactive-card card border border-gray-100">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
-                    <svg key={i} className="w-5 h-5 text-yellow-400" fill="currentColor" viewBox="0 0 20 20">
+                    <svg key={i} className="w-5 h-5 text-[#e8a030]" fill="currentColor" viewBox="0 0 20 20">
                       <path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.175 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z" />
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic">&quot;{testimonial.content}&quot;</p>
+                <p className="text-gray-700 mb-6 italic leading-relaxed">&quot;{testimonial.content}&quot;</p>
                 <div className="flex items-center">
-                  <div className="w-12 h-12 bg-[#2171B5] rounded-full flex items-center justify-center text-white font-bold mr-4">
+                  <div className="w-12 h-12 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-lg">
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
                     <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-gray-600">{testimonial.role}</div>
+                    <div className="text-sm text-[#2f4a8a]">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
@@ -230,21 +242,23 @@ export default function Home() {
       <section className="section-padding bg-[#F8FAFC]">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
+            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Blog</span>
             <h2 className="section-title">{content.blog.title}</h2>
             <p className="section-subtitle">{content.blog.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.blog.posts.map((post, index) => (
-              <article key={index} className="card card-hover overflow-hidden p-0">
-                <div className="h-40 bg-gradient-to-br from-[#6BAED6] to-[#2171B5] flex items-center justify-center">
+              <article key={index} className="interactive-card card overflow-hidden p-0 group">
+                <div className="h-40 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                  <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="text-white/50 text-sm">Blog Image</span>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-sm text-[#2171B5] font-medium">{post.category}</span>
+                    <span className="text-sm text-[#2f4a8a] font-semibold">{post.category}</span>
                     <span className="text-sm text-gray-400">{post.date}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 hover:text-[#2171B5] transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#2f4a8a] transition-colors">
                     <a href="/blog">{post.title}</a>
                   </h3>
                   <p className="text-gray-600 text-sm">{post.excerpt}</p>
@@ -261,14 +275,18 @@ export default function Home() {
       </section>
 
       {/* CTA / Contact Section */}
-      <section id="contact" className="section-padding gradient-bg text-white">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="section-padding gradient-bg text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh opacity-20"></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">{content.contact.title}</h2>
+              <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-6">Get In Touch</span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-shadow">{content.contact.title}</h2>
               <p className="text-lg text-white/90 max-w-2xl mx-auto">{content.contact.subtitle}</p>
             </div>
-            <div className="bg-white rounded-2xl shadow-2xl p-8 md:p-12">
+            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
               <ContactForm />
             </div>
             <div className="mt-8 flex justify-center">
@@ -279,19 +297,62 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-12">
+      <footer className="bg-gray-900 text-white py-16">
         <div className="container mx-auto px-4">
-          <div className="flex flex-col md:flex-row justify-between items-center">
-            <div className="mb-4 md:mb-0">
-              <div className="flex items-center space-x-2 mb-2">
-                <span className="bg-[#2171B5] text-white px-2 py-1 rounded font-bold text-sm">OS</span>
-                <span className="font-semibold">Olympio</span>
+          <div className="grid md:grid-cols-4 gap-12 mb-12">
+            <div className="md:col-span-2">
+              <div className="flex items-center space-x-3 mb-4">
+                <Image 
+                  src="/favicon.png" 
+                  alt="Pyow Digitals" 
+                  width={48} 
+                  height={48}
+                  className="rounded-full"
+                />
+                <div>
+                  <span className="font-bold text-xl text-white">PYOW</span>
+                  <span className="block text-sm font-semibold tracking-wider text-[#e8a030]">DIGITALS</span>
+                </div>
               </div>
-              <p className="text-gray-400 text-sm">&copy; {new Date().getFullYear()} {content.footer.copyright}</p>
+              <p className="text-gray-400 mb-6 max-w-md">
+                Transforming ideas into stunning, high-converting websites. We help businesses grow their online presence with professional web design and development services.
+              </p>
+              <div className="flex space-x-4">
+                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#e8a030] rounded-full flex items-center justify-center transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/></svg>
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#e8a030] rounded-full flex items-center justify-center transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+                </a>
+                <a href="#" className="w-10 h-10 bg-white/10 hover:bg-[#e8a030] rounded-full flex items-center justify-center transition-all duration-300">
+                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+                </a>
+              </div>
             </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><a href="#services" className="text-gray-400 hover:text-[#e8a030] transition-colors">Services</a></li>
+                <li><a href="#portfolio" className="text-gray-400 hover:text-[#e8a030] transition-colors">Portfolio</a></li>
+                <li><a href="#pricing" className="text-gray-400 hover:text-[#e8a030] transition-colors">Pricing</a></li>
+                <li><a href="/blog" className="text-gray-400 hover:text-[#e8a030] transition-colors">Blog</a></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-bold text-lg mb-4">Contact</h4>
+              <ul className="space-y-2">
+                <li><a href="#contact" className="text-gray-400 hover:text-[#e8a030] transition-colors">Get in Touch</a></li>
+                <li><a href="#" className="text-gray-400 hover:text-[#e8a030] transition-colors">Book a Call</a></li>
+              </ul>
+            </div>
+          </div>
+          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+            <p className="text-gray-400 text-sm mb-4 md:mb-0">
+              &copy; {new Date().getFullYear()} Pyow Digitals. All rights reserved.
+            </p>
             <div className="flex space-x-6">
               {content.footer.links.map((link, index) => (
-                <a key={index} href={link.href} className="text-gray-400 hover:text-white text-sm transition-colors">
+                <a key={index} href={link.href} className="text-gray-400 hover:text-[#e8a030] text-sm transition-colors">
                   {link.name}
                 </a>
               ))}

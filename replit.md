@@ -1,13 +1,19 @@
-# Olympio Sumbilon - Portfolio & Sales Page
+# Pyow Digitals - Portfolio & Sales Page
 
 ## Overview
-A professional portfolio and sales-focused landing page built with Next.js, React, TypeScript, and Tailwind CSS. The site is designed to showcase web design and development services, attract potential clients, and convert visitors into leads.
+A professional portfolio and sales-focused landing page for Pyow Digitals, built with Next.js, React, TypeScript, and Tailwind CSS. The site showcases web design and development services, attracts potential clients, and converts visitors into leads.
 
 ## Tech Stack
 - **Framework**: Next.js 14
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **Contact Form**: Nodemailer (API route at `/api/contact`)
+
+## Brand Colors
+- **Primary Blue**: #2f4a8a (deep blue)
+- **Primary Light**: #4a6cb3 (lighter blue)
+- **Accent Gold**: #e8a030 (gold/orange accent)
+- **Accent Light**: #f0b840 (lighter gold)
 
 ## Project Structure
 ```
@@ -77,7 +83,8 @@ All text content is stored in `src/data/content.json` for easy updates without t
   - Improved responsive design
 
 ## User Preferences
-- Blue color scheme (#2171B5 primary)
-- Clean, modern UI design
+- Pyow Digitals branding (Blue #2f4a8a + Gold #e8a030)
+- Clean, modern UI design with interactive elements
 - Sales-oriented copywriting
 - Mobile-first approach
+- Glass morphism effects and smooth animations

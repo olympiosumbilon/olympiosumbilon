@@ -3,10 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --primary: #2171B5;
-  --primary-light: #6BAED6;
-  --primary-dark: #08519c;
-  --secondary: #BDD7E7;
+  --primary: #2f4a8a;
+  --primary-light: #4a6cb3;
+  --primary-dark: #243b6e;
+  --accent: #e8a030;
+  --accent-light: #f0b840;
+  --secondary: #6BAED6;
   --background: #ffffff;
   --background-alt: #F8FAFC;
   --foreground: #1a1a1a;
@@ -24,15 +26,19 @@ body {
 
 @layer components {
   .btn-primary {
-    @apply bg-[#2171B5] hover:bg-[#08519c] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5;
+    @apply bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] hover:from-[#243b6e] hover:to-[#3d5a96] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105;
   }
 
   .btn-secondary {
-    @apply bg-transparent border-2 border-[#2171B5] text-[#2171B5] hover:bg-[#2171B5] hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300;
+    @apply bg-transparent border-2 border-[#2f4a8a] text-[#2f4a8a] hover:bg-[#2f4a8a] hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105;
   }
 
   .btn-white {
-    @apply bg-white text-[#2171B5] hover:bg-gray-100 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg;
+    @apply bg-white text-[#2f4a8a] hover:bg-gray-50 font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
+  }
+
+  .btn-accent {
+    @apply bg-gradient-to-r from-[#e8a030] to-[#f0b840] hover:from-[#d99020] hover:to-[#e8a030] text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105;
   }
 
   .section-padding {
@@ -40,7 +46,7 @@ body {
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-[#2171B5] mb-4;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-[#2f4a8a] mb-4;
   }
 
   .section-subtitle {
@@ -48,19 +54,40 @@ body {
   }
 
   .card {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-8;
+    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8;
   }
 
   .card-hover {
-    @apply hover:-translate-y-1 cursor-pointer;
+    @apply hover:-translate-y-2 cursor-pointer;
   }
 
   .gradient-bg {
-    @apply bg-gradient-to-br from-[#2171B5] via-[#3182BD] to-[#6BAED6];
+    @apply bg-gradient-to-br from-[#2f4a8a] via-[#3d5a96] to-[#4a6cb3];
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-[#2171B5] to-[#6BAED6] bg-clip-text text-transparent;
+    @apply bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] bg-clip-text text-transparent;
+  }
+
+  .accent-gradient {
+    @apply bg-gradient-to-r from-[#e8a030] to-[#f0b840];
+  }
+
+  .glass-effect {
+    @apply bg-white/10 backdrop-blur-md border border-white/20;
+  }
+
+  .interactive-card {
+    @apply relative overflow-hidden transition-all duration-500 hover:shadow-2xl hover:-translate-y-2;
+  }
+
+  .interactive-card::before {
+    content: '';
+    @apply absolute inset-0 bg-gradient-to-r from-[#2f4a8a]/5 to-[#e8a030]/5 opacity-0 transition-opacity duration-500;
+  }
+
+  .interactive-card:hover::before {
+    @apply opacity-100;
   }
 }
 
@@ -72,7 +99,7 @@ body {
 @keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -80,17 +107,37 @@ body {
   }
 }
 
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(47, 74, 138, 0.3); }
+  50% { box-shadow: 0 0 40px rgba(47, 74, 138, 0.6); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
 .animate-float {
   animation: float 3s ease-in-out infinite;
 }
 
 .animate-fadeInUp {
-  animation: fadeInUp 0.6s ease-out forwards;
+  animation: fadeInUp 0.8s ease-out forwards;
+}
+
+.animate-pulse-glow {
+  animation: pulse-glow 2s ease-in-out infinite;
+}
+
+.animate-shimmer {
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
 }
 
 .tools-carousel {
   display: flex;
-  animation: scroll 20s linear infinite;
+  animation: scroll 25s linear infinite;
 }
 
 @keyframes scroll {
@@ -100,4 +147,23 @@ body {
 
 .tools-carousel:hover {
   animation-play-state: paused;
+}
+
+.hover-lift {
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.hover-lift:hover {
+  transform: translateY(-8px);
+}
+
+.text-shadow {
+  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+}
+
+.bg-mesh {
+  background-image: 
+    radial-gradient(at 40% 20%, rgba(47, 74, 138, 0.1) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(232, 160, 48, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(74, 108, 179, 0.1) 0px, transparent 50%);
 }

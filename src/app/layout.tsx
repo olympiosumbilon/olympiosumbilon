@@ -6,8 +6,12 @@ import Script from 'next/script'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Olympio Sumbilon - Web Developer',
-  description: 'Professional web developer portfolio showcasing my work and services',
+  title: 'Pyow Digitals - Web Design & Development',
+  description: 'Professional web design and development services. Transform your ideas into stunning, high-converting websites.',
+  icons: {
+    icon: '/favicon.png',
+    apple: '/favicon.png',
+  },
 }
 
 export default function RootLayout({
@@ -18,6 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/favicon.png" type="image/png" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"
@@ -34,4 +39,4 @@ export default function RootLayout({
       <body className={inter.className}>{children}</body>
     </html>
   )
-} 
+}

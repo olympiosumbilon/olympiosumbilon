@@ -16,7 +16,7 @@ const SocialLinks = () => {
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/olympiosumbilon',
+      url: 'https://www.linkedin.com/in/olympiosumbilonjr/',
       icon: (
         <div className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:bg-[#EFF3FF] group">
           <svg className="w-6 h-6 text-[#2171B5] group-hover:text-[#6BAED6] transition-colors" fill="currentColor" viewBox="0 0 24 24">

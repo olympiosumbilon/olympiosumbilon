@@ -67,35 +67,32 @@
         "title": "Web Development",
         "description": "Fast, responsive, and scalable websites built with the latest technologies. Your site will perform flawlessly across all devices and browsers.",
         "features": ["Clean, Maintainable Code", "SEO Optimization", "Performance Focused", "Cross-Browser Compatible"]
+      },
+      {
+        "icon": "strategy",
+        "title": "Digital Strategist",
+        "description": "Custom roadmap for your online success with data-driven insights. I analyze your market, competitors, and goals to create a winning digital strategy.",
+        "features": ["Market Research & Analysis", "Competitor Insights", "Growth Roadmap", "KPI Tracking"]
+      },
+      {
+        "icon": "social",
+        "title": "Social Media Management",
+        "description": "Grow your audience and engagement across all platforms. From content creation to community management, I handle your social presence.",
+        "features": ["Content Strategy", "Post Scheduling", "Community Engagement", "Analytics & Reporting"]
+      },
+      {
+        "icon": "email",
+        "title": "Email Marketing & Automation",
+        "description": "Nurture leads and convert them into loyal customers on autopilot. Build relationships that drive sales with strategic email campaigns.",
+        "features": ["Email Sequences", "Lead Nurturing", "Newsletter Design", "A/B Testing"]
+      },
+      {
+        "icon": "funnel",
+        "title": "Funnel Design",
+        "description": "High-converting sales funnels that turn visitors into buyers. From landing pages to checkout, I optimize every step of the customer journey.",
+        "features": ["Landing Page Design", "Lead Magnets", "Conversion Optimization", "Upsell Sequences"]
       }
-    ],
-    "bundle": {
-      "title": "Complete Digital Growth Bundle",
-      "subtitle": "Get everything you need to dominate online",
-      "items": [
-        {
-          "icon": "strategy",
-          "title": "Digital Strategist",
-          "description": "Custom roadmap for your online success with data-driven insights"
-        },
-        {
-          "icon": "social",
-          "title": "Social Media Management",
-          "description": "Grow your audience and engagement across all platforms"
-        },
-        {
-          "icon": "email",
-          "title": "Email Marketing & Automation",
-          "description": "Nurture leads and convert them into loyal customers on autopilot"
-        },
-        {
-          "icon": "funnel",
-          "title": "Funnel Design",
-          "description": "High-converting sales funnels that turn visitors into buyers"
-        }
-      ],
-      "cta": "Get the Complete Bundle"
-    }
+    ]
   },
   "tools": {
     "title": "Tools & Technologies I Use",

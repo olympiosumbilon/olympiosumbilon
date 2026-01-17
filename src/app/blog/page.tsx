@@ -31,19 +31,13 @@ export default function BlogPage() {
                     <span className="bg-[#EFF3FF] text-[#2171B5] px-3 py-1 rounded-full text-sm font-medium">{post.category}</span>
                     <span className="text-sm text-gray-400">{post.date}</span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 hover:text-[#2171B5] transition-colors">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  <h2 className="text-xl font-bold text-gray-900 mb-3">
+                    {post.title}
                   </h2>
                   <p className="text-gray-600 mb-4">{post.excerpt}</p>
-                  <Link 
-                    href={`/blog/${post.slug}`}
-                    className="inline-flex items-center text-[#2171B5] font-medium hover:underline"
-                  >
-                    Read More
-                    <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                  <span className="inline-flex items-center text-[#2171B5] font-medium">
+                    Coming Soon
+                  </span>
                 </div>
               </article>
             ))}

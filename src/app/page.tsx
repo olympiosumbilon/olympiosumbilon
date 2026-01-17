@@ -245,7 +245,7 @@ export default function Home() {
                     <span className="text-sm text-gray-400">{post.date}</span>
                   </div>
                   <h3 className="text-lg font-bold text-gray-900 mb-2 hover:text-[#2171B5] transition-colors">
-                    <a href={`/blog/${post.slug}`}>{post.title}</a>
+                    <a href="/blog">{post.title}</a>
                   </h3>
                   <p className="text-gray-600 text-sm">{post.excerpt}</p>
                 </div>

@@ -1,21 +1,83 @@
-# Personal Brand Website
+# Olympio Sumbilon - Portfolio & Sales Page
 
 ## Overview
-A personal brand/portfolio website built with Next.js 14, React 18, TypeScript, and Tailwind CSS. Features a contact form using nodemailer for email functionality.
+A professional portfolio and sales-focused landing page built with Next.js, React, TypeScript, and Tailwind CSS. The site is designed to showcase web design and development services, attract potential clients, and convert visitors into leads.
+
+## Tech Stack
+- **Framework**: Next.js 14
+- **Language**: TypeScript
+- **Styling**: Tailwind CSS
+- **Contact Form**: Nodemailer (API route at `/api/contact`)
 
 ## Project Structure
-- `src/app/` - Next.js App Router pages and API routes
-- `src/components/` - React components (Header, Logo, ContactForm, SocialLinks)
-- `src/data/` - Content data (content.json)
-- `src/images/` - Source images
-- `public/` - Static assets
+```
+src/
+├── app/
+│   ├── page.tsx          # Main landing page
+│   ├── layout.tsx        # Root layout
+│   ├── globals.css       # Global styles & utility classes
+│   ├── blog/
+│   │   └── page.tsx      # Blog listing page
+│   └── api/
+│       └── contact/
+│           └── route.ts  # Contact form API
+├── components/
+│   ├── Header.tsx        # Navigation header
+│   ├── ContactForm.tsx   # Contact form component
+│   ├── SocialLinks.tsx   # Social media links
+│   └── Logo.tsx          # Logo component
+├── data/
+│   └── content.json      # All site content (easily editable)
+└── images/
+    └── me.jpg            # Profile photo
+```
 
-## Development
-- Dev server runs on port 5000 with `npm run dev -- -p 5000 -H 0.0.0.0`
-- Uses Tailwind CSS for styling
-- TypeScript for type safety
+## Key Features
+- **Hero Section**: Sales-focused headline with stats and CTAs
+- **Services**: Web Design & Web Development offerings
+- **Tools Carousel**: Animated showcase of tech stack
+- **Pricing**: Three-tier pricing (Free, Basic, Advanced)
+- **Portfolio**: Filterable project gallery by category (UI/UX, Framer, WordPress, GoHighLevel, Programming)
+- **Testimonials**: Client feedback section
+- **Blog**: Blog page with post previews
+- **Contact**: Contact form with email integration
+- **Footer**: Links and copyright
+
+## Running the Project
+```bash
+npm install
+npm run dev -- -p 5000 -H 0.0.0.0
+```
 
 ## Deployment
+The project is configured for Replit's autoscale deployment:
 - Build: `npm run build`
-- Production: `npm run start -- -p 5000 -H 0.0.0.0`
-- Configured for autoscale deployment
+- Start: `npm run start -- -p 5000 -H 0.0.0.0`
+
+## Content Management
+All text content is stored in `src/data/content.json` for easy updates without touching code. This includes:
+- Navigation links
+- Hero text and stats
+- Services descriptions
+- Tools list
+- Pricing tiers and features
+- Portfolio projects
+- Testimonials
+- Blog posts
+- Footer links
+
+## Recent Changes
+- **January 2026**: Complete redesign from simple portfolio to sales-focused landing page
+  - Added tools carousel with animation
+  - Added three-tier pricing section
+  - Added filterable portfolio gallery
+  - Added testimonials section
+  - Created dedicated blog page
+  - Modernized header with scroll effect
+  - Improved responsive design
+
+## User Preferences
+- Blue color scheme (#2171B5 primary)
+- Clean, modern UI design
+- Sales-oriented copywriting
+- Mobile-first approach

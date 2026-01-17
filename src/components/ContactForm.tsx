@@ -43,7 +43,7 @@ const ContactForm = () => {
   return (
     <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
           Name
         </label>
         <input
@@ -53,12 +53,13 @@ const ContactForm = () => {
           value={formData.name}
           onChange={handleChange}
           required
-          className="mt-1 block w-full rounded-md border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2171B5] text-black text-lg py-3 px-4 bg-white"
+          className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors"
+          placeholder="Your name"
         />
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
           Email
         </label>
         <input
@@ -68,12 +69,13 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="mt-1 block w-full rounded-md border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2171B5] text-black text-lg py-3 px-4 bg-white"
+          className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors"
+          placeholder="your@email.com"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-medium text-gray-700">
+        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
           Message
         </label>
         <textarea
@@ -83,26 +85,27 @@ const ContactForm = () => {
           value={formData.message}
           onChange={handleChange}
           required
-          className="mt-1 block w-full rounded-md border border-gray-200 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2171B5] text-black text-lg py-3 px-4 bg-white"
+          className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors resize-none"
+          placeholder="Tell us about your project..."
         />
       </div>
 
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full bg-[#2171B5] hover:bg-[#6BAED6] text-white font-bold py-3 px-6 rounded-full transition-colors disabled:opacity-50"
+        className="w-full bg-gradient-to-r from-[#e8a030] to-[#f0b840] hover:from-[#d99020] hover:to-[#e8a030] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
       >
         {status === 'sending' ? 'Sending...' : 'Send Message'}
       </button>
 
       {status === 'success' && (
-        <p className="text-green-600 text-center">Message sent successfully!</p>
+        <p className="text-green-600 dark:text-green-400 text-center font-medium">Message sent successfully!</p>
       )}
       {status === 'error' && (
-        <p className="text-red-600 text-center">Failed to send message. Please try again.</p>
+        <p className="text-red-600 dark:text-red-400 text-center font-medium">Failed to send message. Please try again.</p>
       )}
     </form>
   )
 }
 
-export default ContactForm 
+export default ContactForm

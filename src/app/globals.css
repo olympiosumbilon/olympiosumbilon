@@ -13,6 +13,22 @@
   --background-alt: #F8FAFC;
   --foreground: #1a1a1a;
   --muted: #64748b;
+  --card-bg: #ffffff;
+  --card-border: #e5e7eb;
+}
+
+.dark {
+  --primary: #4a6cb3;
+  --primary-light: #6b8cd4;
+  --primary-dark: #2f4a8a;
+  --accent: #f0b840;
+  --accent-light: #f5c860;
+  --background: #0f172a;
+  --background-alt: #1e293b;
+  --foreground: #f1f5f9;
+  --muted: #94a3b8;
+  --card-bg: #1e293b;
+  --card-border: #334155;
 }
 
 html {
@@ -22,6 +38,7 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 @layer components {
@@ -31,6 +48,10 @@ body {
 
   .btn-secondary {
     @apply bg-transparent border-2 border-[#2f4a8a] text-[#2f4a8a] hover:bg-[#2f4a8a] hover:text-white font-semibold py-3 px-8 rounded-full transition-all duration-300 hover:scale-105;
+  }
+
+  .dark .btn-secondary {
+    @apply border-[#4a6cb3] text-[#4a6cb3] hover:bg-[#4a6cb3];
   }
 
   .btn-white {
@@ -46,15 +67,15 @@ body {
   }
 
   .section-title {
-    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-[#2f4a8a] mb-4;
+    @apply text-3xl md:text-4xl lg:text-5xl font-bold text-[#2f4a8a] dark:text-[#4a6cb3] mb-4;
   }
 
   .section-subtitle {
-    @apply text-lg md:text-xl text-gray-600 max-w-2xl mx-auto;
+    @apply text-lg md:text-xl text-gray-600 dark:text-gray-400 max-w-2xl mx-auto;
   }
 
   .card {
-    @apply bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8;
+    @apply bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-500 p-8;
   }
 
   .card-hover {
@@ -88,6 +109,14 @@ body {
 
   .interactive-card:hover::before {
     @apply opacity-100;
+  }
+
+  .dark-section {
+    @apply bg-white dark:bg-slate-900;
+  }
+
+  .dark-section-alt {
+    @apply bg-[#F8FAFC] dark:bg-slate-800;
   }
 }
 
@@ -166,4 +195,11 @@ body {
     radial-gradient(at 40% 20%, rgba(47, 74, 138, 0.1) 0px, transparent 50%),
     radial-gradient(at 80% 0%, rgba(232, 160, 48, 0.1) 0px, transparent 50%),
     radial-gradient(at 0% 50%, rgba(74, 108, 179, 0.1) 0px, transparent 50%);
+}
+
+.dark .bg-mesh {
+  background-image: 
+    radial-gradient(at 40% 20%, rgba(74, 108, 179, 0.15) 0px, transparent 50%),
+    radial-gradient(at 80% 0%, rgba(240, 184, 64, 0.1) 0px, transparent 50%),
+    radial-gradient(at 0% 50%, rgba(47, 74, 138, 0.15) 0px, transparent 50%);
 }

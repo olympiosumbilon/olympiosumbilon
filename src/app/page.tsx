@@ -18,7 +18,7 @@ export default function Home() {
     : content.portfolio.projects.filter(p => p.category === activeCategory)
 
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
       <Header />
 
       {/* Hero Section */}
@@ -55,20 +55,20 @@ export default function Home() {
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
       </section>
 
       {/* Services Section */}
-      <section id="services" className="section-padding bg-white bg-mesh">
+      <section id="services" className="section-padding bg-white dark:bg-slate-900 bg-mesh transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-4 py-1 rounded-full text-sm font-semibold mb-4">Our Services</span>
+            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Our Services</span>
             <h2 className="section-title">{content.services.title}</h2>
             <p className="section-subtitle">{content.services.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
             {content.services.items.map((service, index) => (
-              <div key={index} className="interactive-card card border border-gray-100 group">
+              <div key={index} className="interactive-card card border border-gray-100 dark:border-slate-700 group">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   {service.icon === 'design' ? (
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -80,11 +80,11 @@ export default function Home() {
                     </svg>
                   )}
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-4 group-hover:text-[#2f4a8a] transition-colors">{service.title}</h3>
-                <p className="text-gray-600 mb-6">{service.description}</p>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">{service.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 mb-6">{service.description}</p>
                 <ul className="space-y-3">
                   {service.features.map((feature, i) => (
-                    <li key={i} className="flex items-center text-gray-700">
+                    <li key={i} className="flex items-center text-gray-700 dark:text-gray-300">
                       <div className="w-5 h-5 bg-[#e8a030]/20 rounded-full flex items-center justify-center mr-3">
                         <svg className="w-3 h-3 text-[#e8a030]" fill="currentColor" viewBox="0 0 20 20">
                           <path fillRule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clipRule="evenodd" />
@@ -101,7 +101,7 @@ export default function Home() {
       </section>
 
       {/* Tools Carousel Section */}
-      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] to-white overflow-hidden">
+      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] dark:from-slate-800 to-white dark:to-slate-900 overflow-hidden transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Tech Stack</span>
@@ -109,14 +109,14 @@ export default function Home() {
             <p className="section-subtitle">{content.tools.subtitle}</p>
           </div>
           <div className="overflow-hidden relative">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white to-transparent z-10"></div>
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
             <div className="tools-carousel">
               {[...content.tools.items, ...content.tools.items].map((tool, index) => (
                 <div key={index} className="flex-shrink-0 mx-3">
-                  <div className="bg-white rounded-2xl shadow-lg hover:shadow-xl px-8 py-6 min-w-[180px] text-center transition-all duration-300 hover:-translate-y-1 border border-gray-100">
-                    <div className="font-bold text-gray-900">{tool.name}</div>
-                    <div className="text-sm text-[#2f4a8a] font-medium">{tool.category}</div>
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-8 py-6 min-w-[180px] text-center transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-slate-700">
+                    <div className="font-bold text-gray-900 dark:text-white">{tool.name}</div>
+                    <div className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
                   </div>
                 </div>
               ))}
@@ -126,29 +126,29 @@ export default function Home() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="section-padding bg-white">
+      <section id="pricing" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-4 py-1 rounded-full text-sm font-semibold mb-4">Pricing</span>
+            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Pricing</span>
             <h2 className="section-title">{content.pricing.title}</h2>
             <p className="section-subtitle">{content.pricing.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.pricing.tiers.map((tier, index) => (
-              <div key={index} className={`interactive-card card relative ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10' : 'border border-gray-100'}`}>
+              <div key={index} className={`interactive-card card relative ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10' : 'border border-gray-100 dark:border-slate-700'}`}>
                 {tier.popular && (
                   <div className="absolute -top-4 left-1/2 -translate-x-1/2 accent-gradient text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg">
                     Most Popular
                   </div>
                 )}
                 <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">{tier.name}</h3>
-                  <div className={`text-4xl font-bold mb-2 ${tier.popular ? 'text-[#e8a030]' : 'text-[#2f4a8a]'}`}>{tier.price}</div>
-                  <p className="text-gray-600 text-sm">{tier.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{tier.name}</h3>
+                  <div className={`text-4xl font-bold mb-2 ${tier.popular ? 'text-[#e8a030]' : 'text-[#2f4a8a] dark:text-[#4a6cb3]'}`}>{tier.price}</div>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{tier.description}</p>
                 </div>
                 <ul className="space-y-3 mb-8">
                   {tier.features.map((feature, i) => (
-                    <li key={i} className="flex items-start text-gray-700">
+                    <li key={i} className="flex items-start text-gray-700 dark:text-gray-300">
                       <svg className={`w-5 h-5 mr-3 mt-0.5 flex-shrink-0 ${tier.popular ? 'text-[#e8a030]' : 'text-green-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                       </svg>
@@ -156,7 +156,7 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-                <a href="#contact" className={`block text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${tier.popular ? 'accent-gradient text-white hover:shadow-lg hover:scale-105' : 'bg-gray-100 text-gray-900 hover:bg-[#2f4a8a] hover:text-white'}`}>
+                <a href="#contact" className={`block text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${tier.popular ? 'accent-gradient text-white hover:shadow-lg hover:scale-105' : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-white hover:bg-[#2f4a8a] hover:text-white'}`}>
                   {tier.ctaText}
                 </a>
               </div>
@@ -166,7 +166,7 @@ export default function Home() {
       </section>
 
       {/* Portfolio Section */}
-      <section id="portfolio" className="section-padding bg-[#F8FAFC]">
+      <section id="portfolio" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Portfolio</span>
@@ -178,7 +178,7 @@ export default function Home() {
               <button
                 key={index}
                 onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white text-gray-700 hover:bg-gray-50 shadow-md hover:shadow-lg'}`}
+                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg'}`}
               >
                 {category}
               </button>
@@ -186,17 +186,17 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="interactive-card card overflow-hidden p-0 group">
+              <div key={index} className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700">
                 <div className="h-48 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
                 </div>
                 <div className="p-6">
-                  <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-3 py-1 rounded-full text-sm font-medium mb-3">
+                  <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-3 py-1 rounded-full text-sm font-medium mb-3">
                     {project.category}
                   </span>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-[#2f4a8a] transition-colors">{project.title}</h3>
-                  <p className="text-gray-600">{project.description}</p>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">{project.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
                 </div>
               </div>
             ))}
@@ -205,16 +205,16 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section-padding bg-white">
+      <section id="testimonials" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-[#2f4a8a]/10 text-[#2f4a8a] px-4 py-1 rounded-full text-sm font-semibold mb-4">Testimonials</span>
+            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Testimonials</span>
             <h2 className="section-title">{content.testimonials.title}</h2>
             <p className="section-subtitle">{content.testimonials.subtitle}</p>
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.testimonials.items.map((testimonial, index) => (
-              <div key={index} className="interactive-card card border border-gray-100">
+              <div key={index} className="interactive-card card border border-gray-100 dark:border-slate-700">
                 <div className="flex items-center mb-4">
                   {[...Array(5)].map((_, i) => (
                     <svg key={i} className="w-5 h-5 text-[#e8a030]" fill="currentColor" viewBox="0 0 20 20">
@@ -222,14 +222,14 @@ export default function Home() {
                     </svg>
                   ))}
                 </div>
-                <p className="text-gray-700 mb-6 italic leading-relaxed">&quot;{testimonial.content}&quot;</p>
+                <p className="text-gray-700 dark:text-gray-300 mb-6 italic leading-relaxed">&quot;{testimonial.content}&quot;</p>
                 <div className="flex items-center">
                   <div className="w-12 h-12 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-full flex items-center justify-center text-white font-bold mr-4 shadow-lg">
                     {testimonial.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900">{testimonial.name}</div>
-                    <div className="text-sm text-[#2f4a8a]">{testimonial.role}</div>
+                    <div className="font-semibold text-gray-900 dark:text-white">{testimonial.name}</div>
+                    <div className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3]">{testimonial.role}</div>
                   </div>
                 </div>
               </div>
@@ -239,7 +239,7 @@ export default function Home() {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="section-padding bg-[#F8FAFC]">
+      <section className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
             <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Blog</span>
@@ -248,20 +248,20 @@ export default function Home() {
           </div>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.blog.posts.map((post, index) => (
-              <article key={index} className="interactive-card card overflow-hidden p-0 group">
+              <article key={index} className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700">
                 <div className="h-40 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="text-white/50 text-sm">Blog Image</span>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="text-sm text-[#2f4a8a] font-semibold">{post.category}</span>
+                    <span className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-semibold">{post.category}</span>
                     <span className="text-sm text-gray-400">{post.date}</span>
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-2 group-hover:text-[#2f4a8a] transition-colors">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">
                     <a href="/blog">{post.title}</a>
                   </h3>
-                  <p className="text-gray-600 text-sm">{post.excerpt}</p>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{post.excerpt}</p>
                 </div>
               </article>
             ))}
@@ -286,7 +286,7 @@ export default function Home() {
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 text-shadow">{content.contact.title}</h2>
               <p className="text-lg text-white/90 max-w-2xl mx-auto">{content.contact.subtitle}</p>
             </div>
-            <div className="bg-white rounded-3xl shadow-2xl p-8 md:p-12">
+            <div className="bg-white dark:bg-slate-800 rounded-3xl shadow-2xl p-8 md:p-12">
               <ContactForm />
             </div>
             <div className="mt-8 flex justify-center">
@@ -297,7 +297,7 @@ export default function Home() {
       </section>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 dark:bg-slate-950 text-white py-16 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-4 gap-12 mb-12">
             <div className="md:col-span-2">

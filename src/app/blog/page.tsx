@@ -7,7 +7,7 @@ import Image from 'next/image'
 
 export default function BlogPage() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
       <Header />
 
       <section className="pt-32 pb-20 gradient-bg text-white relative overflow-hidden">
@@ -22,24 +22,24 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <section className="section-padding bg-mesh">
+      <section className="section-padding bg-mesh dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.blog.posts.map((post, index) => (
-              <article key={index} className="interactive-card card overflow-hidden p-0 border border-gray-100 group">
+              <article key={index} className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 group">
                 <div className="h-48 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
                   <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <span className="text-white/50 text-sm">Blog Image</span>
                 </div>
                 <div className="p-6">
                   <div className="flex items-center gap-3 mb-3">
-                    <span className="bg-[#2f4a8a]/10 text-[#2f4a8a] px-3 py-1 rounded-full text-sm font-semibold">{post.category}</span>
+                    <span className="bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-3 py-1 rounded-full text-sm font-semibold">{post.category}</span>
                     <span className="text-sm text-gray-400">{post.date}</span>
                   </div>
-                  <h2 className="text-xl font-bold text-gray-900 mb-3 group-hover:text-[#2f4a8a] transition-colors">
+                  <h2 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">
                     {post.title}
                   </h2>
-                  <p className="text-gray-600 mb-4">{post.excerpt}</p>
+                  <p className="text-gray-600 dark:text-gray-400 mb-4">{post.excerpt}</p>
                   <span className="inline-flex items-center text-[#e8a030] font-semibold">
                     Coming Soon
                   </span>
@@ -63,7 +63,7 @@ export default function BlogPage() {
         </div>
       </section>
 
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 dark:bg-slate-950 text-white py-16 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <div className="flex items-center space-x-3 mb-4 md:mb-0">

@@ -4,6 +4,7 @@ import Header from '@/components/Header'
 import ContactForm from '@/components/ContactForm'
 import SocialLinks from '@/components/SocialLinks'
 import ToolIcon from '@/components/ToolIcon'
+import FAQ from '@/components/FAQ'
 import content from '@/data/content.json'
 import Image from 'next/image'
 
@@ -242,11 +243,25 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog Preview Section */}
-      <section className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
+      {/* FAQ Section */}
+      <section id="faq" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-12">
-            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">Blog</span>
+            <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">FAQ</span>
+            <h2 className="section-title">{content.faq.title}</h2>
+            <p className="section-subtitle">{content.faq.subtitle}</p>
+          </div>
+          <div className="max-w-3xl mx-auto">
+            <FAQ items={content.faq.items} />
+          </div>
+        </div>
+      </section>
+
+      {/* Blog Preview Section */}
+      <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Blog</span>
             <h2 className="section-title">{content.blog.title}</h2>
             <p className="section-subtitle">{content.blog.subtitle}</p>
           </div>

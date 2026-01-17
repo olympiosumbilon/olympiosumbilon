@@ -145,6 +145,59 @@ export default function Home() {
               </div>
             ))}
           </div>
+
+          {/* Bundle Section */}
+          <div className="mt-20 max-w-5xl mx-auto">
+            <div className="relative bg-gradient-to-br from-[#2f4a8a] to-[#1a2d5a] rounded-3xl p-8 md:p-12 overflow-hidden">
+              <div className="absolute top-0 right-0 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
+              <div className="absolute bottom-0 left-0 w-48 h-48 bg-white/10 rounded-full blur-2xl"></div>
+              <div className="relative z-10">
+                <div className="text-center mb-10">
+                  <span className="inline-block bg-[#e8a030] text-white px-4 py-1 rounded-full text-sm font-semibold mb-4">All-In-One Solution</span>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">{content.services.bundle.title}</h3>
+                  <p className="text-white/80">{content.services.bundle.subtitle}</p>
+                </div>
+                <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+                  {content.services.bundle.items.map((item, index) => (
+                    <div key={index} className="bg-white/10 backdrop-blur-sm rounded-2xl p-6 border border-white/20 hover:bg-white/20 transition-all duration-300 group">
+                      <div className="w-12 h-12 bg-[#e8a030] rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        {item.icon === 'strategy' && (
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                          </svg>
+                        )}
+                        {item.icon === 'social' && (
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8h2a2 2 0 012 2v6a2 2 0 01-2 2h-2v4l-4-4H9a1.994 1.994 0 01-1.414-.586m0 0L11 14h4a2 2 0 002-2V6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2v4l.586-.586z" />
+                          </svg>
+                        )}
+                        {item.icon === 'email' && (
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                          </svg>
+                        )}
+                        {item.icon === 'funnel' && (
+                          <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                          </svg>
+                        )}
+                      </div>
+                      <h4 className="text-lg font-bold text-white mb-2">{item.title}</h4>
+                      <p className="text-white/70 text-sm">{item.description}</p>
+                    </div>
+                  ))}
+                </div>
+                <div className="text-center">
+                  <a href="#contact" className="inline-flex items-center gap-2 bg-[#e8a030] hover:bg-[#f0b840] text-white px-8 py-4 rounded-full font-semibold text-lg shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
+                    {content.services.bundle.cta}
+                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
 

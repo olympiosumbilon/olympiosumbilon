@@ -1,94 +1,222 @@
 {
   "header": {
-    "logo": "LOGO",
+    "logo": "OS",
+    "name": "Olympio",
     "navigation": [
-      {
-        "name": "Home",
-        "href": "#"
-      },
-      {
-        "name": "About Me",
-        "href": "#about"
-      },
-      {
-        "name": "What I Do",
-        "href": "#services"
-      },
-      {
-        "name": "Case Studies",
-        "href": "#case-studies"
-      },
-      {
-        "name": "Contact",
-        "href": "#contact"
-      }
+      { "name": "Home", "href": "#" },
+      { "name": "Services", "href": "#services" },
+      { "name": "Portfolio", "href": "#portfolio" },
+      { "name": "Pricing", "href": "#pricing" },
+      { "name": "Testimonials", "href": "#testimonials" },
+      { "name": "Blog", "href": "/blog" },
+      { "name": "Contact", "href": "#contact" }
     ],
-    "ctaButton": {
-      "text": "Book a Call",
-      "href": "#contact"
-    }
+    "ctaButton": { "text": "Get Started", "href": "#contact" }
   },
   "hero": {
-    "title": "Building Your Vision to Website",
-    "subtitle": "Every day without a powerful website is a missed opportunity — Let's Talk.",
-    "ctaButton": {
-      "text": "Get in Touch",
-      "href": "#contact"
-    }
-  },
-  "about": {
-    "title": "About Me",
-    "content": [
-      "Hi, I'm Olympio — a passionate web developer who loves building beautiful and responsive websites.",
-      "I started my journey through self-learning, using research and tutorials to master programming. During college, I led my team to complete a thesis project that won \"Best in Thesis,\" despite having no prior coding experience.",
-      "Today, I work as a frontend developer, specializing in creating user-focused interfaces that look great and perform smoothly across devices. I'm also passionate about business ideas, new technologies, and continuous learning — and yes, cats help keep me focused!",
-      "In my spare time, I enjoy watching tutorials, researching tech ideas, and finding ways to improve my skills and stay ahead in the field.",
-      "I'm excited to bring my skills, passion, and creativity to new projects."
-    ],
-    "image": {
-      "src": "/images/me.jpg",
-      "alt": "Olympio Sumbilon"
-    }
+    "tagline": "Web Design & Development Expert",
+    "title": "Transform Your Ideas Into Stunning, High-Converting Websites",
+    "subtitle": "I help businesses and entrepreneurs build professional websites that attract customers, build trust, and drive results. Let's turn your vision into reality.",
+    "ctaButton": { "text": "Start Your Project", "href": "#contact" },
+    "secondaryButton": { "text": "View My Work", "href": "#portfolio" },
+    "stats": [
+      { "number": "50+", "label": "Projects Completed" },
+      { "number": "100%", "label": "Client Satisfaction" },
+      { "number": "3+", "label": "Years Experience" }
+    ]
   },
   "services": {
-    "title": "What I Do",
+    "title": "How I Can Help You",
+    "subtitle": "Professional web solutions tailored to your business needs",
     "items": [
       {
-        "title": "Custom Website Design & Development",
-        "description": "Stand out online with a stunning, responsive website built for your business goals. I design and develop sites that look incredible, load fast, and convert visitors into customers."
+        "icon": "design",
+        "title": "Web Design",
+        "description": "Beautiful, modern designs that capture your brand identity and engage your audience. From wireframes to pixel-perfect mockups, I create visuals that convert.",
+        "features": ["Custom UI/UX Design", "Mobile-First Approach", "Brand-Aligned Aesthetics", "User Research & Testing"]
       },
       {
-        "title": "User-Focused UI/UX Design",
-        "description": "First impressions matter. I create clean, modern interfaces that offer an effortless user experience — making it easier for your audience to trust, engage, and take action."
-      },
-      {
-        "title": "High-Converting Landing Pages & Business Sites",
-        "description": "Turn clicks into clients. I build strategic landing pages and full business websites designed to capture attention, drive action, and grow your brand."
+        "icon": "code",
+        "title": "Web Development",
+        "description": "Fast, responsive, and scalable websites built with the latest technologies. Your site will perform flawlessly across all devices and browsers.",
+        "features": ["Clean, Maintainable Code", "SEO Optimization", "Performance Focused", "Cross-Browser Compatible"]
       }
     ]
   },
-  "caseStudies": {
-    "title": "Case Studies",
+  "tools": {
+    "title": "Tools & Technologies I Use",
+    "subtitle": "Industry-standard tools to deliver exceptional results",
     "items": [
+      { "name": "Figma", "category": "Design" },
+      { "name": "Framer", "category": "Design & Dev" },
+      { "name": "WordPress", "category": "CMS" },
+      { "name": "React", "category": "Frontend" },
+      { "name": "Next.js", "category": "Framework" },
+      { "name": "Tailwind CSS", "category": "Styling" },
+      { "name": "TypeScript", "category": "Language" },
+      { "name": "GoHighLevel", "category": "Marketing" },
+      { "name": "Node.js", "category": "Backend" },
+      { "name": "Git", "category": "Version Control" },
+      { "name": "Webflow", "category": "No-Code" },
+      { "name": "Photoshop", "category": "Design" }
+    ]
+  },
+  "pricing": {
+    "title": "Investment Options",
+    "subtitle": "Choose the package that fits your needs and budget",
+    "tiers": [
       {
-        "title": "Award-Winning Thesis System",
-        "description": "Successfully led a team project under extreme pressure, despite starting with no coding experience. Through intensive research and rapid skill development, delivered a fully functional system that earned the 'Best in Thesis' award — achieving a 100% project completion rate, on-time delivery, and recognition for outstanding innovation."
+        "name": "Free Consultation",
+        "price": "Free",
+        "description": "Let's discuss your project and see how I can help",
+        "features": [
+          "30-minute discovery call",
+          "Project scope discussion",
+          "Timeline & budget estimate",
+          "No obligation"
+        ],
+        "ctaText": "Book Free Call",
+        "popular": false
       },
       {
-        "title": "Responsive Business Website Concept",
-        "description": "Designed and built a modern, mobile-first business website prototype. Focused on clean UI/UX and fast load speeds, achieving a 95+ Lighthouse performance score and 100% mobile responsiveness. Showcased how a strong design and user experience can increase engagement and drive business results."
+        "name": "Basic Package",
+        "price": "$997",
+        "description": "Perfect for small businesses and startups",
+        "features": [
+          "Up to 5 pages",
+          "Mobile responsive design",
+          "Basic SEO setup",
+          "Contact form integration",
+          "2 rounds of revisions",
+          "1 week delivery"
+        ],
+        "ctaText": "Get Started",
+        "popular": true
+      },
+      {
+        "name": "Advanced Package",
+        "price": "$2,497",
+        "description": "For businesses ready to scale and dominate",
+        "features": [
+          "Up to 15 pages",
+          "Custom UI/UX design",
+          "Advanced SEO optimization",
+          "CMS integration",
+          "Analytics setup",
+          "E-commerce ready",
+          "Unlimited revisions",
+          "Priority support",
+          "2-3 weeks delivery"
+        ],
+        "ctaText": "Let's Talk",
+        "popular": false
+      }
+    ]
+  },
+  "portfolio": {
+    "title": "My Work",
+    "subtitle": "A showcase of projects across different platforms and technologies",
+    "categories": ["All", "UI/UX", "Framer", "WordPress", "GoHighLevel", "Programming"],
+    "projects": [
+      {
+        "title": "E-Commerce Dashboard",
+        "category": "UI/UX",
+        "description": "Modern dashboard design for an online retail platform",
+        "image": "/images/projects/placeholder.jpg"
+      },
+      {
+        "title": "SaaS Landing Page",
+        "category": "Framer",
+        "description": "High-converting landing page with smooth animations",
+        "image": "/images/projects/placeholder.jpg"
+      },
+      {
+        "title": "Business Portfolio",
+        "category": "WordPress",
+        "description": "Professional portfolio site for a consulting firm",
+        "image": "/images/projects/placeholder.jpg"
+      },
+      {
+        "title": "Marketing Funnel",
+        "category": "GoHighLevel",
+        "description": "Complete sales funnel with email automation",
+        "image": "/images/projects/placeholder.jpg"
+      },
+      {
+        "title": "Task Management App",
+        "category": "Programming",
+        "description": "Full-stack application with React and Node.js",
+        "image": "/images/projects/placeholder.jpg"
+      },
+      {
+        "title": "Mobile App UI",
+        "category": "UI/UX",
+        "description": "Clean and intuitive mobile application design",
+        "image": "/images/projects/placeholder.jpg"
+      }
+    ]
+  },
+  "testimonials": {
+    "title": "What Clients Say",
+    "subtitle": "Real feedback from real clients",
+    "items": [
+      {
+        "name": "Sarah Johnson",
+        "role": "CEO, TechStart",
+        "content": "Olympio delivered exactly what we needed. Our new website has increased our conversions by 40%. Highly recommend!",
+        "avatar": ""
+      },
+      {
+        "name": "Michael Chen",
+        "role": "Founder, GrowthLab",
+        "content": "Professional, responsive, and incredibly talented. The design exceeded our expectations and was delivered on time.",
+        "avatar": ""
+      },
+      {
+        "name": "Emily Rodriguez",
+        "role": "Marketing Director",
+        "content": "Working with Olympio was a game-changer for our brand. The attention to detail and creative solutions made all the difference.",
+        "avatar": ""
+      }
+    ]
+  },
+  "blog": {
+    "title": "Latest Insights",
+    "subtitle": "Tips, tutorials, and thoughts on web design and development",
+    "posts": [
+      {
+        "title": "5 Web Design Trends to Watch in 2024",
+        "excerpt": "Discover the latest design trends that are shaping the future of the web...",
+        "date": "2024-01-15",
+        "category": "Design",
+        "slug": "web-design-trends-2024"
+      },
+      {
+        "title": "Why Your Business Needs a Modern Website",
+        "excerpt": "In today's digital age, your website is often the first impression...",
+        "date": "2024-01-10",
+        "category": "Business",
+        "slug": "business-needs-modern-website"
+      },
+      {
+        "title": "The Complete Guide to SEO for Beginners",
+        "excerpt": "Learn the fundamentals of search engine optimization...",
+        "date": "2024-01-05",
+        "category": "SEO",
+        "slug": "seo-guide-beginners"
       }
     ]
   },
   "contact": {
-    "title": "Let's Connect",
-    "description": "Interested in working together? I'd love to hear from you.",
-    "ctaButton": {
-      "text": "Contact Me",
-      "href": "#contact"
-    }
+    "title": "Let's Build Something Amazing",
+    "subtitle": "Ready to take your online presence to the next level? Get in touch and let's discuss your project.",
+    "ctaButton": { "text": "Send Message", "href": "#contact" }
   },
   "footer": {
-    "copyright": "Olympio Sumbilon. All rights reserved."
+    "copyright": "Olympio Sumbilon. All rights reserved.",
+    "links": [
+      { "name": "Privacy Policy", "href": "/privacy" },
+      { "name": "Terms of Service", "href": "/terms" }
+    ]
   }
-} 
+}

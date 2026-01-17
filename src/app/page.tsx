@@ -25,15 +25,39 @@ export default function Home() {
 
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center gradient-bg text-white pt-20 overflow-hidden">
+        {/* Background Decorative Elements */}
         <div className="absolute inset-0 bg-mesh opacity-30"></div>
         <div className="absolute top-20 right-10 w-72 h-72 bg-[#e8a030]/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        
+        {/* Mockup Images in Background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 overflow-hidden">
+          <div className="absolute top-[15%] -right-[5%] w-[450px] h-[300px] opacity-20 blur-[2px] rotate-12 animate-float pointer-events-none">
+            <Image 
+              src="/attached_assets/generated_images/modern_dark_website_mockup_laptop.png"
+              alt="Website Mockup 1"
+              width={500}
+              height={300}
+              className="rounded-2xl shadow-2xl object-cover"
+            />
+          </div>
+          <div className="absolute bottom-[15%] -left-[5%] w-[400px] h-[280px] opacity-15 blur-[4px] -rotate-12 animate-float-delayed pointer-events-none">
+            <Image 
+              src="/attached_assets/generated_images/modern_dark_website_mockup_laptop.png"
+              alt="Website Mockup 2"
+              width={500}
+              height={300}
+              className="rounded-2xl shadow-2xl object-cover flip-horizontal"
+            />
+          </div>
+        </div>
+
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
             <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-8 animate-fadeInUp">
               {content.hero.tagline}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow animate-fadeInUp" style={{animationDelay: '0.1s'}}>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-white via-[#f0b840] to-white bg-[length:200%_auto]" style={{animationDelay: '0.1s'}}>
               {content.hero.title}
             </h1>
             <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fadeInUp" style={{animationDelay: '0.2s'}}>

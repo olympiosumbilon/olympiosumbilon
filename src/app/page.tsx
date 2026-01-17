@@ -60,7 +60,7 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
       </section>
 
-      {/* Problem Section */}
+      {/* Problem Section - Pain Points */}
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
@@ -68,40 +68,172 @@ export default function Home() {
             <h2 className="section-title">{content.problem.title}</h2>
             <p className="section-subtitle">{content.problem.subtitle}</p>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-12">
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {content.problem.items.map((item, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-6 border border-gray-100 dark:border-slate-700 hover:border-red-200 dark:hover:border-red-900 transition-all duration-300 group">
-                <div className="w-14 h-14 bg-red-500/10 rounded-xl flex items-center justify-center mb-4 group-hover:bg-red-500/20 transition-colors">
+              <div key={index} className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border border-gray-100 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-900 transition-all duration-300 group text-center">
+                <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-red-500/20 transition-colors">
                   {item.icon === 'frustrated' && (
-                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                   )}
                   {item.icon === 'invisible' && (
-                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
                     </svg>
                   )}
                   {item.icon === 'confused' && (
-                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
                     </svg>
                   )}
-                  {item.icon === 'time' && (
-                    <svg className="w-7 h-7 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
                 </div>
-                <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{item.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 text-sm leading-relaxed">{item.description}</p>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
               </div>
             ))}
           </div>
           <div className="text-center">
-            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-2xl mx-auto italic">
+            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto font-medium">
               {content.problem.cta}
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Failed Solutions Section */}
+      <section className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-orange-500/10 text-orange-500 px-4 py-1 rounded-full text-sm font-semibold mb-4">Sound Familiar?</span>
+            <h2 className="section-title">{content.failedSolutions.title}</h2>
+            <p className="section-subtitle">{content.failedSolutions.subtitle}</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+            {content.failedSolutions.items.map((item, index) => (
+              <div key={index} className="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 relative overflow-hidden group">
+                <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-orange-400 to-red-500"></div>
+                <div className="w-12 h-12 bg-orange-500/10 rounded-full flex items-center justify-center mb-6">
+                  <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                  </svg>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
+                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto italic">
+              {content.failedSolutions.conclusion}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Regrets Section - Frame of Regrets */}
+      <section className="section-padding bg-gradient-to-br from-gray-900 to-slate-800 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh opacity-10"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="text-center mb-16">
+            <span className="inline-block bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold mb-4">The Real Cost</span>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.regrets.title}</h2>
+            <p className="text-white/70 max-w-2xl mx-auto">{content.regrets.subtitle}</p>
+          </div>
+          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+            {content.regrets.items.map((item, index) => (
+              <div key={index} className="text-center p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mb-4 mx-auto">
+                  {item.icon === 'money' && (
+                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {item.icon === 'clock' && (
+                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                  )}
+                  {item.icon === 'users' && (
+                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                    </svg>
+                  )}
+                </div>
+                <div className="text-4xl font-bold text-red-400 mb-2">{item.stat}</div>
+                <p className="text-white/70">{item.description}</p>
+              </div>
+            ))}
+          </div>
+          <div className="text-center">
+            <p className="text-xl text-red-400 font-semibold max-w-2xl mx-auto">
+              {content.regrets.cta}
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* USP Section */}
+      <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-4 py-1 rounded-full text-sm font-semibold mb-4">Why Us</span>
+            <h2 className="section-title">{content.usp.title}</h2>
+            <p className="section-subtitle">{content.usp.subtitle}</p>
+          </div>
+          <div className="max-w-4xl mx-auto text-center mb-12">
+            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2f4a8a] dark:text-[#4a6cb3] mb-6">
+              {content.usp.headline}
+            </h3>
+            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+              {content.usp.description}
+            </p>
+          </div>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+            {content.usp.points.map((point, index) => (
+              <div key={index} className="bg-gradient-to-br from-[#2f4a8a]/5 to-[#4a6cb3]/5 dark:from-slate-800 dark:to-slate-800 rounded-2xl p-6 border border-[#2f4a8a]/10 dark:border-slate-700 text-center group hover:border-[#e8a030] transition-all duration-300">
+                <div className="w-12 h-12 bg-[#e8a030] rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
+                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{point.title}</h4>
+                <p className="text-gray-600 dark:text-gray-400 text-sm">{point.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Transition Section - Slow Pitch */}
+      <section className="section-padding gradient-bg text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-mesh opacity-20"></div>
+        <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <div className="max-w-4xl mx-auto text-center">
+            <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-6">The Solution</span>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-shadow">
+              {content.transition.title}
+            </h2>
+            <p className="text-lg text-white/80 mb-10">{content.transition.subtitle}</p>
+            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-white/20">
+              <ul className="space-y-4 text-left max-w-2xl mx-auto">
+                {content.transition.items.map((item, index) => (
+                  <li key={index} className="flex items-start">
+                    <div className="w-6 h-6 bg-[#e8a030] rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
+                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                      </svg>
+                    </div>
+                    <span className="text-white/90 text-lg">{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+            <p className="text-xl font-semibold text-[#f0b840] mb-8">{content.transition.cta}</p>
+            <a href="#services" className="btn-accent inline-block">
+              See How It Works
+            </a>
           </div>
         </div>
       </section>

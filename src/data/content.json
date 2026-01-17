@@ -43,14 +43,86 @@
         "icon": "confused",
         "title": "Visitors leave without taking action",
         "description": "People visit your site but don't contact you, buy, or sign up. Your website isn't converting visitors into customers."
-      },
-      {
-        "icon": "time",
-        "title": "You don't have time to figure it out",
-        "description": "You're busy running your business. Learning web design, SEO, and development isn't something you have time for."
       }
     ],
-    "cta": "If you're nodding your head, you're in the right place. I solve these problems every day."
+    "cta": "If you're nodding your head, you're in the right place."
+  },
+  "failedSolutions": {
+    "title": "You've Probably Already Tried...",
+    "subtitle": "These common approaches that never seem to work",
+    "items": [
+      {
+        "title": "DIY Website Builders",
+        "description": "Spent hours on Wix or Squarespace, but your site still looks generic and unprofessional. Templates only get you so far."
+      },
+      {
+        "title": "Cheap Freelancers",
+        "description": "Hired someone on Fiverr for $50, got a broken website that doesn't work on mobile, and they disappeared when you needed help."
+      },
+      {
+        "title": "Expensive Agencies",
+        "description": "Got quoted $10,000+ from agencies, waited months for delivery, and still ended up with something that doesn't convert."
+      }
+    ],
+    "conclusion": "None of these solutions address the real problem: you need a partner who understands your business and delivers results."
+  },
+  "regrets": {
+    "title": "What Happens If You Do Nothing?",
+    "subtitle": "The cost of inaction is greater than you think",
+    "items": [
+      {
+        "icon": "money",
+        "stat": "$50,000+",
+        "description": "Lost revenue every year from customers who chose your competitors because their website looked more trustworthy"
+      },
+      {
+        "icon": "clock",
+        "stat": "1,000+ Hours",
+        "description": "Wasted trying to figure out web design, SEO, and marketing instead of focusing on what you do best"
+      },
+      {
+        "icon": "users",
+        "stat": "Hundreds",
+        "description": "Of potential customers who will never find you because you're buried on page 10 of Google"
+      }
+    ],
+    "cta": "Every day you wait is another day your competitors are winning."
+  },
+  "usp": {
+    "title": "Why Choose Pyow Digitals?",
+    "subtitle": "What makes us different from everyone else",
+    "headline": "I Don't Just Build Websites. I Build Revenue Machines.",
+    "description": "While other designers focus on making things 'look pretty,' I obsess over one thing: getting you more customers. Every design decision, every line of code, every strategy is built around one goal — growing your business.",
+    "points": [
+      {
+        "title": "Results-Focused Approach",
+        "description": "I measure success by your ROI, not by how many pages I deliver"
+      },
+      {
+        "title": "Full-Stack Expertise",
+        "description": "Design, development, marketing, automation — all from one partner"
+      },
+      {
+        "title": "Personal Attention",
+        "description": "You work directly with me, not a rotating team of juniors"
+      },
+      {
+        "title": "Ongoing Partnership",
+        "description": "I'm invested in your long-term success, not just a quick project"
+      }
+    ]
+  },
+  "transition": {
+    "title": "Imagine This Instead...",
+    "subtitle": "Picture your business 90 days from now",
+    "items": [
+      "A stunning website that makes you proud to share your link",
+      "Customers finding you on Google and reaching out daily",
+      "A sales funnel that converts visitors into paying clients automatically",
+      "More time to focus on your craft while your online presence works for you",
+      "Confidence knowing your digital presence matches the quality of your work"
+    ],
+    "cta": "This isn't a dream. This is what I deliver to my clients every month."
   },
   "services": {
     "title": "How I Can Help You",

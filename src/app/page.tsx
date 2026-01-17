@@ -104,7 +104,6 @@ export default function Home() {
       <section className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-500/10 text-orange-500 px-4 py-1 rounded-full text-sm font-semibold mb-4">Sound Familiar?</span>
             <h2 className="section-title">{content.failedSolutions.title}</h2>
             <p className="section-subtitle">{content.failedSolutions.subtitle}</p>
           </div>

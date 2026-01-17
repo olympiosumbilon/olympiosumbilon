@@ -143,7 +143,7 @@ body {
 }
 
 .animate-shimmer {
-  background: linear-gradient(90deg, #ffffff, #2f4a8a, #ffffff);
+  background: linear-gradient(90deg, #ffffff, #f0b840, #ffffff);
   background-size: 200% auto;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;

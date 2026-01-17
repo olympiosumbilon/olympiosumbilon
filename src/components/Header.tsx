@@ -56,7 +56,6 @@ const Header = () => {
                 </a>
               )
             ))}
-            <ThemeToggle isScrolled={isScrolled} />
             <a 
               href={content.header.ctaButton.href}
               className="ml-2 bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] hover:from-[#243b6e] hover:to-[#3d5a96] text-white font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
@@ -66,7 +65,6 @@ const Header = () => {
           </nav>
 
           <div className="flex items-center gap-2 lg:hidden">
-            <ThemeToggle isScrolled={isScrolled} />
             <button 
               className="relative w-10 h-10 flex items-center justify-center"
               onClick={toggleMobileMenu}

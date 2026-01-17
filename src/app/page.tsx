@@ -64,7 +64,6 @@ export default function Home() {
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-red-500/10 text-red-500 px-4 py-1 rounded-full text-sm font-semibold mb-4">The Problem</span>
             <h2 className="section-title">{content.problem.title}</h2>
             <p className="section-subtitle">{content.problem.subtitle}</p>
           </div>

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react'
 import Header from '@/components/Header'
 import ContactForm from '@/components/ContactForm'
 import SocialLinks from '@/components/SocialLinks'
+import ToolIcon from '@/components/ToolIcon'
 import content from '@/data/content.json'
 import Image from 'next/image'
 
@@ -114,9 +115,12 @@ export default function Home() {
             <div className="tools-carousel">
               {[...content.tools.items, ...content.tools.items].map((tool, index) => (
                 <div key={index} className="flex-shrink-0 mx-3">
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-8 py-6 min-w-[180px] text-center transition-all duration-300 hover:-translate-y-1 border border-gray-100 dark:border-slate-700">
-                    <div className="font-bold text-gray-900 dark:text-white">{tool.name}</div>
-                    <div className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-6 py-5 min-w-[160px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-slate-700 group">
+                    <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <ToolIcon name={tool.name} className="w-10 h-10" />
+                    </div>
+                    <div className="font-bold text-gray-900 dark:text-white text-sm">{tool.name}</div>
+                    <div className="text-xs text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
                   </div>
                 </div>
               ))}

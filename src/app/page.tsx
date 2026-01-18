@@ -283,35 +283,41 @@ export default function Home() {
         <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-shadow">
-              {content.transition.title}
-            </h2>
-            <p className="text-lg text-white/80 mb-10">{content.transition.subtitle}</p>
-            <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-white/20">
-              <ul className="space-y-4 text-left max-w-2xl mx-auto mb-10">
-                {content.transition.items.map((item, index) => (
-                  <li key={index} className="flex items-start">
-                    <div className="w-6 h-6 bg-[#e8a030] rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5">
-                      <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="text-white/90 text-lg">{item}</span>
-                  </li>
-                ))}
-              </ul>
-              
-              <div className="text-center border-t border-white/10 pt-8">
-                <p className="text-white/60 text-sm uppercase tracking-widest mb-6 font-bold">Quick Contact</p>
-                <div className="text-center">
-                  <p className="text-white/90 text-lg mb-4">Click the floating contact button in the bottom right corner to reach out!</p>
+            <ScrollReveal>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-shadow">
+                {content.transition.title}
+              </h2>
+              <p className="text-lg text-white/80 mb-10">{content.transition.subtitle}</p>
+            </ScrollReveal>
+            <ScrollReveal delay={200}>
+              <div className="bg-white/10 backdrop-blur-sm rounded-2xl p-8 mb-10 border border-white/20 hover:bg-white/15 transition-all duration-300">
+                <ul className="space-y-4 text-left max-w-2xl mx-auto mb-10">
+                  {content.transition.items.map((item, index) => (
+                    <li key={index} className="flex items-start group">
+                      <div className="w-6 h-6 bg-[#e8a030] rounded-full flex items-center justify-center mr-4 flex-shrink-0 mt-0.5 group-hover:scale-110 transition-transform">
+                        <svg className="w-4 h-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                      </div>
+                      <span className="text-white/90 text-lg group-hover:text-white transition-colors">{item}</span>
+                    </li>
+                  ))}
+                </ul>
+                
+                <div className="text-center border-t border-white/10 pt-8">
+                  <p className="text-white/60 text-sm uppercase tracking-widest mb-6 font-bold">Quick Contact</p>
+                  <div className="text-center">
+                    <p className="text-white/90 text-lg mb-4">Click the floating contact button in the bottom right corner to reach out!</p>
+                  </div>
                 </div>
               </div>
-            </div>
-            <p className="text-xl font-semibold text-[#f0b840] mb-8">{content.transition.cta}</p>
-            <a href="#services" className="btn-accent inline-block">
-              See How It Works
-            </a>
+            </ScrollReveal>
+            <ScrollReveal delay={400}>
+              <p className="text-xl font-semibold text-[#f0b840] mb-8">{content.transition.cta}</p>
+              <a href="#services" className="btn-accent inline-block hover:scale-105 transition-transform">
+                See How It Works
+              </a>
+            </ScrollReveal>
           </div>
         </div>
       </section>
@@ -412,41 +418,45 @@ export default function Home() {
       {/* Pricing Section */}
       <section id="pricing" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="section-title">{content.pricing.title}</h2>
-            <p className="section-subtitle">{content.pricing.subtitle}</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="section-title">{content.pricing.title}</h2>
+              <p className="section-subtitle">{content.pricing.subtitle}</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.pricing.tiers.map((tier, index) => (
-              <div key={index} className={`interactive-card card relative ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10' : 'border border-gray-100 dark:border-slate-700'}`}>
-                {tier.popular && (
-                  <div className="absolute -top-4 left-1/2 -translate-x-1/2 accent-gradient text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg">
-                    Most Popular
+              <ScrollReveal key={index} delay={100 + index * 150}>
+                <div className={`interactive-card card relative h-full hover:shadow-2xl transition-all duration-300 ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10' : 'border border-gray-100 dark:border-slate-700 hover:border-[#2f4a8a] dark:hover:border-[#4a6cb3]'}`}>
+                  {tier.popular && (
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 accent-gradient text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg animate-pulse">
+                      Most Popular
+                    </div>
+                  )}
+                  <div className="text-center mb-6">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{tier.name}</h3>
+                    <div className="mb-1">
+                      <span className="text-lg text-gray-400 line-through mr-2">{tier.originalPrice}</span>
+                      <span className="inline-block bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold px-2 py-1 rounded-full">{tier.savings}</span>
+                    </div>
+                    <div className={`text-4xl font-bold mb-2 ${tier.popular ? 'text-[#e8a030]' : 'text-[#2f4a8a] dark:text-[#4a6cb3]'}`}>{tier.price}</div>
+                    <p className="text-gray-600 dark:text-gray-400 text-sm">{tier.description}</p>
                   </div>
-                )}
-                <div className="text-center mb-6">
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{tier.name}</h3>
-                  <div className="mb-1">
-                    <span className="text-lg text-gray-400 line-through mr-2">{tier.originalPrice}</span>
-                    <span className="inline-block bg-green-500/10 text-green-600 dark:text-green-400 text-xs font-semibold px-2 py-1 rounded-full">{tier.savings}</span>
-                  </div>
-                  <div className={`text-4xl font-bold mb-2 ${tier.popular ? 'text-[#e8a030]' : 'text-[#2f4a8a] dark:text-[#4a6cb3]'}`}>{tier.price}</div>
-                  <p className="text-gray-600 dark:text-gray-400 text-sm">{tier.description}</p>
+                  <ul className="space-y-3 mb-8">
+                    {tier.features.map((feature, i) => (
+                      <li key={i} className="flex items-start text-gray-700 dark:text-gray-300">
+                        <svg className={`w-5 h-5 mr-3 mt-0.5 flex-shrink-0 ${tier.popular ? 'text-[#e8a030]' : 'text-green-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                        </svg>
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                  <a href="#contact" className={`block text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${tier.popular ? 'accent-gradient text-white hover:shadow-lg hover:scale-105' : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-white hover:bg-[#2f4a8a] hover:text-white'}`}>
+                    {tier.ctaText}
+                  </a>
                 </div>
-                <ul className="space-y-3 mb-8">
-                  {tier.features.map((feature, i) => (
-                    <li key={i} className="flex items-start text-gray-700 dark:text-gray-300">
-                      <svg className={`w-5 h-5 mr-3 mt-0.5 flex-shrink-0 ${tier.popular ? 'text-[#e8a030]' : 'text-green-500'}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                      </svg>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                <a href="#contact" className={`block text-center py-3 px-6 rounded-full font-semibold transition-all duration-300 ${tier.popular ? 'accent-gradient text-white hover:shadow-lg hover:scale-105' : 'bg-gray-100 dark:bg-slate-700 text-gray-900 dark:text-white hover:bg-[#2f4a8a] hover:text-white'}`}>
-                  {tier.ctaText}
-                </a>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

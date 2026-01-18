@@ -9,8 +9,8 @@ interface AnimatedCounterProps {
 
 export default function AnimatedCounter({ value, duration = 2000 }: AnimatedCounterProps) {
   const [displayValue, setDisplayValue] = useState('0');
-  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLSpanElement>(null);
+  const animationRef = useRef<number | null>(null);
 
   const numericValue = parseInt(value.replace(/[^0-9]/g, ''), 10);
   const suffix = value.replace(/[0-9]/g, '');
@@ -19,9 +19,15 @@ export default function AnimatedCounter({ value, duration = 2000 }: AnimatedCoun
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
-          if (entry.isIntersecting && !hasAnimated) {
-            setHasAnimated(true);
+          if (entry.isIntersecting) {
+            // Start animation when visible
             animateValue(0, numericValue, duration);
+          } else {
+            // Reset to 0 when leaving viewport
+            if (animationRef.current) {
+              cancelAnimationFrame(animationRef.current);
+            }
+            setDisplayValue('0');
           }
         });
       },
@@ -32,8 +38,13 @@ export default function AnimatedCounter({ value, duration = 2000 }: AnimatedCoun
       observer.observe(ref.current);
     }
 
-    return () => observer.disconnect();
-  }, [numericValue, duration, hasAnimated]);
+    return () => {
+      observer.disconnect();
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, [numericValue, duration]);
 
   const animateValue = (start: number, end: number, duration: number) => {
     const startTime = performance.now();
@@ -48,11 +59,11 @@ export default function AnimatedCounter({ value, duration = 2000 }: AnimatedCoun
       setDisplayValue(current.toString());
       
       if (progress < 1) {
-        requestAnimationFrame(update);
+        animationRef.current = requestAnimationFrame(update);
       }
     };
     
-    requestAnimationFrame(update);
+    animationRef.current = requestAnimationFrame(update);
   };
 
   return (

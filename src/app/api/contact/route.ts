@@ -46,88 +46,159 @@ export async function POST(request: Request) {
         <html>
         <head>
           <style>
-            .email-container {
-              font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-              max-width: 600px;
+            .email-body {
+              margin: 0;
+              padding: 0;
+              background-color: #f4f7fa;
+              font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            }
+            .wrapper {
+              width: 100%;
+              table-layout: fixed;
+              background-color: #f4f7fa;
+              padding-bottom: 40px;
+            }
+            .main {
+              background-color: #ffffff;
               margin: 0 auto;
-              background-color: #f8fafc;
-              border-radius: 16px;
+              width: 100%;
+              max-width: 600px;
+              border-spacing: 0;
+              color: #1a1a1a;
+              border-radius: 8px;
               overflow: hidden;
-              border: 1px solid #e2e8f0;
+              box-shadow: 0 4px 12px rgba(0,0,0,0.05);
             }
             .header {
-              background: linear-gradient(135deg, #2f4a8a 0%, #4a6cb3 100%);
+              background-color: #2f4a8a;
               padding: 40px 20px;
               text-align: center;
-              color: white;
             }
             .header h1 {
+              color: #ffffff;
               margin: 0;
-              font-size: 24px;
-              letter-spacing: 1px;
+              font-size: 28px;
+              font-weight: 700;
+              letter-spacing: -0.5px;
+            }
+            .banner {
+              background-color: #e8a030;
+              height: 4px;
             }
             .content {
-              padding: 30px;
-              background-color: white;
+              padding: 40px 30px;
             }
-            .field-label {
-              color: #64748b;
-              font-size: 12px;
+            .lead-info {
+              background-color: #f8fafc;
+              border-radius: 12px;
+              padding: 25px;
+              margin-top: 20px;
+              border: 1px solid #e2e8f0;
+            }
+            .label {
+              font-size: 11px;
+              font-weight: 700;
+              color: #4a6cb3;
               text-transform: uppercase;
-              font-weight: bold;
-              margin-bottom: 4px;
+              letter-spacing: 1px;
+              margin-bottom: 6px;
             }
-            .field-value {
-              color: #1e293b;
+            .value {
               font-size: 16px;
-              margin-bottom: 24px;
-              padding: 12px;
-              background-color: #f1f5f9;
-              border-radius: 8px;
+              color: #1e293b;
+              margin-bottom: 20px;
+              font-weight: 500;
             }
-            .message-box {
-              white-space: pre-wrap;
+            .message-label {
+              font-size: 11px;
+              font-weight: 700;
+              color: #4a6cb3;
+              text-transform: uppercase;
+              letter-spacing: 1px;
+              margin-bottom: 12px;
+              border-bottom: 1px solid #e2e8f0;
+              padding-bottom: 8px;
+            }
+            .message-content {
+              font-size: 15px;
               line-height: 1.6;
+              color: #334155;
+              white-space: pre-wrap;
+              background-color: #ffffff;
+              padding: 15px;
+              border-radius: 8px;
+              border: 1px solid #f1f5f9;
             }
             .footer {
-              padding: 20px;
               text-align: center;
-              font-size: 12px;
-              color: #94a3b8;
-              background-color: #f8fafc;
+              padding: 30px;
+              color: #64748b;
             }
-            .badge {
-              display: inline-block;
-              padding: 4px 12px;
-              background-color: #e8a030;
-              color: white;
-              border-radius: 20px;
-              font-size: 12px;
-              font-weight: bold;
-              margin-bottom: 16px;
+            .footer-logo {
+              font-weight: 700;
+              color: #2f4a8a;
+              font-size: 18px;
+              margin-bottom: 10px;
+            }
+            .footer-links {
+              margin: 15px 0;
+            }
+            .footer-links a {
+              color: #4a6cb3;
+              text-decoration: none;
+              margin: 0 10px;
+              font-size: 13px;
+            }
+            .copyright {
+              font-size: 11px;
+              color: #94a3b8;
+              margin-top: 20px;
             }
           </style>
         </head>
-        <body>
-          <div class="email-container">
-            <div class="header">
-              <div class="badge">NEW SUBMISSION</div>
-              <h1>🚀 Got New Lead</h1>
-            </div>
-            <div class="content">
-              <div class="field-label">Full Name</div>
-              <div class="field-value">${name}</div>
-              
-              <div class="field-label">Email Address</div>
-              <div class="field-value">${email}</div>
-              
-              <div class="field-label">Message</div>
-              <div class="field-value message-box">${message}</div>
-            </div>
-            <div class="footer">
-              Sent from Pyow Digitals Portfolio
-            </div>
-          </div>
+        <body class="email-body">
+          <center class="wrapper">
+            <table class="main" width="100%">
+              <tr>
+                <td class="banner"></td>
+              </tr>
+              <tr>
+                <td class="header">
+                  <h1>🚀 Got New Lead</h1>
+                </td>
+              </tr>
+              <tr>
+                <td class="content">
+                  <p style="font-size: 16px; color: #64748b; margin-top: 0;">You have a new inquiry from your portfolio website.</p>
+                  
+                  <div class="lead-info">
+                    <div class="label">Client Name</div>
+                    <div class="value">${name}</div>
+                    
+                    <div class="label">Email Address</div>
+                    <div class="value">${email}</div>
+                    
+                    <div class="message-label">Project Details</div>
+                    <div class="message-content">${message}</div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <td class="footer">
+                  <div class="footer-logo">Pyow Digitals</div>
+                  <div class="footer-links">
+                    <a href="https://github.com/olympiosumbilon">GitHub</a>
+                    <a href="https://www.linkedin.com/in/olympiosumbilonjr/">LinkedIn</a>
+                    <a href="https://www.facebook.com/olympiosumbilonjr">Facebook</a>
+                  </div>
+                  <div class="copyright">
+                    &copy; 2026 Pyow Digitals. All rights reserved.<br>
+                    This is an automated notification from your portfolio system.
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </center>
         </body>
         </html>
       `,

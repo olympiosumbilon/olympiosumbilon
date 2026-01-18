@@ -155,12 +155,24 @@ body {
   animation: scroll 25s linear infinite;
 }
 
+.testimonials-carousel {
+  display: flex;
+  animation: scroll-testimonials 40s linear infinite;
+  width: max-content;
+}
+
 @keyframes scroll {
   0% { transform: translateX(0); }
   100% { transform: translateX(-50%); }
 }
 
-.tools-carousel:hover {
+@keyframes scroll-testimonials {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.tools-carousel:hover,
+.testimonials-carousel:hover {
   animation-play-state: paused;
 }
 

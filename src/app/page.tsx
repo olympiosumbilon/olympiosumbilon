@@ -525,7 +525,7 @@ export default function Home() {
           <div className="relative max-w-6xl mx-auto">
             <div className="testimonials-carousel">
               {[...content.testimonials.items, ...content.testimonials.items].map((testimonial, index) => (
-                <div key={index} className="flex-shrink-0 w-full md:w-1/3 px-4">
+                <div key={index} className="flex-shrink-0 w-full sm:w-1/2 md:w-1/3 px-4">
                   <div className="interactive-card card h-full border border-gray-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (

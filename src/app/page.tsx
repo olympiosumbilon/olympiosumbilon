@@ -9,6 +9,7 @@ import FloatingContact from '@/components/FloatingContact'
 import ScrollToTop from '@/components/ScrollToTop'
 import content from '@/data/content.json'
 import Image from 'next/image'
+import heroImage from "@/images/assets/modern_dark_website_mockup_laptop.png"
 
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('All')
@@ -36,7 +37,8 @@ export default function Home() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 overflow-hidden">
           <div className="absolute top-[15%] -right-[5%] w-[450px] h-[300px] opacity-20 blur-[2px] rotate-12 animate-float pointer-events-none">
             <Image 
-              src="/attached_assets/generated_images/modern_dark_website_mockup_laptop.png"
+             // src="/attached_assets/generated_images/modern_dark_website_mockup_laptop.png"
+              src={heroImage}
               alt="Website Mockup 1"
               width={500}
               height={300}
@@ -45,7 +47,7 @@ export default function Home() {
           </div>
           <div className="absolute bottom-[15%] -left-[5%] w-[400px] h-[280px] opacity-15 blur-[4px] -rotate-12 animate-float-delayed pointer-events-none">
             <Image 
-              src="/attached_assets/generated_images/modern_dark_website_mockup_laptop.png"
+              src={heroImage}
               alt="Website Mockup 2"
               width={500}
               height={300}

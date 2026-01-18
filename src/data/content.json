@@ -19,6 +19,7 @@
     "subtitle": "I help businesses and entrepreneurs build professional websites that attract customers, build trust, and drive results. Let's turn your vision into reality.",
     "ctaButton": { "text": "Start Your Project", "href": "#contact" },
     "secondaryButton": { "text": "View My Work", "href": "#portfolio" },
+    "image": "/src/images/assets/modern_dark_website_mockup_laptop.png",
     "stats": [
       { "number": "50+", "label": "Projects Completed" },
       { "number": "100%", "label": "Client Satisfaction" },

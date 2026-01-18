@@ -434,7 +434,6 @@ export default function Home() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               <div className="relative">
                 <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-3xl"></div>
-                <div className="absolute -bottom-4 -right-4 w-32 h-32 bg-[#e8a030] rounded-full opacity-50"></div>
                 <div className="relative rounded-3xl overflow-hidden shadow-2xl">
                   <Image 
                     src={content.founder.image}

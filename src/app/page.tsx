@@ -95,40 +95,46 @@ export default function Home() {
       {/* Problem Section - Pain Points */}
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="section-title">{content.problem.title}</h2>
-            <p className="section-subtitle">{content.problem.subtitle}</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="section-title">{content.problem.title}</h2>
+              <p className="section-subtitle">{content.problem.subtitle}</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {content.problem.items.map((item, index) => (
-              <div key={index} className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border border-gray-100 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-900 transition-all duration-300 group text-center">
-                <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-red-500/20 transition-colors">
-                  {item.icon === 'frustrated' && (
-                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {item.icon === 'invisible' && (
-                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
-                    </svg>
-                  )}
-                  {item.icon === 'confused' && (
-                    <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
-                    </svg>
-                  )}
+              <ScrollReveal key={index} delay={100 + index * 100}>
+                <div className="bg-gray-50 dark:bg-slate-800 rounded-2xl p-8 border border-gray-100 dark:border-slate-700 hover:border-red-300 dark:hover:border-red-900 hover:shadow-lg hover:scale-[1.02] transition-all duration-300 group text-center h-full">
+                  <div className="w-16 h-16 bg-red-500/10 rounded-full flex items-center justify-center mb-6 mx-auto group-hover:bg-red-500/20 group-hover:scale-110 transition-all duration-300">
+                    {item.icon === 'frustrated' && (
+                      <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9.172 16.172a4 4 0 015.656 0M9 10h.01M15 10h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                    {item.icon === 'invisible' && (
+                      <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+                      </svg>
+                    )}
+                    {item.icon === 'confused' && (
+                      <svg className="w-8 h-8 text-red-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M18.364 18.364A9 9 0 005.636 5.636m12.728 12.728A9 9 0 015.636 5.636m12.728 12.728L5.636 5.636" />
+                      </svg>
+                    )}
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="text-center">
-            <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto font-medium">
-              {content.problem.cta}
-            </p>
-          </div>
+          <ScrollReveal delay={400}>
+            <div className="text-center">
+              <p className="text-xl text-gray-700 dark:text-gray-300 max-w-2xl mx-auto font-medium">
+                {content.problem.cta}
+              </p>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

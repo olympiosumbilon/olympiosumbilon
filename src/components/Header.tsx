@@ -2,23 +2,51 @@
 import React, { useState, useEffect } from 'react'
 import content from '@/data/content.json'
 import Link from 'next/link'
-import Image from 'next/image'
 import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [activeSection, setActiveSection] = useState('')
 
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
+      
+      const sections = ['services', 'portfolio', 'pricing', 'testimonials', 'blog', 'contact']
+      const scrollPosition = window.scrollY + 100
+
+      if (scrollPosition < 300) {
+        setActiveSection('')
+        return
+      }
+
+      for (const sectionId of sections) {
+        const element = document.getElementById(sectionId)
+        if (element) {
+          const offsetTop = element.offsetTop
+          const offsetHeight = element.offsetHeight
+          if (scrollPosition >= offsetTop && scrollPosition < offsetTop + offsetHeight) {
+            setActiveSection(sectionId)
+            return
+          }
+        }
+      }
     }
+    
     window.addEventListener('scroll', handleScroll)
+    handleScroll()
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen)
+  }
+
+  const isActive = (href: string) => {
+    if (href === '/' || href === '/#') return activeSection === ''
+    const sectionId = href.replace('/#', '').replace('#', '').replace('/', '')
+    return activeSection === sectionId
   }
 
   return (
@@ -39,21 +67,28 @@ const Header = () => {
           <nav className="hidden lg:flex items-center space-x-1">
             {content.header.navigation.map((item, index) => {
               const href = item.href.startsWith('#') ? `/${item.href}` : item.href
+              const active = isActive(item.href)
               return item.href.startsWith('/') || item.href.startsWith('#') ? (
                 <Link
                   key={index}
                   href={href}
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? 'text-[#2f4a8a] dark:text-[#4a6cb3]' : 'text-white') : ''}`}
                 >
                   {item.name}
+                  {active && (
+                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'}`}></span>
+                  )}
                 </Link>
               ) : (
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? 'text-[#2f4a8a] dark:text-[#4a6cb3]' : 'text-white') : ''}`}
                 >
                   {item.name}
+                  {active && (
+                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'}`}></span>
+                  )}
                 </a>
               )
             })}
@@ -84,11 +119,12 @@ const Header = () => {
           <nav className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-xl mb-4 overflow-hidden">
             {content.header.navigation.map((item, index) => {
               const href = item.href.startsWith('#') ? `/${item.href}` : item.href
+              const active = isActive(item.href)
               return item.href.startsWith('/') || item.href.startsWith('#') ? (
                 <Link
                   key={index}
                   href={href}
-                  className="block text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10 px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0"
+                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0 ${active ? 'text-[#2f4a8a] dark:text-[#4a6cb3] bg-[#2f4a8a]/5 dark:bg-[#4a6cb3]/10 border-l-4 border-l-[#e8a030]' : 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -97,7 +133,7 @@ const Header = () => {
                 <a 
                   key={index}
                   href={item.href} 
-                  className="block text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10 px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0"
+                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0 ${active ? 'text-[#2f4a8a] dark:text-[#4a6cb3] bg-[#2f4a8a]/5 dark:bg-[#4a6cb3]/10 border-l-4 border-l-[#e8a030]' : 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}

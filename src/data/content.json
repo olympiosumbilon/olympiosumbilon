@@ -155,12 +155,6 @@
         "features": ["Clean, Maintainable Code", "SEO Optimization", "Performance Focused", "Cross-Browser Compatible"]
       },
       {
-        "icon": "strategy",
-        "title": "Digital Strategist",
-        "description": "Custom roadmap for your online success with data-driven insights. I analyze your market, competitors, and goals to create a winning digital strategy.",
-        "features": ["Market Research & Analysis", "Competitor Insights", "Growth Roadmap", "KPI Tracking"]
-      },
-      {
         "icon": "social",
         "title": "Social Media Management",
         "description": "Grow your audience and engagement across all platforms. From content creation to community management, I handle your social presence.",

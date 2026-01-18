@@ -6,6 +6,7 @@ import SocialLinks from '@/components/SocialLinks'
 import ToolIcon from '@/components/ToolIcon'
 import FAQ from '@/components/FAQ'
 import FloatingContact from '@/components/FloatingContact'
+import ScrollToTop from '@/components/ScrollToTop'
 import content from '@/data/content.json'
 import Image from 'next/image'
 
@@ -675,6 +676,7 @@ export default function Home() {
       </footer>
 
       <FloatingContact />
+      <ScrollToTop />
     </main>
   )
 }

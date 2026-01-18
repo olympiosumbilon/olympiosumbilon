@@ -274,13 +274,16 @@ export default function Home() {
       {/* Services Section */}
       <section id="services" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 bg-mesh transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="section-title">{content.services.title}</h2>
-            <p className="section-subtitle">{content.services.subtitle}</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <h2 className="section-title">{content.services.title}</h2>
+              <p className="section-subtitle">{content.services.subtitle}</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {content.services.items.map((service, index) => (
-              <div key={index} className="interactive-card card border border-gray-100 dark:border-slate-700 group">
+              <ScrollReveal key={index} delay={100 + index * 100}>
+                <div className="interactive-card card border border-gray-100 dark:border-slate-700 group h-full">
                 <div className="w-16 h-16 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg">
                   {service.icon === 'design' && (
                     <svg className="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -327,7 +330,8 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
-              </div>
+                </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

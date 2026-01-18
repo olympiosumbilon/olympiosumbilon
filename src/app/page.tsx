@@ -243,29 +243,35 @@ export default function Home() {
       {/* USP Section */}
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="section-title">{content.usp.title}</h2>
-            <p className="section-subtitle">{content.usp.subtitle}</p>
-          </div>
-          <div className="max-w-4xl mx-auto text-center mb-12">
-            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2f4a8a] dark:text-[#4a6cb3] mb-6">
-              {content.usp.headline}
-            </h3>
-            <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
-              {content.usp.description}
-            </p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="section-title">{content.usp.title}</h2>
+              <p className="section-subtitle">{content.usp.subtitle}</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <div className="max-w-4xl mx-auto text-center mb-12">
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#2f4a8a] dark:text-[#4a6cb3] mb-6">
+                {content.usp.headline}
+              </h3>
+              <p className="text-lg text-gray-600 dark:text-gray-400 leading-relaxed">
+                {content.usp.description}
+              </p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
             {content.usp.points.map((point, index) => (
-              <div key={index} className="bg-gradient-to-br from-[#2f4a8a]/5 to-[#4a6cb3]/5 dark:from-slate-800 dark:to-slate-800 rounded-2xl p-6 border border-[#2f4a8a]/10 dark:border-slate-700 text-center group hover:border-[#e8a030] transition-all duration-300">
-                <div className="w-12 h-12 bg-[#e8a030] rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 transition-transform">
-                  <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                  </svg>
+              <ScrollReveal key={index} delay={200 + index * 100}>
+                <div className="bg-gradient-to-br from-[#2f4a8a]/5 to-[#4a6cb3]/5 dark:from-slate-800 dark:to-slate-800 rounded-2xl p-6 border border-[#2f4a8a]/10 dark:border-slate-700 text-center group hover:border-[#e8a030] hover:shadow-xl hover:scale-[1.03] transition-all duration-300 h-full">
+                  <div className="w-12 h-12 bg-[#e8a030] rounded-full flex items-center justify-center mb-4 mx-auto group-hover:scale-110 group-hover:rotate-12 transition-all duration-300 shadow-lg">
+                    <svg className="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">{point.title}</h4>
+                  <p className="text-gray-600 dark:text-gray-400 text-sm">{point.description}</p>
                 </div>
-                <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2">{point.title}</h4>
-                <p className="text-gray-600 dark:text-gray-400 text-sm">{point.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

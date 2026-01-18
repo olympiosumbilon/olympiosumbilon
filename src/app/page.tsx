@@ -406,36 +406,42 @@ export default function Home() {
       {/* Portfolio Section */}
       <section id="portfolio" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="section-title">{content.portfolio.title}</h2>
-            <p className="section-subtitle">{content.portfolio.subtitle}</p>
-          </div>
-          <div className="flex flex-wrap justify-center gap-3 mb-12">
-            {content.portfolio.categories.map((category, index) => (
-              <button
-                key={index}
-                onClick={() => setActiveCategory(category)}
-                className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg'}`}
-              >
-                {category}
-              </button>
-            ))}
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="section-title">{content.portfolio.title}</h2>
+              <p className="section-subtitle">{content.portfolio.subtitle}</p>
+            </div>
+          </ScrollReveal>
+          <ScrollReveal delay={100}>
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              {content.portfolio.categories.map((category, index) => (
+                <button
+                  key={index}
+                  onClick={() => setActiveCategory(category)}
+                  className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg'}`}
+                >
+                  {category}
+                </button>
+              ))}
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {filteredProjects.map((project, index) => (
-              <div key={index} className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700">
-                <div className="h-48 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
-                  <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
+              <ScrollReveal key={index} delay={150 + index * 100}>
+                <div className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700 h-full">
+                  <div className="h-48 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
+                  </div>
+                  <div className="p-6">
+                    <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-3 py-1 rounded-full text-sm font-medium mb-3">
+                      {project.category}
+                    </span>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">{project.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
+                  </div>
                 </div>
-                <div className="p-6">
-                  <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-3 py-1 rounded-full text-sm font-medium mb-3">
-                    {project.category}
-                  </span>
-                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">{project.title}</h3>
-                  <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
-                </div>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
         </div>

@@ -7,6 +7,7 @@ import ToolIcon from '@/components/ToolIcon'
 import FAQ from '@/components/FAQ'
 import FloatingContact from '@/components/FloatingContact'
 import ScrollToTop from '@/components/ScrollToTop'
+import AnimatedCounter from '@/components/AnimatedCounter'
 import content from '@/data/content.json'
 import Image from 'next/image'
 import heroImage from "@/images/assets/modern_dark_website_mockup_laptop.png"
@@ -78,7 +79,9 @@ export default function Home() {
             <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto animate-fadeInUp" style={{animationDelay: '0.4s'}}>
               {content.hero.stats.map((stat, index) => (
                 <div key={index} className="text-center glass-effect rounded-xl py-4 px-2 hover-lift">
-                  <div className="text-3xl md:text-4xl font-bold text-[#f0b840]">{stat.number}</div>
+                  <div className="text-3xl md:text-4xl font-bold text-[#f0b840]">
+                    <AnimatedCounter value={stat.number} duration={2000} />
+                  </div>
                   <div className="text-sm text-white/80">{stat.label}</div>
                 </div>
               ))}

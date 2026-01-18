@@ -44,7 +44,7 @@ const Header = () => {
   }
 
   const isActive = (href: string) => {
-    if (href === '/' || href === '/#') return activeSection === ''
+    if (href === '/' || href === '/#' || href === '#') return activeSection === ''
     const sectionId = href.replace('/#', '').replace('#', '').replace('/', '')
     return activeSection === sectionId
   }
@@ -72,23 +72,19 @@ const Header = () => {
                 <Link
                   key={index}
                   href={href}
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? 'text-[#2f4a8a] dark:text-[#4a6cb3]' : 'text-white') : ''}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? '!text-[#2f4a8a] dark:!text-[#4a6cb3]' : '!text-white') : ''}`}
                 >
                   {item.name}
-                  {active && (
-                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'}`}></span>
-                  )}
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'} ${active ? 'w-8' : 'w-0'}`}></span>
                 </Link>
               ) : (
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? 'text-[#2f4a8a] dark:text-[#4a6cb3]' : 'text-white') : ''}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? '!text-[#2f4a8a] dark:!text-[#4a6cb3]' : '!text-white') : ''}`}
                 >
                   {item.name}
-                  {active && (
-                    <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 w-6 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'}`}></span>
-                  )}
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'} ${active ? 'w-8' : 'w-0'}`}></span>
                 </a>
               )
             })}

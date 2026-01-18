@@ -139,30 +139,48 @@ export default function Home() {
       </section>
 
       {/* Failed Solutions Section */}
-      <section className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="section-title">{content.failedSolutions.title}</h2>
-            <p className="section-subtitle">{content.failedSolutions.subtitle}</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
+      <section className="section-padding bg-gradient-to-b from-[#F8FAFC] to-white dark:from-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-500/5 rounded-full blur-3xl"></div>
+        <div className="container mx-auto px-4 relative z-10">
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="inline-block bg-orange-500/10 text-orange-600 dark:text-orange-400 px-4 py-1 rounded-full text-sm font-semibold mb-4">
+                Sound Familiar?
+              </span>
+              <h2 className="section-title">{content.failedSolutions.title}</h2>
+              <p className="section-subtitle">{content.failedSolutions.subtitle}</p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto mb-12">
             {content.failedSolutions.items.map((item, index) => (
-              <div key={index} className="bg-white dark:bg-slate-900 rounded-2xl p-8 border border-gray-200 dark:border-slate-700 relative overflow-hidden group">
-                <div className="w-12 h-12 bg-orange-500/10 rounded-full flex items-center justify-center mb-6">
-                  <svg className="w-6 h-6 text-orange-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
-                  </svg>
+              <ScrollReveal key={index} delay={100 + index * 150} direction={index === 0 ? 'left' : index === 2 ? 'right' : 'up'}>
+                <div className="relative bg-white dark:bg-slate-900 rounded-3xl p-8 border border-gray-200 dark:border-slate-700 overflow-hidden group hover:shadow-2xl hover:scale-[1.03] hover:border-orange-300 dark:hover:border-orange-500/50 transition-all duration-500 h-full">
+                  <div className="absolute top-0 right-0 w-32 h-32 bg-gradient-to-bl from-orange-500/10 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <div className="absolute -bottom-2 -left-2 w-20 h-20 bg-gradient-to-tr from-red-500/10 to-transparent rounded-tr-full"></div>
+                  <div className="relative">
+                    <div className="w-14 h-14 bg-gradient-to-br from-orange-500/20 to-red-500/20 rounded-2xl flex items-center justify-center mb-6 group-hover:scale-110 group-hover:rotate-3 transition-all duration-500 shadow-lg">
+                      <svg className="w-7 h-7 text-orange-500 group-hover:text-orange-600 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
+                      </svg>
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3 group-hover:text-orange-600 dark:group-hover:text-orange-400 transition-colors">{item.title}</h3>
+                    <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
+                  </div>
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r from-orange-500 to-red-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-left"></div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
-                <p className="text-gray-600 dark:text-gray-400 leading-relaxed">{item.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="text-center">
-            <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto italic">
-              {content.failedSolutions.conclusion}
-            </p>
-          </div>
+          <ScrollReveal delay={500}>
+            <div className="text-center">
+              <div className="inline-block bg-gradient-to-r from-orange-500/10 via-red-500/10 to-orange-500/10 rounded-2xl px-8 py-6 border border-orange-500/20">
+                <p className="text-lg text-gray-700 dark:text-gray-300 max-w-3xl mx-auto font-medium italic">
+                  "{content.failedSolutions.conclusion}"
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

@@ -10,7 +10,6 @@ export const metadata: Metadata = {
   description: 'Professional web design and development services. Transform your ideas into stunning, high-converting websites.',
   icons: {
     icon: '/favicon.ico',
-    apple: '/favicon.ico',
   },
 }
 

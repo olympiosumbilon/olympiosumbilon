@@ -185,43 +185,58 @@ export default function Home() {
       </section>
 
       {/* Regrets Section - Frame of Regrets */}
-      <section className="section-padding bg-gradient-to-br from-gray-900 to-slate-800 text-white relative overflow-hidden">
+      <section className="section-padding bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-10"></div>
+        <div className="absolute top-1/4 -left-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
         <div className="container mx-auto px-4 relative z-10">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">{content.regrets.title}</h2>
-            <p className="text-white/70 max-w-2xl mx-auto">{content.regrets.subtitle}</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-16">
+              <span className="inline-block bg-red-500/20 text-red-400 px-4 py-1 rounded-full text-sm font-semibold mb-4 border border-red-500/30">
+                The Real Cost
+              </span>
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4 bg-gradient-to-r from-white via-red-200 to-white bg-clip-text text-transparent">{content.regrets.title}</h2>
+              <p className="text-white/70 max-w-2xl mx-auto text-lg">{content.regrets.subtitle}</p>
+            </div>
+          </ScrollReveal>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto mb-12">
             {content.regrets.items.map((item, index) => (
-              <div key={index} className="text-center p-8 rounded-2xl bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="w-16 h-16 bg-red-500/20 rounded-full flex items-center justify-center mb-4 mx-auto">
-                  {item.icon === 'money' && (
-                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {item.icon === 'clock' && (
-                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
-                    </svg>
-                  )}
-                  {item.icon === 'users' && (
-                    <svg className="w-8 h-8 text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                    </svg>
-                  )}
+              <ScrollReveal key={index} delay={150 + index * 150}>
+                <div className="text-center p-8 rounded-3xl bg-gradient-to-b from-white/10 to-white/5 border border-white/10 backdrop-blur-sm hover:border-red-500/50 hover:shadow-2xl hover:shadow-red-500/10 hover:scale-105 transition-all duration-500 group h-full">
+                  <div className="w-20 h-20 bg-gradient-to-br from-red-500/30 to-red-600/20 rounded-2xl flex items-center justify-center mb-6 mx-auto group-hover:scale-110 group-hover:rotate-6 transition-all duration-500 shadow-lg shadow-red-500/20">
+                    {item.icon === 'money' && (
+                      <svg className="w-10 h-10 text-red-400 group-hover:text-red-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                    {item.icon === 'clock' && (
+                      <svg className="w-10 h-10 text-red-400 group-hover:text-red-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                      </svg>
+                    )}
+                    {item.icon === 'users' && (
+                      <svg className="w-10 h-10 text-red-400 group-hover:text-red-300 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                      </svg>
+                    )}
+                  </div>
+                  <div className="text-4xl md:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-red-400 to-red-500 mb-3">
+                    <AnimatedCounter value={item.stat} duration={2500} />
+                  </div>
+                  <p className="text-white/80 leading-relaxed">{item.description}</p>
                 </div>
-                <div className="text-4xl font-bold text-red-400 mb-2">{item.stat}</div>
-                <p className="text-white/70">{item.description}</p>
-              </div>
+              </ScrollReveal>
             ))}
           </div>
-          <div className="text-center">
-            <p className="text-xl text-red-400 font-semibold max-w-2xl mx-auto">
-              {content.regrets.cta}
-            </p>
-          </div>
+          <ScrollReveal delay={600}>
+            <div className="text-center">
+              <div className="inline-block bg-gradient-to-r from-red-500/20 to-red-600/20 rounded-2xl px-10 py-6 border border-red-500/30 backdrop-blur-sm">
+                <p className="text-xl md:text-2xl text-red-400 font-bold max-w-2xl mx-auto">
+                  {content.regrets.cta}
+                </p>
+              </div>
+            </div>
+          </ScrollReveal>
         </div>
       </section>
 

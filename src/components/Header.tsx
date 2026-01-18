@@ -37,11 +37,12 @@ const Header = () => {
           </Link>
 
           <nav className="hidden lg:flex items-center space-x-1">
-            {content.header.navigation.map((item, index) => (
-              item.href.startsWith('/') ? (
+            {content.header.navigation.map((item, index) => {
+              const href = item.href.startsWith('#') ? `/${item.href}` : item.href
+              return item.href.startsWith('/') || item.href.startsWith('#') ? (
                 <Link
                   key={index}
-                  href={item.href}
+                  href={href}
                   className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'}`}
                 >
                   {item.name}
@@ -55,7 +56,7 @@ const Header = () => {
                   {item.name}
                 </a>
               )
-            ))}
+            })}
             <a 
               href={content.header.ctaButton.href}
               className="ml-2 bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] hover:from-[#243b6e] hover:to-[#3d5a96] text-white font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
@@ -81,11 +82,12 @@ const Header = () => {
 
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
           <nav className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-xl mb-4 overflow-hidden">
-            {content.header.navigation.map((item, index) => (
-              item.href.startsWith('/') ? (
+            {content.header.navigation.map((item, index) => {
+              const href = item.href.startsWith('#') ? `/${item.href}` : item.href
+              return item.href.startsWith('/') || item.href.startsWith('#') ? (
                 <Link
                   key={index}
-                  href={item.href}
+                  href={href}
                   className="block text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10 px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0"
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
@@ -101,7 +103,7 @@ const Header = () => {
                   {item.name}
                 </a>
               )
-            ))}
+            })}
             <div className="p-4">
               <a 
                 href={content.header.ctaButton.href}

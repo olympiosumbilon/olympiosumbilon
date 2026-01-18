@@ -565,10 +565,12 @@ export default function Home() {
       {/* FAQ Section */}
       <section id="faq" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="section-title">{content.faq.title}</h2>
-            <p className="section-subtitle">{content.faq.subtitle}</p>
-          </div>
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="section-title">{content.faq.title}</h2>
+              <p className="section-subtitle">{content.faq.subtitle}</p>
+            </div>
+          </ScrollReveal>
           <div className="max-w-3xl mx-auto">
             <FAQ items={content.faq.items} />
           </div>

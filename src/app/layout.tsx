@@ -9,8 +9,8 @@ export const metadata: Metadata = {
   title: 'Pyow Digitals - Web Design & Development',
   description: 'Professional web design and development services. Transform your ideas into stunning, high-converting websites.',
   icons: {
-    icon: '/favicon.png',
-    apple: '/favicon.png',
+    icon: '/favicon.ico',
+    apple: '/favicon.ico',
   },
 }
 
@@ -22,7 +22,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" href="/favicon.png" type="image/png" />
+        <link rel="icon" href="/favicon.ico" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"

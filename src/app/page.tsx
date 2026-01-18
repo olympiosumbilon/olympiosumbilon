@@ -424,12 +424,12 @@ export default function Home() {
               <p className="section-subtitle">{content.pricing.subtitle}</p>
             </div>
           </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto pt-6">
             {content.pricing.tiers.map((tier, index) => (
-              <ScrollReveal key={index} delay={100 + index * 150}>
-                <div className={`interactive-card card relative h-full hover:shadow-2xl transition-all duration-300 ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10' : 'border border-gray-100 dark:border-slate-700 hover:border-[#2f4a8a] dark:hover:border-[#4a6cb3]'}`}>
+              <ScrollReveal key={index} delay={100 + index * 150} className="overflow-visible">
+                <div className={`interactive-card card relative h-full hover:shadow-2xl transition-all duration-300 ${tier.popular ? 'border-2 border-[#e8a030] md:scale-105 z-10 mt-2' : 'border border-gray-100 dark:border-slate-700 hover:border-[#2f4a8a] dark:hover:border-[#4a6cb3]'}`}>
                   {tier.popular && (
-                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 accent-gradient text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg animate-pulse">
+                    <div className="absolute -top-4 left-1/2 -translate-x-1/2 accent-gradient text-white px-6 py-1.5 rounded-full text-sm font-semibold shadow-lg animate-pulse z-20">
                       Most Popular
                     </div>
                   )}

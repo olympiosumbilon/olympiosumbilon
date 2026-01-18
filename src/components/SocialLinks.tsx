@@ -36,6 +36,17 @@ const SocialLinks = () => {
         </div>
       )
     },
+    {
+      name: 'Facebook Messenger',
+      url: 'https://m.me/olympiosumbilonjr',
+      icon: (
+        <div className="p-3 bg-white rounded-full shadow-md hover:shadow-lg transition-all duration-300 hover:bg-[#EFF3FF] group">
+          <svg className="w-6 h-6 text-[#1877F2] group-hover:text-[#4267B2] transition-colors" fill="currentColor" viewBox="0 0 24 24">
+            <path d="M12 0C5.373 0 0 4.974 0 11.111c0 3.498 1.744 6.614 4.469 8.654V24l4.088-2.242c1.092.304 2.245.464 3.443.464 6.627 0 12-4.974 12-11.111C24 4.974 18.627 0 12 0zm1.291 14.194l-3.039-3.235-5.922 3.235 6.514-6.916 3.106 3.235 5.855-3.235-6.514 6.916z"/>
+          </svg>
+        </div>
+      )
+    }
   ]
 
   return (

@@ -16,8 +16,10 @@ export default function BlogPage() {
   }, [])
 
   const filteredPosts = useMemo(() => {
-    if (activeCategory === 'All') return content.blog.posts
-    return content.blog.posts.filter(post => post.category === activeCategory)
+    const posts = activeCategory === 'All' 
+      ? content.blog.posts 
+      : content.blog.posts.filter(post => post.category === activeCategory)
+    return [...posts].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   }, [activeCategory])
 
   const totalPages = Math.ceil(filteredPosts.length / POSTS_PER_PAGE)

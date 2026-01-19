@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useState, useMemo } from 'react'
 import Header from '@/components/Header'
 import ContactForm from '@/components/ContactForm'
 import SocialLinks from '@/components/SocialLinks'
@@ -13,16 +13,38 @@ import content from '@/data/content.json'
 import Image from 'next/image'
 import heroImage from "@/images/assets/modern_dark_website_mockup_laptop.png"
 
+const PROJECTS_PER_PAGE = 6
+
 export default function Home() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [currentProjectPage, setCurrentProjectPage] = useState(1)
 
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth'
   }, [])
 
-  const filteredProjects = activeCategory === 'All' 
-    ? content.portfolio.projects 
-    : content.portfolio.projects.filter(p => p.category === activeCategory)
+  const filteredProjects = useMemo(() => {
+    return activeCategory === 'All' 
+      ? content.portfolio.projects 
+      : content.portfolio.projects.filter(p => p.category === activeCategory)
+  }, [activeCategory])
+
+  const totalProjectPages = Math.ceil(filteredProjects.length / PROJECTS_PER_PAGE)
+  
+  const paginatedProjects = useMemo(() => {
+    const start = (currentProjectPage - 1) * PROJECTS_PER_PAGE
+    return filteredProjects.slice(start, start + PROJECTS_PER_PAGE)
+  }, [filteredProjects, currentProjectPage])
+
+  const handleCategoryChange = (category: string) => {
+    setActiveCategory(category)
+    setCurrentProjectPage(1)
+  }
+
+  const handleProjectPageChange = (page: number) => {
+    setCurrentProjectPage(page)
+    document.getElementById('portfolio')?.scrollIntoView({ behavior: 'smooth', block: 'start' })
+  }
 
   return (
     <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
@@ -525,17 +547,26 @@ export default function Home() {
               {content.portfolio.categories.map((category, index) => (
                 <button
                   key={index}
-                  onClick={() => setActiveCategory(category)}
-                  className={`px-6 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg'}`}
+                  onClick={() => handleCategoryChange(category)}
+                  className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg border border-gray-200 dark:border-slate-600'}`}
                 >
                   {category}
+                  {category !== 'All' && (
+                    <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
+                      activeCategory === category 
+                        ? 'bg-white/20' 
+                        : 'bg-gray-100 dark:bg-slate-600'
+                    }`}>
+                      {content.portfolio.projects.filter(p => p.category === category).length}
+                    </span>
+                  )}
                 </button>
               ))}
             </div>
           </ScrollReveal>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {filteredProjects.map((project, index) => (
-              <ScrollReveal key={index} delay={150 + index * 100}>
+            {paginatedProjects.map((project, index) => (
+              <ScrollReveal key={`${project.title}-${index}`} delay={150 + index * 100}>
                 <div className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700 h-full">
                   <div className="h-48 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -552,6 +583,69 @@ export default function Home() {
               </ScrollReveal>
             ))}
           </div>
+
+          {totalProjectPages > 1 && (
+            <div className="flex justify-center items-center gap-2 mt-12">
+              <button
+                onClick={() => handleProjectPageChange(currentProjectPage - 1)}
+                disabled={currentProjectPage === 1}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  currentProjectPage === 1 
+                    ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' 
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-700'
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              
+              {Array.from({ length: totalProjectPages }, (_, i) => i + 1).map((page) => {
+                if (
+                  page === 1 || 
+                  page === totalProjectPages || 
+                  (page >= currentProjectPage - 1 && page <= currentProjectPage + 1)
+                ) {
+                  return (
+                    <button
+                      key={page}
+                      onClick={() => handleProjectPageChange(page)}
+                      className={`w-10 h-10 rounded-lg font-medium transition-all duration-300 ${
+                        currentProjectPage === page 
+                          ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' 
+                          : 'text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-700'
+                      }`}
+                    >
+                      {page}
+                    </button>
+                  )
+                } else if (page === currentProjectPage - 2 || page === currentProjectPage + 2) {
+                  return <span key={page} className="text-gray-400">...</span>
+                }
+                return null
+              })}
+              
+              <button
+                onClick={() => handleProjectPageChange(currentProjectPage + 1)}
+                disabled={currentProjectPage === totalProjectPages}
+                className={`p-2 rounded-lg transition-all duration-300 ${
+                  currentProjectPage === totalProjectPages 
+                    ? 'text-gray-300 dark:text-gray-600 cursor-not-allowed' 
+                    : 'text-gray-600 dark:text-gray-300 hover:bg-white dark:hover:bg-slate-700'
+                }`}
+              >
+                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+          )}
+
+          {filteredProjects.length > PROJECTS_PER_PAGE && (
+            <div className="text-center mt-4 text-sm text-gray-500 dark:text-gray-400">
+              Showing {((currentProjectPage - 1) * PROJECTS_PER_PAGE) + 1} - {Math.min(currentProjectPage * PROJECTS_PER_PAGE, filteredProjects.length)} of {filteredProjects.length} projects
+            </div>
+          )}
         </div>
       </section>
 

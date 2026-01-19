@@ -93,6 +93,54 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
       </section>
 
+      {/* Blog Preview Section */}
+      <section id="blog" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="section-title">{content.blog.title}</h2>
+              <p className="section-subtitle">{content.blog.subtitle}</p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {[...content.blog.posts]
+              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+              .slice(0, 3)
+              .map((post, index) => (
+              <ScrollReveal key={index} delay={100 + index * 100}>
+                <a href={`/blog/${post.slug}`} className="group block h-full">
+                  <article className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full">
+                    <div className="h-40 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <svg className="w-10 h-10 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-semibold">{post.category}</span>
+                        <span className="text-sm text-gray-400">{post.date}</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">{post.excerpt}</p>
+                    </div>
+                  </article>
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+          <ScrollReveal delay={400}>
+            <div className="text-center mt-10">
+              <a href="/blog" className="btn-secondary">
+                View All Posts
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
       {/* Tools Carousel Section */}
       <section className="py-20 bg-gradient-to-b from-[#F8FAFC] dark:from-slate-800 to-white dark:to-slate-900 overflow-hidden transition-colors duration-300">
         <div className="container mx-auto px-4">
@@ -633,53 +681,6 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Blog Preview Section */}
-      <section id="blog" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="section-title">{content.blog.title}</h2>
-              <p className="section-subtitle">{content.blog.subtitle}</p>
-            </div>
-          </ScrollReveal>
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[...content.blog.posts]
-              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-              .slice(0, 3)
-              .map((post, index) => (
-              <ScrollReveal key={index} delay={100 + index * 100}>
-                <a href={`/blog/${post.slug}`} className="group block h-full">
-                  <article className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full">
-                    <div className="h-40 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <svg className="w-10 h-10 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
-                    </div>
-                    <div className="p-6">
-                      <div className="flex items-center gap-3 mb-3">
-                        <span className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-semibold">{post.category}</span>
-                        <span className="text-sm text-gray-400">{post.date}</span>
-                      </div>
-                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">
-                        {post.title}
-                      </h3>
-                      <p className="text-gray-600 dark:text-gray-400 text-sm">{post.excerpt}</p>
-                    </div>
-                  </article>
-                </a>
-              </ScrollReveal>
-            ))}
-          </div>
-          <ScrollReveal delay={400}>
-            <div className="text-center mt-10">
-              <a href="/blog" className="btn-secondary">
-                View All Posts
-              </a>
-            </div>
-          </ScrollReveal>
-        </div>
-      </section>
       {/* CTA / Contact Section */}
       <section id="contact" className="section-padding gradient-bg text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-20"></div>

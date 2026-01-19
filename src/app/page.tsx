@@ -633,7 +633,7 @@ export default function Home() {
       </section>
 
       {/* Blog Preview Section */}
-      <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+      <section id="blog" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">

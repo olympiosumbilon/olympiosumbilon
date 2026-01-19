@@ -6,9 +6,8 @@
       { "name": "Home", "href": "#" },
       { "name": "Services", "href": "#services" },
       { "name": "Portfolio", "href": "#portfolio" },
-      { "name": "Pricing", "href": "#pricing" },
-      { "name": "Testimonials", "href": "#testimonials" },
       { "name": "Blog", "href": "/blog" },
+      { "name": "Testimonials", "href": "#testimonials" },
       { "name": "Contact", "href": "#contact" }
     ],
     "ctaButton": { "text": "Get Started", "href": "#contact" }

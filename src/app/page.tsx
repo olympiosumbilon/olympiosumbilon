@@ -92,8 +92,80 @@ export default function Home() {
         <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
       </section>
 
-      {/* Problem Section - Pain Points */}
+      {/* Blog Preview Section */}
       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <ScrollReveal>
+            <div className="text-center mb-12">
+              <h2 className="section-title">{content.blog.title}</h2>
+              <p className="section-subtitle">{content.blog.subtitle}</p>
+            </div>
+          </ScrollReveal>
+          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+            {content.blog.posts.map((post, index) => (
+              <ScrollReveal key={index} delay={100 + index * 100}>
+                <a href={`/blog/${post.slug}`} className="group block h-full">
+                  <article className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full">
+                    <div className="h-40 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                      <svg className="w-10 h-10 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    </div>
+                    <div className="p-6">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-semibold">{post.category}</span>
+                        <span className="text-sm text-gray-400">{post.date}</span>
+                      </div>
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">
+                        {post.title}
+                      </h3>
+                      <p className="text-gray-600 dark:text-gray-400 text-sm">{post.excerpt}</p>
+                    </div>
+                  </article>
+                </a>
+              </ScrollReveal>
+            ))}
+          </div>
+          <ScrollReveal delay={400}>
+            <div className="text-center mt-10">
+              <a href="/blog" className="btn-secondary">
+                View All Posts
+              </a>
+            </div>
+          </ScrollReveal>
+        </div>
+      </section>
+
+      {/* Tools Carousel Section */}
+      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] dark:from-slate-800 to-white dark:to-slate-900 overflow-hidden transition-colors duration-300">
+        <div className="container mx-auto px-4">
+          <div className="text-center mb-12">
+            <h2 className="section-title">{content.tools.title}</h2>
+            <p className="section-subtitle">{content.tools.subtitle}</p>
+          </div>
+          <div className="overflow-hidden relative">
+            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
+            <div className="tools-carousel">
+              {[...content.tools.items, ...content.tools.items].map((tool, index) => (
+                <div key={index} className="flex-shrink-0 mx-3">
+                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-6 py-5 min-w-[160px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-slate-700 group">
+                    <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                      <ToolIcon name={tool.name} className="w-10 h-10" />
+                    </div>
+                    <div className="font-bold text-gray-900 dark:text-white text-sm">{tool.name}</div>
+                    <div className="text-xs text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Problem Section - Pain Points */}
+{/*       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -136,10 +208,10 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
-      </section>
+      </section> */}
 
       {/* Failed Solutions Section */}
-      <section className="section-padding bg-gradient-to-b from-[#F8FAFC] to-white dark:from-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
+  {/*     <section className="section-padding bg-gradient-to-b from-[#F8FAFC] to-white dark:from-slate-800 dark:to-slate-900 transition-colors duration-300 relative overflow-hidden">
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-orange-500/5 rounded-full blur-3xl"></div>
         <div className="absolute bottom-0 right-1/4 w-80 h-80 bg-red-500/5 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 relative z-10">
@@ -183,9 +255,9 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </section>
-
+ */}
       {/* Regrets Section - Frame of Regrets */}
-      <section className="section-padding bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white relative overflow-hidden">
+{/*       <section className="section-padding bg-gradient-to-br from-gray-900 via-slate-800 to-gray-900 text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-10"></div>
         <div className="absolute top-1/4 -left-20 w-80 h-80 bg-red-500/10 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-1/4 -right-20 w-96 h-96 bg-red-600/10 rounded-full blur-3xl animate-pulse" style={{animationDelay: '1s'}}></div>
@@ -238,10 +310,10 @@ export default function Home() {
             </div>
           </ScrollReveal>
         </div>
-      </section>
+      </section> */}
 
       {/* USP Section */}
-      <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+{/*       <section className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-12">
@@ -275,10 +347,10 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Transition Section - Slow Pitch */}
-      <section className="section-padding gradient-bg text-white relative overflow-hidden">
+{/*       <section className="section-padding gradient-bg text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-20"></div>
         <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 relative z-10">
@@ -320,7 +392,7 @@ export default function Home() {
             </ScrollReveal>
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Services Section */}
       <section id="services" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 bg-mesh transition-colors duration-300">
@@ -388,35 +460,8 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Tools Carousel Section */}
-      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] dark:from-slate-800 to-white dark:to-slate-900 overflow-hidden transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <div className="text-center mb-12">
-            <h2 className="section-title">{content.tools.title}</h2>
-            <p className="section-subtitle">{content.tools.subtitle}</p>
-          </div>
-          <div className="overflow-hidden relative">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
-            <div className="tools-carousel">
-              {[...content.tools.items, ...content.tools.items].map((tool, index) => (
-                <div key={index} className="flex-shrink-0 mx-3">
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-6 py-5 min-w-[160px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-slate-700 group">
-                    <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <ToolIcon name={tool.name} className="w-10 h-10" />
-                    </div>
-                    <div className="font-bold text-gray-900 dark:text-white text-sm">{tool.name}</div>
-                    <div className="text-xs text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Pricing Section */}
-      <section id="pricing" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
+{/*       <section id="pricing" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300">
         <div className="container mx-auto px-4">
           <ScrollReveal>
             <div className="text-center mb-16">
@@ -460,7 +505,7 @@ export default function Home() {
             ))}
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* Portfolio Section */}
       <section id="portfolio" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
@@ -676,7 +721,6 @@ export default function Home() {
           </ScrollReveal>
         </div>
       </section>
-
       {/* CTA / Contact Section */}
       <section id="contact" className="section-padding gradient-bg text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-20"></div>

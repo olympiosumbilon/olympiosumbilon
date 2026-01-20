@@ -779,11 +779,11 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Mobile: Swipeable slider with dots */}
-          <div className="md:hidden">
-            <div className="overflow-x-auto scrollbar-hide snap-x snap-mandatory flex gap-4 pb-6 -mx-4 px-4">
-              {content.testimonials.items.map((testimonial, index) => (
-                <div key={index} className="flex-shrink-0 w-[85vw] max-w-[320px] snap-center">
+          {/* Mobile: Auto-sliding + Swipeable slider */}
+          <div className="md:hidden overflow-hidden">
+            <div className="testimonials-carousel-mobile">
+              {[...content.testimonials.items, ...content.testimonials.items].map((testimonial, index) => (
+                <div key={index} className="flex-shrink-0 w-[85vw] max-w-[320px] px-2">
                   <div className="card h-full border border-gray-100 dark:border-slate-700 bg-slate-50 dark:bg-slate-800/50">
                     <div className="flex mb-4">
                       {[...Array(5)].map((_, i) => (

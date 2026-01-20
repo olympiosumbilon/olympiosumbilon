@@ -169,6 +169,23 @@ body {
   width: max-content;
 }
 
+.testimonials-carousel-mobile {
+  display: flex;
+  animation: scroll-testimonials-mobile 30s linear infinite;
+  width: max-content;
+  cursor: grab;
+}
+
+.testimonials-carousel-mobile:active {
+  cursor: grabbing;
+  animation-play-state: paused;
+}
+
+@keyframes scroll-testimonials-mobile {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
 @media (min-width: 768px) {
   .testimonials-carousel {
     animation: scroll-testimonials 40s linear infinite;

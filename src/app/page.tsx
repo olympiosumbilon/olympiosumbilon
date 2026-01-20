@@ -53,31 +53,31 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-24 pb-16 md:pt-20 md:pb-0 overflow-hidden">
+      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-20 pb-12 md:pt-20 md:pb-0 overflow-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute inset-0 bg-mesh opacity-30"></div>
         <div className="absolute top-20 right-5 md:right-10 w-40 md:w-72 h-40 md:h-72 bg-[#e8a030]/20 rounded-full blur-3xl animate-pulse"></div>
         <div className="absolute bottom-32 left-5 md:left-10 w-48 md:w-96 h-48 md:h-96 bg-white/10 rounded-full blur-3xl"></div>
         
-        {/* Mockup Images in Background - Hidden on Mobile */}
-        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 overflow-hidden">
-          <div className="absolute top-[15%] -right-[5%] w-[450px] h-[300px] opacity-20 blur-[2px] rotate-12 animate-float pointer-events-none">
+        {/* Mockup Images in Background */}
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 overflow-hidden">
+          <div className="absolute top-[10%] -right-[15%] md:top-[15%] md:-right-[5%] w-[200px] md:w-[450px] h-[140px] md:h-[300px] opacity-15 md:opacity-20 blur-[3px] md:blur-[2px] rotate-12 animate-float pointer-events-none">
             <Image 
               src={heroImage}
               alt="Website Mockup 1"
               width={500}
               height={300}
               priority
-              className="rounded-2xl shadow-2xl object-cover"
+              className="rounded-xl md:rounded-2xl shadow-2xl object-cover"
             />
           </div>
-          <div className="absolute bottom-[15%] -left-[5%] w-[400px] h-[280px] opacity-15 blur-[4px] -rotate-12 animate-float-delayed pointer-events-none">
+          <div className="absolute bottom-[20%] -left-[15%] md:bottom-[15%] md:-left-[5%] w-[180px] md:w-[400px] h-[120px] md:h-[280px] opacity-10 md:opacity-15 blur-[4px] -rotate-12 animate-float-delayed pointer-events-none">
             <Image 
               src={heroImage}
               alt="Website Mockup 2"
               width={500}
               height={300}
-              className="rounded-2xl shadow-2xl object-cover flip-horizontal"
+              className="rounded-xl md:rounded-2xl shadow-2xl object-cover flip-horizontal"
             />
           </div>
         </div>

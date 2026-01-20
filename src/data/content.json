@@ -259,37 +259,37 @@
         "title": "E-Commerce Dashboard",
         "category": "UI/UX",
         "description": "Modern dashboard design for an online retail platform",
-        "image": "/images/projects/placeholder.jpg"
+        "image": "/images/projects/project1.png"
       },
       {
         "title": "SaaS Landing Page",
         "category": "Framer",
         "description": "High-converting landing page with smooth animations",
-        "image": "/images/projects/placeholder.jpg"
+        "image": "/images/projects/project2.png"
       },
       {
         "title": "Business Portfolio",
         "category": "WordPress",
         "description": "Professional portfolio site for a consulting firm",
-        "image": "/images/projects/placeholder.jpg"
+        "image": "/images/projects/project1.png"
       },
       {
         "title": "Marketing Funnel",
         "category": "GoHighLevel",
         "description": "Complete sales funnel with email automation",
-        "image": "/images/projects/placeholder.jpg"
+        "image": "/images/projects/project2.png"
       },
       {
         "title": "Task Management App",
         "category": "Programming",
         "description": "Full-stack application with React and Node.js",
-        "image": "/images/projects/placeholder.jpg"
+        "image": "/images/projects/project1.png"
       },
       {
         "title": "Mobile App UI",
         "category": "UI/UX",
         "description": "Clean and intuitive mobile application design",
-        "image": "/images/projects/placeholder.jpg"
+        "image": "/images/projects/project2.png"
       }
     ]
   },

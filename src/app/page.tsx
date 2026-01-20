@@ -553,12 +553,12 @@ export default function Home() {
             </div>
           </ScrollReveal>
           <ScrollReveal delay={100}>
-            <div className="flex flex-wrap justify-center gap-3 mb-12">
+            <div className="flex md:flex-wrap md:justify-center gap-3 mb-12 overflow-x-auto pb-2 scrollbar-hide">
               {content.portfolio.categories.map((category, index) => (
                 <button
                   key={index}
                   onClick={() => handleCategoryChange(category)}
-                  className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg border border-gray-200 dark:border-slate-600'}`}
+                  className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 hover:scale-105 whitespace-nowrap flex-shrink-0 ${activeCategory === category ? 'bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white shadow-lg' : 'bg-white dark:bg-slate-700 text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-slate-600 shadow-md hover:shadow-lg border border-gray-200 dark:border-slate-600'}`}
                 >
                   {category}
                   {category !== 'All' && (

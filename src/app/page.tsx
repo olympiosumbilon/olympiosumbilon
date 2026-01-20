@@ -10,6 +10,7 @@ import ScrollToTop from '@/components/ScrollToTop'
 import AnimatedCounter from '@/components/AnimatedCounter'
 import ScrollReveal from '@/components/ScrollReveal'
 import MobileTestimonialSlider from '@/components/MobileTestimonialSlider'
+import MobileToolsSlider from '@/components/MobileToolsSlider'
 import content from '@/data/content.json'
 import Image from 'next/image'
 import heroImage from "@/images/assets/modern_dark_website_mockup_laptop.png"
@@ -181,7 +182,9 @@ export default function Home() {
             <h2 className="section-title">{content.tools.title}</h2>
             <p className="section-subtitle">{content.tools.subtitle}</p>
           </div>
-          <div className="overflow-hidden relative">
+          
+          {/* Desktop: Auto-scrolling carousel */}
+          <div className="hidden md:block overflow-hidden relative">
             <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
             <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
             <div className="tools-carousel">
@@ -197,6 +200,11 @@ export default function Home() {
                 </div>
               ))}
             </div>
+          </div>
+
+          {/* Mobile: Swipeable slider */}
+          <div className="md:hidden">
+            <MobileToolsSlider tools={content.tools.items} />
           </div>
         </div>
       </section>

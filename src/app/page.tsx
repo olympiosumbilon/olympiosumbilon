@@ -182,30 +182,30 @@ export default function Home() {
             <h2 className="section-title">{content.tools.title}</h2>
             <p className="section-subtitle">{content.tools.subtitle}</p>
           </div>
-          
-          {/* Desktop: Auto-scrolling carousel */}
-          <div className="hidden md:block overflow-hidden relative">
-            <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
-            <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
-            <div className="tools-carousel">
-              {[...content.tools.items, ...content.tools.items].map((tool, index) => (
-                <div key={index} className="flex-shrink-0 mx-3">
-                  <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-6 py-5 min-w-[160px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-slate-700 group">
-                    <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                      <ToolIcon name={tool.name} className="w-10 h-10" />
-                    </div>
-                    <div className="font-bold text-gray-900 dark:text-white text-sm">{tool.name}</div>
-                    <div className="text-xs text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
+        </div>
+        
+        {/* Desktop: Full-width auto-scrolling carousel */}
+        <div className="hidden md:block overflow-hidden relative">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
+          <div className="tools-carousel">
+            {[...content.tools.items, ...content.tools.items, ...content.tools.items].map((tool, index) => (
+              <div key={index} className="flex-shrink-0 mx-3">
+                <div className="bg-white dark:bg-slate-800 rounded-2xl shadow-lg hover:shadow-xl px-6 py-5 min-w-[160px] text-center transition-all duration-300 hover:-translate-y-2 border border-gray-100 dark:border-slate-700 group">
+                  <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
+                    <ToolIcon name={tool.name} className="w-10 h-10" />
                   </div>
+                  <div className="font-bold text-gray-900 dark:text-white text-sm">{tool.name}</div>
+                  <div className="text-xs text-[#2f4a8a] dark:text-[#4a6cb3] font-medium">{tool.category}</div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
+        </div>
 
-          {/* Mobile: Swipeable slider */}
-          <div className="md:hidden">
-            <MobileToolsSlider tools={content.tools.items} />
-          </div>
+        {/* Mobile: Swipeable slider */}
+        <div className="md:hidden px-4">
+          <MobileToolsSlider tools={content.tools.items} />
         </div>
       </section>
 

@@ -1,5 +1,5 @@
 'use client'
-import React, { useRef, useState, useEffect, useCallback } from 'react'
+import React, { useRef, useEffect } from 'react'
 import ToolIcon from './ToolIcon'
 
 interface Tool {
@@ -13,81 +13,73 @@ interface MobileToolsSliderProps {
 
 export default function MobileToolsSlider({ tools }: MobileToolsSliderProps) {
   const sliderRef = useRef<HTMLDivElement>(null)
-  const [isDragging, setIsDragging] = useState(false)
-  const [startX, setStartX] = useState(0)
-  const [scrollLeft, setScrollLeft] = useState(0)
-  const [isAutoScrolling, setIsAutoScrolling] = useState(true)
-  const autoScrollRef = useRef<number | null>(null)
-
-  const startAutoScroll = useCallback(() => {
-    if (!sliderRef.current || !isAutoScrolling) return
-    
-    const scroll = () => {
-      if (sliderRef.current && isAutoScrolling && !isDragging) {
-        sliderRef.current.scrollLeft += 0.5
-        
-        const maxScroll = sliderRef.current.scrollWidth - sliderRef.current.clientWidth
-        if (sliderRef.current.scrollLeft >= maxScroll / 2) {
-          sliderRef.current.scrollLeft = 0
-        }
-      }
-      autoScrollRef.current = requestAnimationFrame(scroll)
-    }
-    
-    autoScrollRef.current = requestAnimationFrame(scroll)
-  }, [isAutoScrolling, isDragging])
+  const isDraggingRef = useRef(false)
+  const startXRef = useRef(0)
+  const scrollLeftRef = useRef(0)
+  const pauseTimeoutRef = useRef<NodeJS.Timeout | null>(null)
 
   useEffect(() => {
-    startAutoScroll()
+    const slider = sliderRef.current
+    if (!slider) return
+
+    let animationId: number
+
+    const autoScroll = () => {
+      if (!isDraggingRef.current && slider) {
+        slider.scrollLeft += 0.8
+        
+        const maxScroll = slider.scrollWidth - slider.clientWidth
+        if (slider.scrollLeft >= maxScroll / 2) {
+          slider.scrollLeft = 0
+        }
+      }
+      animationId = requestAnimationFrame(autoScroll)
+    }
+
+    animationId = requestAnimationFrame(autoScroll)
+
     return () => {
-      if (autoScrollRef.current) {
-        cancelAnimationFrame(autoScrollRef.current)
+      cancelAnimationFrame(animationId)
+      if (pauseTimeoutRef.current) {
+        clearTimeout(pauseTimeoutRef.current)
       }
     }
-  }, [startAutoScroll])
+  }, [])
 
-  const handleMouseDown = (e: React.MouseEvent) => {
+  const handleStart = (clientX: number) => {
     if (!sliderRef.current) return
-    setIsDragging(true)
-    setIsAutoScrolling(false)
-    setStartX(e.pageX - sliderRef.current.offsetLeft)
-    setScrollLeft(sliderRef.current.scrollLeft)
+    isDraggingRef.current = true
+    startXRef.current = clientX - sliderRef.current.offsetLeft
+    scrollLeftRef.current = sliderRef.current.scrollLeft
+    
+    if (pauseTimeoutRef.current) {
+      clearTimeout(pauseTimeoutRef.current)
+    }
   }
 
-  const handleMouseUp = () => {
-    setIsDragging(false)
-    setTimeout(() => setIsAutoScrolling(true), 3000)
+  const handleEnd = () => {
+    isDraggingRef.current = false
   }
 
+  const handleMove = (clientX: number) => {
+    if (!isDraggingRef.current || !sliderRef.current) return
+    const x = clientX - sliderRef.current.offsetLeft
+    const walk = (x - startXRef.current) * 1.5
+    sliderRef.current.scrollLeft = scrollLeftRef.current - walk
+  }
+
+  const handleMouseDown = (e: React.MouseEvent) => handleStart(e.pageX)
+  const handleMouseUp = () => handleEnd()
   const handleMouseMove = (e: React.MouseEvent) => {
-    if (!isDragging || !sliderRef.current) return
-    e.preventDefault()
-    const x = e.pageX - sliderRef.current.offsetLeft
-    const walk = (x - startX) * 2
-    sliderRef.current.scrollLeft = scrollLeft - walk
+    if (isDraggingRef.current) e.preventDefault()
+    handleMove(e.pageX)
   }
 
-  const handleTouchStart = (e: React.TouchEvent) => {
-    if (!sliderRef.current) return
-    setIsDragging(true)
-    setIsAutoScrolling(false)
-    setStartX(e.touches[0].pageX - sliderRef.current.offsetLeft)
-    setScrollLeft(sliderRef.current.scrollLeft)
-  }
+  const handleTouchStart = (e: React.TouchEvent) => handleStart(e.touches[0].pageX)
+  const handleTouchEnd = () => handleEnd()
+  const handleTouchMove = (e: React.TouchEvent) => handleMove(e.touches[0].pageX)
 
-  const handleTouchEnd = () => {
-    setIsDragging(false)
-    setTimeout(() => setIsAutoScrolling(true), 3000)
-  }
-
-  const handleTouchMove = (e: React.TouchEvent) => {
-    if (!isDragging || !sliderRef.current) return
-    const x = e.touches[0].pageX - sliderRef.current.offsetLeft
-    const walk = (x - startX) * 2
-    sliderRef.current.scrollLeft = scrollLeft - walk
-  }
-
-  const duplicatedTools = [...tools, ...tools]
+  const duplicatedTools = [...tools, ...tools, ...tools]
 
   return (
     <div className="relative">
@@ -103,7 +95,6 @@ export default function MobileToolsSlider({ tools }: MobileToolsSliderProps) {
         onTouchStart={handleTouchStart}
         onTouchEnd={handleTouchEnd}
         onTouchMove={handleTouchMove}
-        style={{ scrollBehavior: isDragging ? 'auto' : 'smooth' }}
       >
         {duplicatedTools.map((tool, index) => (
           <div key={index} className="flex-shrink-0">

@@ -53,17 +53,16 @@ export default function Home() {
       <Header />
 
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-20 overflow-hidden">
+      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-24 pb-16 md:pt-20 md:pb-0 overflow-hidden">
         {/* Background Decorative Elements */}
         <div className="absolute inset-0 bg-mesh opacity-30"></div>
-        <div className="absolute top-20 right-10 w-72 h-72 bg-[#e8a030]/20 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-20 left-10 w-96 h-96 bg-white/10 rounded-full blur-3xl"></div>
+        <div className="absolute top-20 right-5 md:right-10 w-40 md:w-72 h-40 md:h-72 bg-[#e8a030]/20 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-32 left-5 md:left-10 w-48 md:w-96 h-48 md:h-96 bg-white/10 rounded-full blur-3xl"></div>
         
-        {/* Mockup Images in Background */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 overflow-hidden">
+        {/* Mockup Images in Background - Hidden on Mobile */}
+        <div className="hidden md:block absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full pointer-events-none z-0 overflow-hidden">
           <div className="absolute top-[15%] -right-[5%] w-[450px] h-[300px] opacity-20 blur-[2px] rotate-12 animate-float pointer-events-none">
             <Image 
-             // src="/attached_assets/generated_images/modern_dark_website_mockup_laptop.png"
               src={heroImage}
               alt="Website Mockup 1"
               width={500}
@@ -83,38 +82,38 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="container mx-auto px-4 relative z-10">
+        <div className="container mx-auto px-5 md:px-4 relative z-10">
           <div className="max-w-4xl mx-auto text-center">
-            <span className="inline-block glass-effect text-white px-6 py-2 rounded-full text-sm font-medium mb-8 animate-fadeInUp">
+            <span className="inline-block glass-effect text-white px-4 md:px-6 py-2 rounded-full text-xs md:text-sm font-medium mb-6 md:mb-8 animate-fadeInUp">
               {content.hero.tagline}
             </span>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight text-shadow animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-white via-[#f0b840] to-white bg-[length:200%_auto]" style={{animationDelay: '0.1s'}}>
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 leading-tight text-shadow animate-shimmer bg-clip-text text-transparent bg-gradient-to-r from-white via-[#f0b840] to-white bg-[length:200%_auto]" style={{animationDelay: '0.1s'}}>
               {content.hero.title}
             </h1>
-            <p className="text-lg md:text-xl text-white/90 mb-10 max-w-2xl mx-auto animate-fadeInUp" style={{animationDelay: '0.2s'}}>
+            <p className="text-base md:text-xl text-white/90 mb-8 md:mb-10 max-w-2xl mx-auto px-2 animate-fadeInUp" style={{animationDelay: '0.2s'}}>
               {content.hero.subtitle}
             </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
-              <a href={content.hero.ctaButton.href} className="btn-accent">
+            <div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center mb-10 md:mb-16 px-4 sm:px-0 animate-fadeInUp" style={{animationDelay: '0.3s'}}>
+              <a href={content.hero.ctaButton.href} className="btn-accent text-sm md:text-base py-3 md:py-4">
                 {content.hero.ctaButton.text}
               </a>
-              <a href={content.hero.secondaryButton.href} className="btn-secondary border-white text-white hover:bg-white hover:text-[#2f4a8a]">
+              <a href={content.hero.secondaryButton.href} className="btn-secondary border-white text-white hover:bg-white hover:text-[#2f4a8a] text-sm md:text-base py-3 md:py-4">
                 {content.hero.secondaryButton.text}
               </a>
             </div>
-            <div className="grid grid-cols-3 gap-8 max-w-lg mx-auto animate-fadeInUp" style={{animationDelay: '0.4s'}}>
+            <div className="grid grid-cols-3 gap-3 md:gap-8 max-w-sm md:max-w-lg mx-auto animate-fadeInUp" style={{animationDelay: '0.4s'}}>
               {content.hero.stats.map((stat, index) => (
-                <div key={index} className="text-center glass-effect rounded-xl py-4 px-2 hover-lift">
-                  <div className="text-3xl md:text-4xl font-bold text-[#f0b840]">
+                <div key={index} className="text-center glass-effect rounded-lg md:rounded-xl py-3 md:py-4 px-1 md:px-2 hover-lift">
+                  <div className="text-2xl md:text-4xl font-bold text-[#f0b840]">
                     <AnimatedCounter value={stat.number} duration={2000} />
                   </div>
-                  <div className="text-sm text-white/80">{stat.label}</div>
+                  <div className="text-xs md:text-sm text-white/80 leading-tight">{stat.label}</div>
                 </div>
               ))}
             </div>
           </div>
         </div>
-        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
+        <div className="absolute bottom-0 left-0 right-0 h-20 md:h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
       </section>
 
       {/* Blog Preview Section */}

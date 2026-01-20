@@ -357,7 +357,7 @@
         "date": "2024-01-15",
         "category": "Web Design",
         "slug": "web-design-trends-2024",
-        "image": "/images/blog/design-trends.jpg",
+        "image": "/images/blog/image1.jpg",
         "content": "The web design landscape is constantly evolving, and staying ahead of the curve is essential for creating modern, engaging websites. Here are five trends that are dominating the industry in 2024."
       },
       {
@@ -366,7 +366,7 @@
         "date": "2024-01-10",
         "category": "Business",
         "slug": "business-needs-modern-website",
-        "image": "/images/blog/modern-website.jpg",
+        "image": "/images/blog/image2.jpg",
         "content": "Your website is your digital storefront, and in 2024, it's more important than ever to make a great first impression."
       },
       {
@@ -375,7 +375,7 @@
         "date": "2024-01-05",
         "category": "SEO",
         "slug": "seo-guide-beginners",
-        "image": "/images/blog/seo-guide.jpg",
+        "image": "/images/blog/image3.jpg",
         "content": "Search Engine Optimization (SEO) might seem complex, but understanding the basics can significantly improve your website's visibility."
       },
       {

@@ -78,14 +78,25 @@ export default function BlogPostPage() {
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <div className="relative h-64 md:h-96 rounded-2xl overflow-hidden mb-12 shadow-xl bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a]">
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center">
-                  <svg className="w-16 h-16 text-white/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                  </svg>
-                  <span className="text-white/50">Featured Image</span>
+              {post.image ? (
+                <Image 
+                  src={post.image} 
+                  alt={post.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, 896px"
+                  className="object-cover"
+                  priority
+                />
+              ) : (
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center">
+                    <svg className="w-16 h-16 text-white/30 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                    </svg>
+                    <span className="text-white/50">Featured Image</span>
+                  </div>
                 </div>
-              </div>
+              )}
             </div>
 
             <article className="prose prose-lg max-w-none">
@@ -118,11 +129,21 @@ export default function BlogPostPage() {
           <div className="grid md:grid-cols-3 gap-6 max-w-5xl mx-auto">
             {content.blog.posts.filter(p => p.slug !== slug).slice(0, 3).map((relatedPost, index) => (
               <Link key={index} href={`/blog/${relatedPost.slug}`} className="group">
-                <article className="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700">
-                  <div className="h-32 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center">
-                    <svg className="w-8 h-8 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                    </svg>
+                <article className="bg-white dark:bg-slate-900 rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 border border-gray-100 dark:border-slate-700 hover:-translate-y-1">
+                  <div className="aspect-[16/10] bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                    {relatedPost.image ? (
+                      <Image 
+                        src={relatedPost.image} 
+                        alt={relatedPost.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, 33vw"
+                        className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      />
+                    ) : (
+                      <svg className="w-8 h-8 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                      </svg>
+                    )}
                   </div>
                   <div className="p-4">
                     <span className="text-xs text-[#2f4a8a] dark:text-[#4a6cb3] font-semibold">{relatedPost.category}</span>

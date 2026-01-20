@@ -166,8 +166,13 @@ body {
 
 .testimonials-carousel {
   display: flex;
-  animation: scroll-testimonials 40s linear infinite;
   width: max-content;
+}
+
+@media (min-width: 768px) {
+  .testimonials-carousel {
+    animation: scroll-testimonials 40s linear infinite;
+  }
 }
 
 @keyframes scroll {

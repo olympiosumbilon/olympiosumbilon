@@ -132,8 +132,8 @@ export default function Home() {
               <ScrollReveal key={index} delay={100 + index * 100}>
                 <a href={`/blog/${post.slug}`} className="group block h-full">
                   <article className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full">
-                    <div className="aspect-[16/10] bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
-                      <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    <div className="aspect-[16/10] card-image-placeholder flex items-center justify-center relative overflow-hidden">
+                      <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                       {post.image ? (
                         <Image 
                           src={post.image} 
@@ -578,8 +578,8 @@ export default function Home() {
             {paginatedProjects.map((project, index) => (
               <ScrollReveal key={`${project.title}-${index}`} delay={150 + index * 100}>
                 <div className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700 h-full">
-                  <div className="aspect-[16/10] bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <div className="aspect-[16/10] card-image-placeholder flex items-center justify-center relative overflow-hidden">
+                    <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
                     {project.image ? (
                       <Image 
                         src={project.image} 

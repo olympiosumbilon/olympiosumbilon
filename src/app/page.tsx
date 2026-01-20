@@ -132,11 +132,21 @@ export default function Home() {
               <ScrollReveal key={index} delay={100 + index * 100}>
                 <a href={`/blog/${post.slug}`} className="group block h-full">
                   <article className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full">
-                    <div className="h-40 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                    <div className="aspect-[16/10] bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
                       <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                      <svg className="w-10 h-10 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                      </svg>
+                      {post.image ? (
+                        <Image 
+                          src={post.image} 
+                          alt={post.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                          className="object-cover group-hover:scale-110 transition-transform duration-500"
+                        />
+                      ) : (
+                        <svg className="w-10 h-10 text-white/30" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                      )}
                     </div>
                     <div className="p-6">
                       <div className="flex items-center gap-3 mb-3">
@@ -568,9 +578,19 @@ export default function Home() {
             {paginatedProjects.map((project, index) => (
               <ScrollReveal key={`${project.title}-${index}`} delay={150 + index * 100}>
                 <div className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700 h-full">
-                  <div className="h-48 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
+                  <div className="aspect-[16/10] bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
                     <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
+                    {project.image ? (
+                      <Image 
+                        src={project.image} 
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
+                        className="object-cover group-hover:scale-110 transition-transform duration-500"
+                      />
+                    ) : (
+                      <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
+                    )}
                   </div>
                   <div className="p-6">
                     <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-3 py-1 rounded-full text-sm font-medium mb-3">

@@ -3,6 +3,7 @@ import React, { useState, useMemo } from 'react'
 import Header from '@/components/Header'
 import content from '@/data/content.json'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const POSTS_PER_PAGE = 9
 
@@ -100,11 +101,21 @@ export default function BlogPage() {
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <article className="card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                      <div className="h-48 bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                      <div className="aspect-[16/10] bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
                         <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                        <svg className="w-12 h-12 text-white/30 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
+                        {post.image ? (
+                          <Image 
+                            src={post.image} 
+                            alt={post.title}
+                            fill
+                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 400px"
+                            className="object-cover group-hover:scale-110 transition-transform duration-500"
+                          />
+                        ) : (
+                          <svg className="w-12 h-12 text-white/30 group-hover:scale-110 transition-transform duration-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                          </svg>
+                        )}
                       </div>
                       <div className="p-6">
                         <div className="flex items-center gap-3 mb-3">

@@ -101,8 +101,8 @@ export default function BlogPage() {
                     style={{ animationDelay: `${index * 50}ms` }}
                   >
                     <article className="card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full hover:shadow-2xl hover:-translate-y-2 transition-all duration-300">
-                      <div className="aspect-[16/10] card-image-placeholder flex items-center justify-center relative overflow-hidden">
-                        <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10"></div>
+                      <div className="aspect-[16/10] bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] flex items-center justify-center relative overflow-hidden">
+                        <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                         {post.image ? (
                           <Image 
                             src={post.image} 

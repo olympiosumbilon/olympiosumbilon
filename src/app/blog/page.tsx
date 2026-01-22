@@ -44,12 +44,7 @@ export default function BlogPage() {
     <main className="min-h-screen bg-white dark:bg-slate-900 transition-colors duration-300">
       <Header />
 
-      <section className="pt-32 pb-20 text-white relative overflow-hidden h-[280px] md:h-[320px] flex items-center">
-        <div 
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-          style={{ backgroundImage: 'url(/images/section-bg.jpg)' }}
-        />
-        <div className="absolute inset-0 gradient-bg opacity-85"></div>
+      <section className="pt-32 pb-20 gradient-bg text-white relative overflow-hidden">
         <div className="absolute inset-0 bg-mesh opacity-20"></div>
         <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
         <div className="container mx-auto px-4 text-center relative z-10">

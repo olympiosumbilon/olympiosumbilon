@@ -175,8 +175,13 @@ export default function Home() {
       </section>
 
       {/* Tools Carousel Section */}
-      <section className="py-20 bg-gradient-to-b from-[#F8FAFC] dark:from-slate-800 to-white dark:to-slate-900 overflow-hidden transition-colors duration-300">
-        <div className="container mx-auto px-4">
+      <section className="py-20 relative overflow-hidden transition-colors duration-300">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/images/section-bg.jpg)' }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-[#F8FAFC]/90 dark:from-slate-800/90 to-white/90 dark:to-slate-900/90"></div>
+        <div className="container mx-auto px-4 relative z-10">
           <div className="text-center mb-12">
             <h2 className="section-title">{content.tools.title}</h2>
             <p className="section-subtitle">{content.tools.subtitle}</p>
@@ -184,9 +189,9 @@ export default function Home() {
         </div>
         
         {/* Desktop: Full-width auto-scrolling carousel */}
-        <div className="hidden md:block overflow-hidden relative">
-          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F8FAFC] dark:from-slate-800 to-transparent z-10"></div>
-          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white dark:from-slate-900 to-transparent z-10"></div>
+        <div className="hidden md:block overflow-hidden relative z-10">
+          <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-[#F8FAFC]/90 dark:from-slate-800/90 to-transparent z-10"></div>
+          <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-white/90 dark:from-slate-900/90 to-transparent z-10"></div>
           <div className="tools-carousel">
             {[...content.tools.items, ...content.tools.items, ...content.tools.items].map((tool, index) => (
               <div key={index} className="flex-shrink-0 mx-3">
@@ -203,7 +208,7 @@ export default function Home() {
         </div>
 
         {/* Mobile: Swipeable slider */}
-        <div className="md:hidden px-4">
+        <div className="md:hidden px-4 relative z-10">
           <MobileToolsSlider tools={content.tools.items} />
         </div>
       </section>

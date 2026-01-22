@@ -11,6 +11,7 @@ import AnimatedCounter from '@/components/AnimatedCounter'
 import ScrollReveal from '@/components/ScrollReveal'
 import MobileTestimonialSlider from '@/components/MobileTestimonialSlider'
 import MobileToolsSlider from '@/components/MobileToolsSlider'
+import PortfolioFlipCard from '@/components/PortfolioFlipCard'
 import content from '@/data/content.json'
 import Image from 'next/image'
 import heroImage from "@/images/assets/modern_dark_website_mockup_laptop.png"
@@ -585,29 +586,7 @@ export default function Home() {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {paginatedProjects.map((project, index) => (
               <ScrollReveal key={`${project.title}-${index}`} delay={150 + index * 100}>
-                <div className="interactive-card card overflow-hidden p-0 group border border-gray-100 dark:border-slate-700 h-full">
-                  <div className="aspect-[16/10] bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] flex items-center justify-center relative overflow-hidden">
-                    <div className="absolute inset-0 bg-[#e8a030]/20 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                    {project.image ? (
-                      <Image 
-                        src={project.image} 
-                        alt={project.title}
-                        fill
-                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 400px"
-                        className="object-cover group-hover:scale-110 transition-transform duration-500"
-                      />
-                    ) : (
-                      <span className="text-white/50 text-sm group-hover:scale-110 transition-transform duration-300">Project Image</span>
-                    )}
-                  </div>
-                  <div className="p-6">
-                    <span className="inline-block bg-[#2f4a8a]/10 dark:bg-[#4a6cb3]/20 text-[#2f4a8a] dark:text-[#4a6cb3] px-3 py-1 rounded-full text-sm font-medium mb-3">
-                      {project.category}
-                    </span>
-                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">{project.title}</h3>
-                    <p className="text-gray-600 dark:text-gray-400">{project.description}</p>
-                  </div>
-                </div>
+                <PortfolioFlipCard project={project} />
               </ScrollReveal>
             ))}
           </div>

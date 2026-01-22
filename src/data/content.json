@@ -259,37 +259,67 @@
         "title": "E-Commerce Dashboard",
         "category": "UI/UX",
         "description": "Modern dashboard design for an online retail platform",
-        "image": "/images/projects/project1.png"
+        "image": "/images/projects/project1.png",
+        "client": "RetailMax Inc.",
+        "year": "2024",
+        "technologies": ["Figma", "Adobe XD", "Prototyping"],
+        "features": ["Real-time analytics", "Inventory management", "Order tracking", "Customer insights"],
+        "url": "#"
       },
       {
         "title": "SaaS Landing Page",
         "category": "Framer",
         "description": "High-converting landing page with smooth animations",
-        "image": "/images/projects/project2.png"
+        "image": "/images/projects/project2.png",
+        "client": "CloudSync Tech",
+        "year": "2024",
+        "technologies": ["Framer", "React", "GSAP"],
+        "features": ["Micro-interactions", "A/B testing ready", "Lead capture forms", "Mobile optimized"],
+        "url": "#"
       },
       {
         "title": "Business Portfolio",
         "category": "WordPress",
         "description": "Professional portfolio site for a consulting firm",
-        "image": "/images/projects/project1.png"
+        "image": "/images/projects/project1.png",
+        "client": "Apex Consulting",
+        "year": "2023",
+        "technologies": ["WordPress", "Elementor", "Custom CSS"],
+        "features": ["Case studies showcase", "Team profiles", "Blog integration", "Contact forms"],
+        "url": "#"
       },
       {
         "title": "Marketing Funnel",
         "category": "GoHighLevel",
         "description": "Complete sales funnel with email automation",
-        "image": "/images/projects/project2.png"
+        "image": "/images/projects/project2.png",
+        "client": "GrowthLab Agency",
+        "year": "2024",
+        "technologies": ["GoHighLevel", "Zapier", "Stripe"],
+        "features": ["Email sequences", "SMS automation", "Payment integration", "Lead scoring"],
+        "url": "#"
       },
       {
         "title": "Task Management App",
         "category": "Programming",
         "description": "Full-stack application with React and Node.js",
-        "image": "/images/projects/project1.png"
+        "image": "/images/projects/project1.png",
+        "client": "Productivity Plus",
+        "year": "2024",
+        "technologies": ["React", "Node.js", "MongoDB", "Socket.io"],
+        "features": ["Real-time collaboration", "Kanban boards", "Time tracking", "Team chat"],
+        "url": "#"
       },
       {
         "title": "Mobile App UI",
         "category": "UI/UX",
         "description": "Clean and intuitive mobile application design",
-        "image": "/images/projects/project2.png"
+        "image": "/images/projects/project2.png",
+        "client": "FitTrack Health",
+        "year": "2023",
+        "technologies": ["Figma", "Principle", "Lottie"],
+        "features": ["Workout tracking", "Nutrition logging", "Progress charts", "Social sharing"],
+        "url": "#"
       }
     ]
   },

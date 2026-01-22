@@ -810,7 +810,12 @@ export default function Home() {
       </section>
 
       {/* CTA / Contact Section */}
-      <section id="contact" className="section-padding gradient-bg text-white relative overflow-hidden">
+      <section id="contact" className="section-padding text-white relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: 'url(/images/section-bg.jpg)' }}
+        />
+        <div className="absolute inset-0 gradient-bg opacity-85"></div>
         <div className="absolute inset-0 bg-mesh opacity-20"></div>
         <div className="absolute top-10 right-10 w-64 h-64 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
         <div className="absolute bottom-10 left-10 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>

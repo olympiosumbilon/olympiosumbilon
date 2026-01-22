@@ -262,8 +262,9 @@
         "image": "/images/projects/project1.png",
         "client": "RetailMax Inc.",
         "year": "2024",
-        "technologies": ["Figma", "Adobe XD", "Prototyping"],
-        "features": ["Real-time analytics", "Inventory management", "Order tracking", "Customer insights"],
+        "technologies": ["Figma", "Adobe XD", "Prototyping", "User Research", "Wireframing"],
+        "features": ["Real-time analytics dashboard with live data visualization", "Comprehensive inventory management system", "Advanced order tracking with notifications", "Customer insights and behavior analytics", "Multi-vendor support and management", "Responsive design for all devices", "Dark mode support", "Export reports to PDF/Excel"],
+        "fullDescription": "This comprehensive e-commerce dashboard was designed to revolutionize how RetailMax manages their online retail operations. The project involved extensive user research, competitive analysis, and iterative design processes to create an intuitive interface that simplifies complex data management tasks.",
         "url": "#"
       },
       {

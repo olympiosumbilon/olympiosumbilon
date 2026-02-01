@@ -13,9 +13,9 @@
     "ctaButton": { "text": "Get Started", "href": "#contact" }
   },
   "hero": {
-    "tagline": "Web Design & Development Expert",
-    "title": "Transform Your Ideas Into Stunning, High-Converting Websites",
-    "subtitle": "I help businesses and entrepreneurs build professional websites that attract customers, build trust, and drive results. Let's turn your vision into reality.",
+    "tagline": "Full-Stack Web & Marketing Automation Specialist",
+    "title": "Transform Your Ideas Into Stunning, High-Converting Websites Powered by Smart Automation",
+    "subtitle": "I help businesses and entrepreneurs build professional websites and automate processes 24/7 — from lead capture to conversion. Let’s turn your vision into reality.",
     "ctaButton": { "text": "Start Your Project", "href": "#contact" },
     "secondaryButton": { "text": "View My Work", "href": "#portfolio" },
     "image": "/src/images/assets/modern_dark_website_mockup_laptop.png",
@@ -253,7 +253,7 @@
   "portfolio": {
     "title": "My Work",
     "subtitle": "A showcase of projects across different platforms and technologies",
-    "categories": ["All", "UI/UX", "Framer", "WordPress", "GoHighLevel", "Programming"],
+    "categories": ["All", "UI/UX", "Framer", "WordPress", "GoHighLevel", "Programming","AI Automation"],
     "projects": [
       {
         "title": "E-Commerce Dashboard",
@@ -290,6 +290,39 @@
         "url": "#"
       },
       {
+        "title": "Massage & SPA Landing Page",
+        "category": "WordPress",
+        "description": "Professional website for SPA business",
+        "image": "/images/projects/project1.png",
+        "client": "SPA Services",
+        "year": "2026",
+        "technologies": ["WordPress", "Elementor", "Custom CSS"],
+        "features": ["Case studies showcase", "Team profiles", "Blog integration", "Contact forms"],
+        "url": "#"
+      },
+      {
+        "title": "Dental Care Page",
+        "category": "WordPress",
+        "description": "Professional website for Dental Clinic",
+        "image": "/images/projects/project1.png",
+        "client": "DentalCare Services",
+        "year": "2026",
+        "technologies": ["WordPress", "Elementor", "Custom CSS"],
+        "features": ["Case studies showcase", "Team profiles", "Blog integration", "Contact forms"],
+        "url": "#"
+      },
+      {
+        "title": "Get Fit in BeeFit Gym",
+        "category": "WordPress",
+        "description": "Ready to get BeeStrong in BeeFit",
+        "image": "/images/projects/project1.png",
+        "client": "BeeFit Gym",
+        "year": "2026",
+        "technologies": ["WordPress", "Elementor", "Custom CSS"],
+        "features": ["Case studies showcase", "Team profiles", "Blog integration", "Contact forms"],
+        "url": "#"
+      },
+      {
         "title": "Marketing Funnel",
         "category": "GoHighLevel",
         "description": "Complete sales funnel with email automation",
@@ -312,8 +345,41 @@
         "url": "#"
       },
       {
+        "title": "PyowNancial Tracker App",
+        "category": "Programming",
+        "description": "A Financial Tracker with flutter, Supabase and n8n automation",
+        "image": "/images/projects/project1.png",
+        "client": "Personal App",
+        "year": "2024",
+        "technologies": ["flutter", "PostGrease", "MongoDB", "Socket.io"],
+        "features": ["Real-time collaboration", "Kanban boards", "Time tracking", "Team chat"],
+        "url": "#"
+      },
+      {
+        "title": "Online Appointment System",
+        "category": "Programming",
+        "description": "A Web Development with MVC Laravel",
+        "image": "/images/projects/project1.png",
+        "client": "MSU-MSAT",
+        "year": "2024",
+        "technologies": ["Botstrap", "JavaScipt", "MySQL", "Laravel"],
+        "features": ["Real-time Booking", "Appointment Calendar", "Payment tracking", "School Announcement"],
+        "url": "#"
+      },
+      {
         "title": "Mobile App UI",
         "category": "UI/UX",
+        "description": "Clean and intuitive mobile application design",
+        "image": "/images/projects/project2.png",
+        "client": "FitTrack Health",
+        "year": "2023",
+        "technologies": ["Figma", "Principle", "Lottie"],
+        "features": ["Workout tracking", "Nutrition logging", "Progress charts", "Social sharing"],
+        "url": "#"
+      },
+      {
+        "title": "Hiring Process Scanner",
+        "category": "AI Automation",
         "description": "Clean and intuitive mobile application design",
         "image": "/images/projects/project2.png",
         "client": "FitTrack Health",

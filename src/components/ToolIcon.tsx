@@ -1,6 +1,6 @@
 'use client'
 import React from 'react'
-
+import GoHighLevelLogo from "@/images/assets/go-high-level-logo.png";
 interface ToolIconProps {
   name: string
   className?: string
@@ -48,9 +48,35 @@ const ToolIcon = ({ name, className = "w-10 h-10" }: ToolIconProps) => {
       </svg>
     ),
     "GoHighLevel": (
-      <svg className={className} viewBox="0 0 24 24" fill="#FF6B35">
-        <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"/>
-      </svg>
+   <svg
+    className={className}
+    viewBox="0 0 300 220"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <polygon
+      points="40,120 40,60 25,60 60,30 95,60 80,60 80,120"
+      fill="#F4C430"
+    />
+    <polygon
+      points="90,130 90,85 75,85 110,55 145,85 130,85 130,130"
+      fill="#2AA8FF"
+    />
+    <polygon
+      points="140,120 140,45 125,45 160,15 195,45 180,45 180,120"
+      fill="#4CAF50"
+    />
+    <text
+      x="110"
+      y="190"
+      textAnchor="middle"
+      fontSize="36"
+      fontWeight="500"
+      fill="#9CA3AF"
+      fontFamily="Inter, Arial, sans-serif"
+    >
+      highlevel
+    </text>
+  </svg>
     ),
     "Node.js": (
       <svg className={className} viewBox="0 0 24 24" fill="#339933">
@@ -71,6 +97,81 @@ const ToolIcon = ({ name, className = "w-10 h-10" }: ToolIconProps) => {
       <svg className={className} viewBox="0 0 24 24" fill="#31A8FF">
         <path d="M9.85 8.42c-.37-.15-.77-.21-1.18-.2-.26 0-.49 0-.68.01-.2-.01-.34 0-.41.01v3.36c.14.01.27.02.39.02h.53c.39 0 .78-.06 1.15-.18.32-.09.6-.28.82-.53.21-.25.31-.59.31-1.03.01-.31-.07-.6-.23-.85-.16-.25-.39-.45-.66-.57l-.04-.04zM19.75.3H4.25C1.9.3 0 2.2 0 4.55v14.899c0 2.35 1.9 4.25 4.25 4.25h15.5c2.35 0 4.25-1.9 4.25-4.25V4.55C24 2.2 22.1.3 19.75.3zm-7.391 11.65c-.399.56-.959.97-1.559 1.23-.6.27-1.32.4-2.16.4-.38 0-.6 0-.82-.01-.21 0-.6-.01-.71-.01v4.01c.02.09-.05.17-.14.19H5.09c-.09.01-.16-.05-.18-.14V6.59c-.01-.08.05-.15.13-.17.22-.03.67-.07 1.17-.1.55-.04 1.1-.06 1.59-.06 1.08 0 1.9.16 2.51.49.53.28.97.69 1.29 1.19.3.48.46 1.05.46 1.73.01.7-.18 1.39-.53 2.01v-.03zm8.36 5.67c-.01.07-.07.14-.14.15h-5.25c-.09.01-.16-.05-.18-.14V10.1c-.01-.08.05-.15.13-.17h5.28c.08-.01.15.05.17.13v.72c.01.07-.04.15-.12.18h-4.28v2.61h3.94c.08-.01.15.05.17.13v.73c.01.09-.05.16-.14.18h-3.97v2.84h4.28c.08-.01.15.05.17.13v.72l-.06.35z"/>
       </svg>
+    ),
+    "ASP CORE .NET": (
+  <svg
+    className={className}
+    viewBox="0 0 256 256"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <circle cx="128" cy="128" r="128" fill="#512BD4" />
+    <text
+      x="128"
+      y="115"
+      textAnchor="middle"
+      fontSize="72"
+      fontWeight="600"
+      fill="#FFFFFF"
+      fontFamily="Inter, Arial, sans-serif"
+    >
+      .NET
+    </text>
+    <text
+      x="128"
+      y="165"
+      textAnchor="middle"
+      fontSize="44"
+      fontWeight="400"
+      fill="#E5E7EB"
+      fontFamily="Inter, Arial, sans-serif"
+    >
+      Core
+    </text>
+  </svg>
+    ),
+    "n8n": (
+  <svg
+    className={className}
+    viewBox="0 0 256 256"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+
+    <rect width="256" height="256" fill="#EA4B71" />
+
+    <path
+      d="
+        M64 128
+        a20 20 0 1 0 40 0
+        a20 20 0 1 0 -40 0
+
+        M108 128
+        h40
+
+        M148 128
+        a20 20 0 1 0 40 0
+        a20 20 0 1 0 -40 0
+
+        M168 108
+        l24 -24
+
+        M168 148
+        l24 24
+
+        M192 80
+        a20 20 0 1 0 40 0
+        a20 20 0 1 0 -40 0
+
+        M192 176
+        a20 20 0 1 0 40 0
+        a20 20 0 1 0 -40 0
+      "
+      fill="none"
+      stroke="#FFFFFF"
+      strokeWidth="12"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    />
+  </svg>
     )
   }
 

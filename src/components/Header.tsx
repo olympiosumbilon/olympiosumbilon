@@ -13,7 +13,9 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
       
-      const sections = ['services', 'portfolio', 'pricing', 'testimonials', 'blog', 'contact']
+      // const sections = ['services', 'portfolio', 'pricing', 'testimonials', 'blog', 'contact']
+     
+      const sections = ['services', 'portfolio', 'pricing', 'blog','about','contact']
       const scrollPosition = window.scrollY + 100
 
       if (scrollPosition < 300) {

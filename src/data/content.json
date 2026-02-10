@@ -7,7 +7,7 @@
       { "name": "Blog", "href": "/blog" },
       { "name": "Services", "href": "#services" },
       { "name": "Portfolio", "href": "#portfolio" },
-      { "name": "Testimonials", "href": "#testimonials" },
+      { "name": "About", "href": "#about" },
       { "name": "Contact", "href": "#contact" }
     ],
     "ctaButton": { "text": "Get Started", "href": "#contact" }
@@ -16,7 +16,7 @@
     "tagline": "Full-Stack Web & Marketing Automation Specialist",
     "title": "Transform Your Ideas Into Stunning, High-Converting Websites Powered by Smart Automation",
     "subtitle": "I help businesses and entrepreneurs build professional websites and automate processes 24/7 — from lead capture to conversion. Let’s turn your vision into reality.",
-    "ctaButton": { "text": "Start Your Project", "href": "#contact" },
+    "ctaButton": { "text": "Book A Free Consultation", "href": "#contact" },
     "secondaryButton": { "text": "View My Work", "href": "#portfolio" },
     "image": "/src/images/assets/modern_dark_website_mockup_laptop.png",
     "stats": [
@@ -128,13 +128,13 @@
     "tagline": "Meet the Founder",
     "title": "Hi, I'm Olympio",
     "subtitle": "The person behind Pyow Digitals",
-    "description": "I'm a passionate web designer and developer who believes every business deserves a stunning online presence. With over 3 years of experience, I've helped dozens of entrepreneurs and small businesses transform their digital footprint and attract more customers.",
-    "story": "I started Pyow Digitals because I saw too many talented business owners struggling with outdated websites and missed opportunities. My mission is simple: to give you a website that works as hard as you do.",
+    "description": "I’m a Web Developer with over 2 years of experience building scalable web applications using ASP.NET Core, APIs, SQL, and modern front-end technologies. I help businesses create reliable, high-performance websites and systems and I’m expanding my expertise into marketing automation and funnel design to build platforms that don’t just function, but convert and follow up with customers automatically.",
+    "story": "I started Pyow Digitals after seeing many businesses invest in websites that looked good but failed to generate leads or follow up with customers. My goal is to bridge the gap between strong software development and modern digital marketing by building websites, funnels, and automated systems that work 24/7 to attract, engage, and convert customers.",
     "highlights": [
-      "50+ successful projects delivered",
-      "Clients across multiple industries",
-      "Full-stack expertise from design to deployment",
-      "Dedicated to your long-term success"
+      "2+ years of real-world web development experience",
+      "Strong backend foundation with ASP.NET Core, APIs, and SQL",
+      "Blending software engineering with funnel design and marketing automation",
+      "Focused on building websites and systems that grow with your business"
     ],
     "image": "/images/me.jpg"
   },

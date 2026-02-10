@@ -102,7 +102,7 @@ export default function Home() {
                 {content.hero.secondaryButton.text}
               </a>
             </div>
-            <div className="grid grid-cols-3 gap-3 md:gap-8 max-w-sm md:max-w-lg mx-auto animate-fadeInUp" style={{animationDelay: '0.4s'}}>
+            {/* <div className="grid grid-cols-3 gap-3 md:gap-8 max-w-sm md:max-w-lg mx-auto animate-fadeInUp" style={{animationDelay: '0.4s'}}>
               {content.hero.stats.map((stat, index) => (
                 <div key={index} className="text-center glass-effect rounded-lg md:rounded-xl py-3 md:py-4 px-1 md:px-2 hover-lift">
                   <div className="text-2xl md:text-4xl font-bold text-[#f0b840]">
@@ -111,7 +111,7 @@ export default function Home() {
                   <div className="text-xs md:text-sm text-white/80 leading-tight">{stat.label}</div>
                 </div>
               ))}
-            </div>
+            </div> */}
           </div>
         </div>
         <div className="absolute bottom-0 left-0 right-0 h-20 md:h-32 bg-gradient-to-t from-white dark:from-slate-900 to-transparent"></div>
@@ -728,15 +728,15 @@ export default function Home() {
       </section>
 
       {/* Testimonials Section */}
-      <section id="testimonials" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
+      {/* <section id="testimonials" className="section-padding bg-white dark:bg-slate-900 transition-colors duration-300 overflow-hidden">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className="section-title">{content.testimonials.title}</h2>
             <p className="section-subtitle">{content.testimonials.subtitle}</p>
-          </div>
+          </div> */}
           
           {/* Desktop: Auto-scrolling carousel */}
-          <div className="hidden md:block relative max-w-6xl mx-auto">
+          {/* <div className="hidden md:block relative max-w-6xl mx-auto">
             <div className="testimonials-carousel">
               {[...content.testimonials.items, ...content.testimonials.items].map((testimonial, index) => (
                 <div key={index} className="flex-shrink-0 w-[400px] px-4">
@@ -764,14 +764,14 @@ export default function Home() {
                 </div>
               ))}
             </div>
-          </div>
+          </div> */}
 
           {/* Mobile: Auto-sliding + Swipeable slider */}
-          <div className="md:hidden">
+          {/* <div className="md:hidden">
             <MobileTestimonialSlider testimonials={content.testimonials.items} />
           </div>
         </div>
-      </section>
+      </section> */}
 
       {/* FAQ Section */}
       <section id="faq" className="section-padding bg-[#F8FAFC] dark:bg-slate-800 transition-colors duration-300">
@@ -854,7 +854,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li><a href="#services" className="text-gray-400 hover:text-[#e8a030] transition-colors">Services</a></li>
                 <li><a href="#portfolio" className="text-gray-400 hover:text-[#e8a030] transition-colors">Portfolio</a></li>
-                <li><a href="#pricing" className="text-gray-400 hover:text-[#e8a030] transition-colors">Pricing</a></li>
+                {/* <li><a href="#pricing" className="text-gray-400 hover:text-[#e8a030] transition-colors">Pricing</a></li> */}
                 <li><a href="/blog" className="text-gray-400 hover:text-[#e8a030] transition-colors">Blog</a></li>
               </ul>
             </div>

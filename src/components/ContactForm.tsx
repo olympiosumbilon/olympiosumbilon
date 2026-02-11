@@ -54,7 +54,7 @@ const ContactForm = () => {
           onChange={handleChange}
           required
           className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors"
-          placeholder="Your name"
+          placeholder="Fullname"
         />
       </div>
 

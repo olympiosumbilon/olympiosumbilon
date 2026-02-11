@@ -278,7 +278,7 @@
         "year": "2025",
         "technologies": ["HTML", "CSS", "JavaScript", "n8n API Integration"],
         "features": ["Upload and process candidate data", "Automated candidate screening", "Email notifications", "Progress tracking", "Data analytics"],
-        "url": "#"
+        "url": "https://www.linkedin.com/posts/olympiosumbilonjr_%F0%9D%90%87%F0%9D%90%91-%F0%9D%90%84%F0%9D%90%B1%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%F0%9D%90%AD-%F0%9D%90%82%F0%9D%90%95-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%A8%F0%9D%90%9C%F0%9D%90%9E%F0%9D%90%AC%F0%9D%90%AC%F0%9D%90%A8%F0%9D%90%AB-activity-7390397980761264128-OzmN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFpoMC0BDU7f9OlkGGnJNgcIjdzgdFuoTZY"
       },
       {
         "title": "HR Hiring Automation",
@@ -289,6 +289,17 @@
         "year": "2025",
         "technologies": ["n8n", "Gmail", "Google Sheets", "ChatGPT API"],
         "features": ["Automated candidate screening", "Email notifications", "Progress tracking", "Data analytics"],
+        "url": "https://www.linkedin.com/posts/olympiosumbilonjr_%F0%9D%90%87%F0%9D%90%91-%F0%9D%90%84%F0%9D%90%B1%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%F0%9D%90%AD-%F0%9D%90%82%F0%9D%90%95-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%A8%F0%9D%90%9C%F0%9D%90%9E%F0%9D%90%AC%F0%9D%90%AC%F0%9D%90%A8%F0%9D%90%AB-activity-7390397980761264128-OzmN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFpoMC0BDU7f9OlkGGnJNgcIjdzgdFuoTZY"
+      },
+      {
+        "title": "Client Onboarding with Multiple Agents",
+        "category": "AI Automation",
+        "description": "Automated client onboarding process with multiple AI agents that automatically send emails, such as welcome email and TOS contract",
+        "image": "/images/projectsClient_Onboarding_with_Multiple_Agents.png",
+        "client": "Personal",
+        "year": "2025",
+        "technologies": ["n8n", "Gmail", "Grock", "ChatGPT & Groq API"],
+        "features": ["Automated client onboarding", "Email notifications"],
         "url": "#"
       },
         {
@@ -363,113 +374,49 @@
     "subtitle": "Tips, tutorials, and thoughts on web design and development",
     "posts": [
       {
-        "title": "5 Web Design Trends to Watch in 2024",
-        "excerpt": "Discover the latest design trends that are shaping the future of the web and how you can implement them in your projects.",
-        "date": "2024-01-15",
-        "category": "Web Design",
-        "slug": "web-design-trends-2024",
-        "image": "/images/blog/image1.jpg",
-        "content": "The web design landscape is constantly evolving, and staying ahead of the curve is essential for creating modern, engaging websites. Here are five trends that are dominating the industry in 2024."
-      },
-      {
-        "title": "Why Your Business Needs a Modern Website",
-        "excerpt": "In today's digital age, your website is often the first impression potential customers have of your business.",
-        "date": "2024-01-10",
-        "category": "Business",
-        "slug": "business-needs-modern-website",
-        "image": "/images/blog/image2.jpg",
-        "content": "Your website is your digital storefront, and in 2024, it's more important than ever to make a great first impression."
-      },
-      {
-        "title": "The Complete Guide to SEO for Beginners",
-        "excerpt": "Learn the fundamentals of search engine optimization and start driving organic traffic to your website.",
-        "date": "2024-01-05",
-        "category": "SEO",
-        "slug": "seo-guide-beginners",
-        "image": "/images/blog/image3.jpg",
-        "content": "Search Engine Optimization (SEO) might seem complex, but understanding the basics can significantly improve your website's visibility."
-      },
-      {
-        "title": "Building High-Converting Sales Funnels",
-        "excerpt": "Learn how to create effective sales funnels that guide your visitors from awareness to purchase.",
-        "date": "2024-01-20",
-        "category": "Funnel Design",
-        "slug": "high-converting-sales-funnels",
-        "image": "/images/blog/funnels.jpg",
-        "content": "A well-designed sales funnel can dramatically increase your conversion rates and grow your business."
-      },
-      {
-        "title": "Social Media Marketing Strategies for 2024",
-        "excerpt": "Discover the most effective social media strategies to grow your brand and engage with your audience.",
-        "date": "2024-01-18",
-        "category": "Social Media Marketing",
-        "slug": "social-media-strategies-2024",
-        "image": "/images/blog/social-media.jpg",
-        "content": "Social media continues to evolve, and staying up-to-date with the latest trends is essential for success."
-      },
-      {
-        "title": "Introduction to React for Web Developers",
-        "excerpt": "Get started with React and learn how to build modern, interactive web applications.",
-        "date": "2024-01-12",
-        "category": "Programming",
-        "slug": "intro-to-react",
-        "image": "/images/blog/react.jpg",
-        "content": "React has become one of the most popular JavaScript libraries for building user interfaces."
-      },
-      {
-        "title": "Color Theory in Web Design",
-        "excerpt": "Understanding color psychology and how to use it effectively in your website designs.",
-        "date": "2024-01-08",
-        "category": "Web Design",
-        "slug": "color-theory-web-design",
-        "image": "/images/blog/colors.jpg",
-        "content": "Colors play a crucial role in how users perceive and interact with your website."
-      },
-      {
-        "title": "Landing Page Optimization Tips",
-        "excerpt": "Learn proven techniques to optimize your landing pages for maximum conversions.",
-        "date": "2024-01-25",
-        "category": "Funnel Design",
-        "slug": "landing-page-optimization",
-        "image": "/images/blog/landing-page.jpg",
-        "content": "Your landing page is often the first point of contact with potential customers."
-      },
-      {
-        "title": "Instagram Marketing for Small Businesses",
-        "excerpt": "How to leverage Instagram to grow your small business and connect with customers.",
-        "date": "2024-01-22",
-        "category": "Social Media Marketing",
-        "slug": "instagram-small-business",
-        "image": "/images/blog/instagram.jpg",
-        "content": "Instagram offers powerful tools for small businesses to reach and engage their target audience."
-      },
-      {
-        "title": "JavaScript Best Practices in 2024",
-        "excerpt": "Modern JavaScript patterns and practices every developer should know.",
-        "date": "2024-01-03",
-        "category": "Programming",
-        "slug": "javascript-best-practices-2024",
-        "image": "/images/blog/javascript.jpg",
-        "content": "JavaScript continues to evolve with new features and best practices emerging each year."
-      },
-      {
-        "title": "Local SEO: Getting Found in Your Area",
-        "excerpt": "Strategies to improve your local search rankings and attract nearby customers.",
-        "date": "2024-01-28",
-        "category": "SEO",
-        "slug": "local-seo-guide",
-        "image": "/images/blog/local-seo.jpg",
-        "content": "Local SEO is essential for businesses that serve customers in specific geographic areas."
-      },
-      {
-        "title": "Creating Effective Email Funnels",
-        "excerpt": "How to build email sequences that nurture leads and drive conversions.",
-        "date": "2024-02-01",
-        "category": "Funnel Design",
-        "slug": "email-funnel-guide",
-        "image": "/images/blog/email-funnel.jpg",
-        "content": "Email funnels are one of the most effective ways to convert leads into paying customers."
-      }
+        "title": "4 Practical Lessons From Building Accounting Systems and Learning Marketing Automation",
+        "excerpt": "What building accounting systems with ASP.NET Core taught me about funnels, automation, branding, and building digital systems that actually convert.",
+        "date": "2026-02-11",
+        "category": "Web Development",
+        "slug": "aspnet-core-accounting-systems-marketing-automation-lessons",
+        "image": "/images/blog/4_Practical_Lessons.png",
+        "content": "Building accounting systems with ASP.NET Core and DevExtreme taught me one thing: logic wins. But recently, I’ve been diving into marketing automation, funnels, web design, and branding—and the biggest realization is this: marketing is also a system.\n\nHere are four practical lessons I’m learning.\n\n1. Stop Building Features. Start Building Flows.\nWhen building accounting systems, we don’t randomly add buttons. We design user roles, validation rules, workflows, and reports. Marketing works the same way. A funnel is simply Input → Process → Output. Visitor → Nurture → Conversion. If your website has no clear lead capture and no automated follow-up, you don’t have marketing. You have a brochure.\n\n2. Good Code Does Not Equal Good Experience.\nASP.NET Core gives structure. DevExtreme gives powerful UI components. But users don’t care about your architecture. They care about trust, clarity, and ease. Design and branding fill the gap between functionality and perception. A system can work perfectly and still fail if it doesn’t communicate value clearly.\n\n3. Automation Is Backend Logic for Marketing.\nIn development, we automate validation, calculations, and reporting. In marketing, we automate emails, segmentation, and lead scoring. It’s the same logic applied to user behavior. Triggers, conditions, and workflows power both systems. If you understand event-driven logic, you already understand marketing automation.\n\n4. Branding Is Consistency at Scale.\nAccounting systems require consistent rules and structure. Branding works the same way. Consistent voice, visuals, and messaging build trust. Branding is not decoration—it’s expectation management.\n\nDevelopers who understand systems and marketing have leverage. Because they don’t just build websites—they build digital machines that attract, convert, and retain."
+      },  {
+    "title": "Stop Building Features. Start Building Flows.",
+    "excerpt": "Why most developer websites fail—and how thinking in systems and funnels changes everything.",
+    "date": "2026-02-09",
+    "category": "Web Development",
+    "slug": "stop-building-features-start-building-flows",
+    "image": "/images/blog/stop_building_features.png",
+    "content": "When building accounting systems using ASP.NET Core and DevExtreme, we don’t randomly add buttons. We define roles, validation rules, workflows, and reports. Everything follows a process.\n\nBut when it comes to websites? Many developers forget that logic.\n\nA website without a funnel is just a brochure.\n\nMarketing follows the same structure as backend development:\nInput → Process → Output.\nVisitor → Nurture → Conversion.\n\nIf someone lands on your website, what happens next?\nDo they subscribe?\nDo they receive automated follow-up emails?\nDo they move through a structured journey?\n\nIf the answer is “they can contact us,” that’s not a system.\n\nDevelopers are natural system builders. When you apply that same thinking to funnels and automation, your website becomes a growth machine—not just a portfolio."
+  },
+  {
+    "title": "Good Code Doesn’t Mean Good Experience",
+    "excerpt": "Why clean architecture is not enough—and how design and branding shape user trust.",
+    "date": "2026-02-08",
+    "category": "Web Design",
+    "slug": "good-code-does-not-mean-good-experience",
+    "image": "/images/blog/Good_Code.png",
+    "content": "ASP.NET Core provides structure. DevExtreme provides powerful UI components. As developers, we focus on performance, architecture, and clean code.\n\nBut users don’t see your repository.\nThey see experience.\n\nDoes the system feel trustworthy?\nIs it clear?\nIs it simple to use?\n\nA perfectly functioning accounting system can still fail if the interface feels outdated or confusing.\n\nDesign is not decoration.\nBranding is not colors.\n\nThey are perception management.\n\nIf users hesitate, feel confused, or doubt credibility, the problem is not your backend. It’s your experience layer.\n\nStrong systems require both logic and presentation."
+  },
+  {
+    "title": "Marketing Automation Is Just Backend Logic for Humans",
+    "excerpt": "If you understand triggers, conditions, and workflows, you already understand marketing automation.",
+    "date": "2026-01-25",
+    "category": "Marketing Automation",
+    "slug": "marketing-automation-backend-logic-for-humans",
+    "image": "/images/blog/marketing_automation.png",
+    "content": "In development, we automate calculations, validation, and reporting.\n\nIn marketing, we automate emails, segmentation, onboarding, and follow-ups.\n\nThe structure is identical.\n\nUser registers → trigger welcome email.\nUser inactive for 3 days → send reminder.\nUser clicks link → move to new segment.\n\nThat’s event-driven architecture.\n\nDevelopers often think marketing is purely creative. It’s not.\nIt’s behavioral system design.\n\nFunnels are user flows.\nAutomation is workflow logic.\nSegmentation is conditional filtering.\n\nIf you already build accounting systems, you already understand structured logic. Marketing automation is simply applying that logic to user behavior."
+  },
+  {
+    "title": "Branding Is Consistency at Scale",
+    "excerpt": "Why branding works the same way as validation rules in accounting systems.",
+    "date": "2026-01-23",
+    "category": "Branding",
+    "slug": "branding-is-consistency-at-scale",
+    "image": "/images/blog/branding_consestency.png",
+    "content": "In accounting systems, consistency is critical. The same rules apply everywhere. Validation logic doesn’t randomly change across modules.\n\nBranding works the same way.\n\nConsistent messaging.\nConsistent visuals.\nConsistent tone.\n\nIf your website sounds corporate, your emails sound casual, and your social media sounds aggressive, users get confused.\n\nConfusion reduces trust.\n\nBranding is not about looking modern.\nIt’s about building expectation.\n\nWhen people see your name, they should know what to expect.\n\nConsistency builds trust. Trust builds conversions."
+  }
     ]
   },
   "contact": {

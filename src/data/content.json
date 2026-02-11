@@ -252,7 +252,7 @@
   "portfolio": {
     "title": "My Work",
     "subtitle": "A showcase of projects across different platforms and technologies",
-    "categories": ["All","Programming","AI Automation","Branding","Go High Level"],
+    "categories": ["All","Programming","AI Automation","Branding","Web Design"],
     "projects": [
       {
         "title": "Todo Management System (ASP.NET & React)",
@@ -295,7 +295,7 @@
         "title": "Client Onboarding with Multiple Agents",
         "category": "AI Automation",
         "description": "Automated client onboarding process with multiple AI agents that automatically send emails, such as welcome email and TOS contract",
-        "image": "/images/projectsClient_Onboarding_with_Multiple_Agents.png",
+        "image": "/images/projects/Client_Onboarding_with_Multiple_Agents.png",
         "client": "Personal",
         "year": "2025",
         "technologies": ["n8n", "Gmail", "Grock", "ChatGPT & Groq API"],

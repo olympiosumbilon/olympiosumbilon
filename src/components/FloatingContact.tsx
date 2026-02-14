@@ -14,7 +14,7 @@ const FloatingContact = () => {
       <div className={`flex flex-col gap-3 mb-4 transition-all duration-300 transform ${isOpen ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10 pointer-events-none'}`}>
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/639357258656?text=Hi%20Pyow%20Digitals!%20I'm%20interested%20in%20your%20web%20design%20services."
+          href="https://web.whatsapp.com/send/?phone=639357258656"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center bg-white dark:bg-slate-800 rounded-full pl-2 pr-5 py-2 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 group border border-gray-100 dark:border-slate-700"
@@ -29,7 +29,7 @@ const FloatingContact = () => {
 
         {/* Messenger Button */}
         <a
-          href="https://m.me/olympiosumbilonjr"
+          href="https://www.facebook.com/messages/e2ee/t/9639858496096206"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center bg-white dark:bg-slate-800 rounded-full pl-2 pr-5 py-2 shadow-lg hover:shadow-xl transition-all duration-200 hover:scale-105 group border border-gray-100 dark:border-slate-700"

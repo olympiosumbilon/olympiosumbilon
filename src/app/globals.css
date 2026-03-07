@@ -407,3 +407,153 @@ h1, h2, h3, h4, h5, h6 {
   color: #f8fafc;
   transform: translateY(-1px);
 }
+
+.bf-hero-fx {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.bf-hero-grid {
+  position: absolute;
+  inset: -12%;
+  background-image:
+    linear-gradient(rgba(200, 255, 87, 0.08) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(200, 255, 87, 0.08) 1px, transparent 1px);
+  background-size: 62px 62px;
+  opacity: 0.2;
+  mask-image: radial-gradient(ellipse at center, black 40%, transparent 92%);
+  animation: bf-grid-drift 18s linear infinite;
+}
+
+.bf-hero-tiles {
+  position: absolute;
+  inset: 0;
+}
+
+.bf-hero-tile {
+  position: absolute;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(200, 255, 87, 0.16);
+  background:
+    linear-gradient(135deg, rgba(200, 255, 87, 0.11), rgba(200, 255, 87, 0.02));
+  box-shadow:
+    0 0 12px rgba(200, 255, 87, 0.1),
+    inset 0 0 10px rgba(200, 255, 87, 0.04);
+  border-radius: 8px;
+  animation-name: bf-tile-float;
+  animation-timing-function: ease-in-out;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+.bf-hero-lines {
+  position: absolute;
+  inset: 0;
+}
+
+.bf-run-line {
+  position: absolute;
+  left: -35%;
+  height: 2px;
+  width: 56vw;
+  min-width: 260px;
+  border-radius: 999px;
+  background: linear-gradient(
+    90deg,
+    rgba(200, 255, 87, 0),
+    rgba(200, 255, 87, 0.24),
+    rgba(200, 255, 87, 0.9),
+    rgba(200, 255, 87, 0)
+  );
+  box-shadow: 0 0 14px rgba(200, 255, 87, 0.4);
+  animation: bf-line-run 8.5s linear infinite;
+}
+
+.bf-run-line-1 {
+  top: 24%;
+  transform: rotate(-14deg);
+  animation-delay: 0s;
+}
+
+.bf-run-line-2 {
+  top: 42%;
+  transform: rotate(-8deg);
+  animation-delay: 1.6s;
+}
+
+.bf-run-line-3 {
+  top: 60%;
+  transform: rotate(-18deg);
+  animation-delay: 3.1s;
+}
+
+.bf-run-line-4 {
+  top: 78%;
+  transform: rotate(-10deg);
+  animation-delay: 4.2s;
+}
+
+@keyframes bf-tile-float {
+  0% {
+    transform: translateY(-14px);
+  }
+  100% {
+    transform: translateY(14px);
+  }
+}
+
+@keyframes bf-line-run {
+  0% {
+    margin-left: -20%;
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.72;
+  }
+  78% {
+    opacity: 0.58;
+  }
+  100% {
+    margin-left: 140%;
+    opacity: 0;
+  }
+}
+
+@keyframes bf-grid-drift {
+  0% {
+    background-position: 0 0, 0 0;
+  }
+  100% {
+    background-position: 62px 62px, 62px 62px;
+  }
+}
+
+@media (max-width: 768px) {
+  .bf-hero-grid {
+    background-size: 42px 42px;
+    opacity: 0.14;
+  }
+
+  .bf-hero-tile {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
+  }
+
+  .bf-run-line {
+    width: 70vw;
+    min-width: 180px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .bf-hero-grid,
+  .bf-hero-tile,
+  .bf-run-line {
+    animation: none !important;
+  }
+}

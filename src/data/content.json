@@ -85,24 +85,25 @@
     "items": [
       {
         "icon": "funnel",
-        "title": "Client Acquisition System",
-        "description": "Complete lead conversion setup for service businesses.",
+        "title": "Complete Client Acquisition System",
+        "description": "The full stack - funnel, CRM, automation, and booking - connected into a single conversion machine for your business.",
         "features": [
-          "Funnel landing page",
-          "CRM integration",
-          "Automated follow-ups",
-          "Booking automation"
+          "High-converting funnel landing page",
+          "CRM integration and lead tracking",
+          "Automated follow-up sequences (email and messenger)",
+          "Booking system and calendar automation",
+          "30-day onboarding and optimization"
         ],
-        "outcome": "Convert inquiries into booked clients."
+        "outcome": "A single client acquisition machine that converts inquiries into booked clients."
       },
       {
         "icon": "code",
         "title": "Website + Funnel System",
-        "description": "A conversion-focused website connected to your funnel stack.",
+        "description": "A conversion-focused website connected to your lead capture stack.",
         "features": [
-          "high-converting website",
-          "Integrated funnels",
-          "Lead capture automation"
+          "High-converting website design",
+          "Integrated funnels and lead capture",
+          "Lead magnet setup"
         ],
         "outcome": "Turn your website into a lead generation machine."
       },

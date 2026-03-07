@@ -34,7 +34,7 @@ const ContactForm = () => {
 
       if (response.ok) {
         setStatus('success')
-        setStatusMessage('Message sent successfully! Redirecting you to schedule...')
+        setStatusMessage('Redirecting you to schedule...')
         setFormData({
           firstName: '',
           lastName: '',

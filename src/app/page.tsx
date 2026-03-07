@@ -374,41 +374,43 @@ export default function Home() {
                 <p className="text-sm font-semibold text-[#c8ff57]">- Olympio, Founder of Pyow Digitals</p>
               </div>
 
-              <div className="flex flex-wrap items-center gap-3 mb-8">
-                <a href="#contact" className="bf-btn-main">Work With Olympio {'->'}</a>
-                <a
-                  href="https://www.instagram.com/olympiosumbilonjr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Instagram"
-                  className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 bg-[#0b1220] text-slate-300 hover:text-[#c8ff57] hover:border-[#c8ff57]/40 transition-colors shrink-0"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.9 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.linkedin.com/in/olympiosumbilonjr/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="LinkedIn"
-                  className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 bg-[#0b1220] text-slate-300 hover:text-[#c8ff57] hover:border-[#c8ff57]/40 transition-colors shrink-0"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.45 20.45H16.9v-5.57c0-1.32-.03-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.93v5.67H9.35V9h3.42v1.56h.04c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
-                  </svg>
-                </a>
-                <a
-                  href="https://www.facebook.com/olympiosumbilonjr"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  aria-label="Facebook"
-                  className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 bg-[#0b1220] text-slate-300 hover:text-[#c8ff57] hover:border-[#c8ff57]/40 transition-colors shrink-0"
-                >
-                  <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 320 512">
-                    <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H297V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
-                  </svg>
-                </a>
+              <div className="mb-8 space-y-3">
+                <a href="#contact" className="bf-btn-main inline-flex">Work With Olympio {'->'}</a>
+                <div className="flex items-center gap-3">
+                  <a
+                    href="https://www.instagram.com/olympiosumbilonjr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Instagram"
+                    className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 bg-[#0b1220] text-slate-300 hover:text-[#c8ff57] hover:border-[#c8ff57]/40 transition-colors shrink-0"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.8A3.95 3.95 0 0 0 3.8 7.75v8.5a3.95 3.95 0 0 0 3.95 3.95h8.5a3.95 3.95 0 0 0 3.95-3.95v-8.5a3.95 3.95 0 0 0-3.95-3.95h-8.5Zm8.9 1.35a1.2 1.2 0 1 1 0 2.4 1.2 1.2 0 0 1 0-2.4ZM12 7a5 5 0 1 1 0 10 5 5 0 0 1 0-10Zm0 1.8a3.2 3.2 0 1 0 0 6.4 3.2 3.2 0 0 0 0-6.4Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.linkedin.com/in/olympiosumbilonjr/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="LinkedIn"
+                    className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 bg-[#0b1220] text-slate-300 hover:text-[#c8ff57] hover:border-[#c8ff57]/40 transition-colors shrink-0"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M20.45 20.45H16.9v-5.57c0-1.32-.03-3.03-1.85-3.03-1.85 0-2.14 1.44-2.14 2.93v5.67H9.35V9h3.42v1.56h.04c.48-.9 1.64-1.85 3.37-1.85 3.61 0 4.27 2.37 4.27 5.45v6.29ZM5.34 7.43A2.06 2.06 0 1 1 5.34 3.3a2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56v11.45Z" />
+                    </svg>
+                  </a>
+                  <a
+                    href="https://www.facebook.com/olympiosumbilonjr"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Facebook"
+                    className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 bg-[#0b1220] text-slate-300 hover:text-[#c8ff57] hover:border-[#c8ff57]/40 transition-colors shrink-0"
+                  >
+                    <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 320 512">
+                      <path d="M279.14 288l14.22-92.66h-88.91v-60.13c0-25.35 12.42-50.06 52.24-50.06H297V6.26S260.43 0 225.36 0c-73.22 0-121.08 44.38-121.08 124.72v70.62H22.89V288h81.39v224h100.17V288z" />
+                    </svg>
+                  </a>
+                </div>
               </div>
 
               <div className="grid grid-cols-3 border-t border-slate-800 pt-5">

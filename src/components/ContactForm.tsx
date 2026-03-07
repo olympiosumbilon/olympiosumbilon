@@ -171,12 +171,12 @@ const ContactForm = () => {
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3.5 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-[1.1rem]"
+        className="w-full bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3.5 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-[1.1rem] leading-tight whitespace-nowrap"
       >
         {status === 'sending' ? 'Sending...' : 'Book My Free Audit Call ->'}
       </button>
 
-      <p className="text-center text-slate-500 text-sm">🔒 No spam. No sales pressure. Just clarity on your lead system.</p>
+      <p className="text-center text-slate-500 text-sm">No spam. No sales pressure. Just clarity on your lead system.</p>
 
       {status === 'success' && (
         <p className="text-green-500 text-center font-medium">{statusMessage}</p>
@@ -189,3 +189,4 @@ const ContactForm = () => {
 }
 
 export default ContactForm
+

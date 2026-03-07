@@ -2,6 +2,7 @@
 import React, { useState } from 'react'
 
 const ContactForm = () => {
+  const calendlyUrl = 'https://calendly.com/pyowdigitals/free-audit-booking'
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
@@ -33,7 +34,7 @@ const ContactForm = () => {
 
       if (response.ok) {
         setStatus('success')
-        setStatusMessage('Message sent successfully!')
+        setStatusMessage('Message sent successfully! Redirecting you to schedule...')
         setFormData({
           firstName: '',
           lastName: '',
@@ -42,6 +43,10 @@ const ContactForm = () => {
           inquiriesPerWeek: '',
           challenge: ''
         })
+
+        window.setTimeout(() => {
+          window.location.href = calendlyUrl
+        }, 1800)
       } else {
         const data = await response.json().catch(() => ({}))
         setStatus('error')
@@ -168,18 +173,30 @@ const ContactForm = () => {
         />
       </div>
 
-      <button
-        type="submit"
-        disabled={status === 'sending'}
-        className="w-full bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3.5 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-[1.1rem] leading-tight whitespace-nowrap"
-      >
-        {status === 'sending' ? 'Sending...' : 'Book My Free Audit Call ->'}
-      </button>
+      {status !== 'success' && (
+        <button
+          type="submit"
+          disabled={status === 'sending'}
+          className="w-full bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3.5 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-base sm:text-[1.1rem] leading-tight whitespace-nowrap"
+        >
+          {status === 'sending' ? 'Sending...' : 'Book My Free Audit Call ->'}
+        </button>
+      )}
 
       <p className="text-center text-slate-500 text-sm">No spam. No sales pressure. Just clarity on your lead system.</p>
 
       {status === 'success' && (
-        <p className="text-green-500 text-center font-medium">{statusMessage}</p>
+        <div className="space-y-3">
+          <p className="text-green-500 text-center font-medium">{statusMessage}</p>
+          <a
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full inline-flex items-center justify-center bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3 px-6 rounded-lg transition-all duration-300 text-base"
+          >
+            Book Your Schedule Now {'->'}
+          </a>
+        </div>
       )}
       {status === 'error' && (
         <p className="text-red-500 text-center font-medium">{statusMessage}</p>

@@ -455,7 +455,7 @@ export default function Home() {
             <div>
               <h4 className="font-bold text-lg mb-4">Contact</h4>
               <ul className="space-y-2 text-gray-400">
-                <li><a href="mailto:hello@pyowdigitals.com" className="hover:text-[#e8a030] transition-colors">Email</a></li>
+                <li><a href="mailto:olympiosumbilonpersonal@gmail.com" className="hover:text-[#e8a030] transition-colors">Email</a></li>
                 <li><a href="https://www.linkedin.com/in/olympiosumbilonjr/" target="_blank" rel="noopener noreferrer" className="hover:text-[#e8a030] transition-colors">LinkedIn</a></li>
                 <li><a href="https://www.facebook.com/olympiosumbilonjr" target="_blank" rel="noopener noreferrer" className="hover:text-[#e8a030] transition-colors">Facebook</a></li>
               </ul>

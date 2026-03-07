@@ -11,10 +11,12 @@ const ContactForm = () => {
     challenge: ''
   })
   const [status, setStatus] = useState('')
+  const [statusMessage, setStatusMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
+    setStatusMessage('')
 
     try {
       const response = await fetch('/api/contact', {
@@ -31,6 +33,7 @@ const ContactForm = () => {
 
       if (response.ok) {
         setStatus('success')
+        setStatusMessage('Message sent successfully!')
         setFormData({
           firstName: '',
           lastName: '',
@@ -40,10 +43,13 @@ const ContactForm = () => {
           challenge: ''
         })
       } else {
+        const data = await response.json().catch(() => ({}))
         setStatus('error')
+        setStatusMessage(data.message || 'Failed to send message. Please try again.')
       }
     } catch (error) {
       setStatus('error')
+      setStatusMessage('Network error while sending. Please try again.')
     }
   }
 
@@ -173,10 +179,10 @@ const ContactForm = () => {
       <p className="text-center text-slate-500 text-sm">🔒 No spam. No sales pressure. Just clarity on your lead system.</p>
 
       {status === 'success' && (
-        <p className="text-green-500 text-center font-medium">Message sent successfully!</p>
+        <p className="text-green-500 text-center font-medium">{statusMessage}</p>
       )}
       {status === 'error' && (
-        <p className="text-red-500 text-center font-medium">Failed to send message. Please try again.</p>
+        <p className="text-red-500 text-center font-medium">{statusMessage}</p>
       )}
     </form>
   )

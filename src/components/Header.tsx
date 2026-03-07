@@ -12,7 +12,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
       
-      const sections = ['solutions', 'how-it-works', 'case-studies', 'resources', 'about', 'contact']
+      const sections = ['solutions', 'case-studies', 'how-it-works', 'contact']
       const scrollPosition = window.scrollY + 100
 
       if (scrollPosition < 300) {
@@ -51,19 +51,19 @@ const Header = () => {
   return (
     <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-[#060b17]/90 backdrop-blur-xl border-b border-slate-700/70 shadow-2xl shadow-black/30' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
-        <div className="flex items-center justify-between h-20">
+        <div className="relative flex items-center justify-between h-20">
           <Link href="/" className="flex items-center group">
             <div className="flex flex-col">
               <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled ? 'text-slate-100' : 'text-white'}`}>
                 PYOW
               </span>
-              <span className={`text-xs font-semibold tracking-wider transition-colors ${isScrolled ? 'text-amber-400' : 'text-amber-300'}`}>
+              <span className={`text-xs font-semibold tracking-wider transition-colors ${isScrolled ? 'text-[#c8ff57]' : 'text-[#c8ff57]'}`}>
                 DIGITALS
               </span>
             </div>
           </Link>
 
-          <nav className="hidden lg:flex items-center space-x-1">
+          <nav className="hidden lg:flex items-center space-x-2 absolute left-1/2 -translate-x-1/2">
             {content.header.navigation.map((item, index) => {
               const href = item.href.startsWith('#') ? `/${item.href}` : item.href
               const active = isActive(item.href)
@@ -71,29 +71,32 @@ const Header = () => {
                 <Link
                   key={index}
                   href={href}
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-slate-800/70 ${isScrolled ? 'text-slate-300 hover:text-white' : 'text-white/85 hover:text-white'} ${active ? '!text-white' : ''}`}
+                  className={`relative px-4 py-2 font-medium tracking-[0.02em] transition-all duration-300 rounded-md ${isScrolled ? 'text-slate-400/70 hover:text-[#c8ff57]' : 'text-white/55 hover:text-[#c8ff57]'} ${active ? '!text-[#c8ff57]' : ''}`}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 bg-amber-400 ${active ? 'w-8' : 'w-0'}`}></span>
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 bg-[#c8ff57] ${active ? 'w-8' : 'w-0'}`}></span>
                 </Link>
               ) : (
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-slate-800/70 ${isScrolled ? 'text-slate-300 hover:text-white' : 'text-white/85 hover:text-white'} ${active ? '!text-white' : ''}`}
+                  className={`relative px-4 py-2 font-medium tracking-[0.02em] transition-all duration-300 rounded-md ${isScrolled ? 'text-slate-400/70 hover:text-[#c8ff57]' : 'text-white/55 hover:text-[#c8ff57]'} ${active ? '!text-[#c8ff57]' : ''}`}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 bg-amber-400 ${active ? 'w-8' : 'w-0'}`}></span>
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 bg-[#c8ff57] ${active ? 'w-8' : 'w-0'}`}></span>
                 </a>
               )
             })}
+          </nav>
+
+          <div className="hidden lg:flex items-center ml-auto">
             <a 
               href={content.header.ctaButton.href}
-              className="ml-2 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-[#0b1020] font-bold py-2.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/20"
+              className="bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#0b1020] font-bold py-2.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#c8ff57]/25"
             >
               {content.header.ctaButton.text}
             </a>
-          </nav>
+          </div>
 
           <div className="flex items-center gap-2 lg:hidden">
             <button 
@@ -119,7 +122,7 @@ const Header = () => {
                 <Link
                   key={index}
                   href={href}
-                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-slate-800 last:border-b-0 ${active ? 'text-white bg-slate-800/70 border-l-4 border-l-amber-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/55'}`}
+                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-slate-800 last:border-b-0 ${active ? 'text-[#c8ff57] bg-slate-800/70 border-l-4 border-l-[#c8ff57]' : 'text-slate-300 hover:text-[#c8ff57] hover:bg-slate-800/55'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -128,7 +131,7 @@ const Header = () => {
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-slate-800 last:border-b-0 ${active ? 'text-white bg-slate-800/70 border-l-4 border-l-amber-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/55'}`}
+                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-slate-800 last:border-b-0 ${active ? 'text-[#c8ff57] bg-slate-800/70 border-l-4 border-l-[#c8ff57]' : 'text-slate-300 hover:text-[#c8ff57] hover:bg-slate-800/55'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -138,7 +141,7 @@ const Header = () => {
             <div className="p-4">
               <a 
                 href={content.header.ctaButton.href}
-                className="block text-center bg-gradient-to-r from-amber-400 to-orange-500 text-[#0b1020] font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg"
+                className="block text-center bg-[#c8ff57] text-[#0b1020] font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {content.header.ctaButton.text}

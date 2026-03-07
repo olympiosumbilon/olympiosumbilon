@@ -1,477 +1,489 @@
 ﻿'use client'
-import React, { useEffect } from 'react'
+import React, { useEffect, useMemo, useRef } from 'react'
 import Header from '@/components/Header'
 import ContactForm from '@/components/ContactForm'
 import SocialLinks from '@/components/SocialLinks'
 import FloatingContact from '@/components/FloatingContact'
 import ScrollToTop from '@/components/ScrollToTop'
-import ScrollReveal from '@/components/ScrollReveal'
 import content from '@/data/content.json'
 import Image from 'next/image'
-import heroImage from '@/images/assets/modern_dark_website_mockup_laptop.png'
-
-const renderServiceIcon = (icon: string) => {
-  if (icon === 'design') {
-    return (
-      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M7 21a4 4 0 01-4-4V5a2 2 0 012-2h4a2 2 0 012 2v12a4 4 0 01-4 4zm0 0h12a2 2 0 002-2v-4a2 2 0 00-2-2h-2.343M11 7.343l1.657-1.657a2 2 0 012.828 0l2.829 2.829a2 2 0 010 2.828l-8.486 8.485M7 17h.01" />
-      </svg>
-    )
-  }
-
-  if (icon === 'code') {
-    return (
-      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" />
-      </svg>
-    )
-  }
-
-  if (icon === 'email') {
-    return (
-      <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-      </svg>
-    )
-  }
-
-  return (
-    <svg className="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-    </svg>
-  )
-}
 
 export default function Home() {
+  const canvasRef = useRef<HTMLCanvasElement | null>(null)
+
   useEffect(() => {
     document.documentElement.style.scrollBehavior = 'smooth'
+
+    const canvas = canvasRef.current
+    if (!canvas) return
+
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    let width = 0
+    let height = 0
+    let frame = 0
+
+    type Dot = { x: number; y: number; vx: number; vy: number; r: number }
+    let dots: Dot[] = []
+
+    const reset = () => {
+      width = canvas.width = window.innerWidth
+      height = canvas.height = window.innerHeight
+      dots = Array.from({ length: 56 }).map(() => ({
+        x: Math.random() * width,
+        y: Math.random() * height,
+        vx: (Math.random() - 0.5) * 0.35,
+        vy: (Math.random() - 0.5) * 0.35,
+        r: Math.random() * 1.6 + 0.4,
+      }))
+    }
+
+    const draw = () => {
+      ctx.clearRect(0, 0, width, height)
+
+      for (let i = 0; i < dots.length; i += 1) {
+        for (let j = i + 1; j < dots.length; j += 1) {
+          const dx = dots[i].x - dots[j].x
+          const dy = dots[i].y - dots[j].y
+          const dist = Math.sqrt(dx * dx + dy * dy)
+          if (dist < 140) {
+            ctx.beginPath()
+            ctx.strokeStyle = `rgba(245, 158, 11, ${0.08 * (1 - dist / 140)})`
+            ctx.lineWidth = 0.6
+            ctx.moveTo(dots[i].x, dots[i].y)
+            ctx.lineTo(dots[j].x, dots[j].y)
+            ctx.stroke()
+          }
+        }
+      }
+
+      dots.forEach((dot) => {
+        ctx.beginPath()
+        ctx.arc(dot.x, dot.y, dot.r, 0, Math.PI * 2)
+        ctx.fillStyle = 'rgba(250, 204, 21, 0.25)'
+        ctx.fill()
+
+        dot.x += dot.vx
+        dot.y += dot.vy
+        if (dot.x < 0 || dot.x > width) dot.vx *= -1
+        if (dot.y < 0 || dot.y > height) dot.vy *= -1
+      })
+
+      frame = window.requestAnimationFrame(draw)
+    }
+
+    reset()
+    draw()
+    window.addEventListener('resize', reset)
+
+    return () => {
+      window.removeEventListener('resize', reset)
+      window.cancelAnimationFrame(frame)
+    }
   }, [])
 
+  const tickerItems = useMemo(
+    () => [
+      ...content.idealClients.industries,
+      ...content.solution.features,
+      '24/7 Lead Conversion',
+      'Automated Booking',
+    ],
+    []
+  )
+
   return (
-    <main className="min-h-screen bg-[#060b17] transition-colors duration-300">
+    <main className="min-h-screen bg-[#060b17] text-slate-100">
+      <canvas ref={canvasRef} className="bf-canvas" aria-hidden="true" />
       <Header />
 
-      <section className="relative min-h-screen flex items-center gradient-bg text-white pt-24 pb-16 overflow-hidden">
-        <div className="absolute inset-0 bg-mesh opacity-25"></div>
-        <div className="absolute top-24 right-10 w-72 h-72 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-16 left-8 w-80 h-80 bg-white/10 rounded-full blur-3xl"></div>
-
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="grid lg:grid-cols-2 gap-10 items-center">
-            <ScrollReveal>
-              <div>
-                <span className="inline-block glass-effect text-white px-5 py-2 rounded-full text-sm font-medium mb-6">
-                  {content.hero.tagline}
-                </span>
-                <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-5 text-shadow">
-                  {content.hero.title}
-                </h1>
-                <p className="text-lg md:text-xl text-white/90 mb-8 max-w-xl">
-                  {content.hero.subtitle}
-                </p>
-
-                <ul className="space-y-3 mb-8">
-                  {content.hero.bullets.map((item, index) => (
-                    <li key={index} className="flex items-start">
-                      <span className="w-6 h-6 rounded-full bg-[#e8a030] text-[#0b1020] flex items-center justify-center text-xs mr-3 mt-0.5 font-bold">+</span>
-                      <span className="text-white/95">{item}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                <div className="flex flex-col sm:flex-row gap-4">
-                  <a href={content.hero.ctaButton.href} className="btn-accent text-center">
-                    {content.hero.ctaButton.text}
-                  </a>
-                  <a href={content.hero.secondaryButton.href} className="btn-secondary text-center">
-                    {content.hero.secondaryButton.text}
-                  </a>
-                </div>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={150} direction="right">
-              <div className="relative">
-                <div className="relative rounded-3xl overflow-hidden border border-white/20 shadow-2xl bg-white/10 backdrop-blur-lg p-4 md:p-6">
-                  <Image
-                    src={heroImage}
-                    alt="Automation and CRM dashboard"
-                    width={900}
-                    height={650}
-                    priority
-                    className="w-full h-auto rounded-2xl"
-                  />
-                </div>
-
-                <div className="mt-5 grid grid-cols-3 gap-3">
-                  <div className="glass-effect rounded-xl px-3 py-2 text-center text-xs font-semibold">Funnel Flow</div>
-                  <div className="glass-effect rounded-xl px-3 py-2 text-center text-xs font-semibold">Automation</div>
-                  <div className="glass-effect rounded-xl px-3 py-2 text-center text-xs font-semibold">CRM Pipeline</div>
-                </div>
-              </div>
-            </ScrollReveal>
-          </div>
-        </div>
-      </section>
-
-      <section className="section-padding bg-[#060b17] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-14">
-              <h2 className="section-title">{content.problem.title}</h2>
-              <p className="section-subtitle">{content.problem.subtitle}</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto mb-10">
-            {content.problem.items.map((item, index) => (
-              <ScrollReveal key={index} delay={100 + index * 80}>
-                <article className="card border border-red-100 dark:border-red-900/30 h-full">
-                  <div className="w-10 h-10 rounded-lg bg-red-500/10 text-red-500 flex items-center justify-center font-bold mb-4">{index + 1}</div>
-                  <h3 className="text-lg font-bold text-slate-100 mb-2">{item.title}</h3>
-                  <p className="text-slate-300/80 text-sm leading-relaxed">{item.description}</p>
-                </article>
-              </ScrollReveal>
-            ))}
+      <section className="relative z-10 min-h-screen flex items-center pt-28 pb-16 px-5 md:px-8">
+        <div className="mx-auto w-full max-w-[1180px]">
+          <div className="inline-flex items-center gap-2 border border-slate-700 rounded-full px-4 py-2 text-[11px] uppercase tracking-[0.18em] text-slate-300 mb-10">
+            <span className="w-2 h-2 rounded-full bg-[#c8ff57] animate-pulse" />
+            {content.hero.tagline}
           </div>
 
-          <ScrollReveal delay={350}>
-            <p className="text-center text-lg md:text-xl text-slate-200 font-medium max-w-3xl mx-auto">
-              {content.problem.cta}
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
+          <h1 className="font-extrabold leading-[0.95] tracking-[-0.03em] text-[clamp(2.6rem,7vw,6.2rem)] max-w-5xl mb-8">
+            {content.hero.title.includes('Leads -') ? (
+              <>
+                {content.hero.title.split('Leads -')[0]}
+                <span className="text-[#c8ff57]">Leads -</span>
+                {content.hero.title.split('Leads -')[1]}
+              </>
+            ) : (
+              content.hero.title
+            )}
+          </h1>
 
-      <section id="solutions" className="section-padding bg-[#0b1220] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="section-title">{content.solution.title}</h2>
-              <p className="section-subtitle">{content.solution.subtitle}</p>
-            </div>
-          </ScrollReveal>
+          <p className="max-w-2xl text-slate-300 text-[clamp(1rem,1.5vw,1.08rem)] leading-relaxed mb-10">
+            {content.hero.subtitle}
+          </p>
 
-          <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            <ScrollReveal delay={100}>
-              <div className="card border border-gray-100 dark:border-slate-700 h-full">
-                <h3 className="text-xl font-bold text-slate-100 mb-5">System Features</h3>
-                <ul className="space-y-3">
-                  {content.solution.features.map((feature, index) => (
-                    <li key={index} className="flex items-center text-slate-200">
-                      <span className="w-5 h-5 rounded-full bg-[#e8a030]/20 text-[#e8a030] flex items-center justify-center text-[10px] mr-3">+</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
-
-            <ScrollReveal delay={180}>
-              <div className="card border border-gray-100 dark:border-slate-700 h-full">
-                <h3 className="text-xl font-bold text-slate-100 mb-5">System Flow</h3>
-                <div className="flex flex-wrap items-center gap-2">
-                  {content.solution.flow.map((node, index) => (
-                    <React.Fragment key={node}>
-                      <span className="px-4 py-2 rounded-full bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white text-sm font-semibold shadow-md">
-                        {node}
-                      </span>
-                      {index < content.solution.flow.length - 1 && <span className="text-[#e8a030] font-bold">{'>'}</span>}
-                    </React.Fragment>
-                  ))}
-                </div>
-              </div>
-            </ScrollReveal>
+          <div className="flex flex-wrap gap-3 mb-10">
+            <a href={content.hero.ctaButton.href} className="bf-btn-main">
+              {content.hero.ctaButton.text}
+            </a>
+            <a href={content.hero.secondaryButton.href} className="bf-btn-line">
+              {content.hero.secondaryButton.text}
+            </a>
           </div>
-        </div>
-      </section>
 
-      <section id="how-it-works" className="section-padding bg-[#060b17] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="section-title">{content.howItWorks.title}</h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
-            {content.howItWorks.steps.map((step, index) => (
-              <ScrollReveal key={index} delay={120 + index * 100}>
-                <article className="card border border-gray-100 dark:border-slate-700 h-full">
-                  <span className="inline-flex items-center px-3 py-1 rounded-full text-xs font-semibold bg-[#2f4a8a]/10 text-[#2f4a8a] dark:bg-[#4a6cb3]/20 dark:text-[#4a6cb3] mb-4">
-                    Step {index + 1}
-                  </span>
-                  <h3 className="text-xl font-bold text-slate-100 mb-3">{step.title}</h3>
-                  <p className="text-slate-300/80">{step.description}</p>
-                </article>
-              </ScrollReveal>
+          <div className="grid sm:grid-cols-3 max-w-[560px] border border-slate-700 rounded-xl overflow-hidden bg-[#0a1222]/80 backdrop-blur-sm">
+            {content.hero.bullets.map((bullet, index) => (
+              <div key={index} className="px-4 py-5 border-b sm:border-b-0 sm:border-r last:border-r-0 border-slate-700 text-center">
+                <div className="font-bold text-[#c8ff57] text-xl mb-1">0{index + 1}</div>
+                <div className="text-[12px] uppercase tracking-[0.08em] text-slate-300">{bullet}</div>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      <section className="section-padding bg-[#0b1220] bg-mesh transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-14">
-              <h2 className="section-title">{content.services.title}</h2>
-              <p className="section-subtitle">{content.services.subtitle}</p>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
-            {content.services.items.map((service, index) => (
-              <ScrollReveal key={index} delay={100 + index * 80}>
-                <article className="interactive-card card border border-gray-100 dark:border-slate-700 h-full">
-                  <div className="w-14 h-14 bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-2xl flex items-center justify-center mb-5 shadow-lg">
-                    {renderServiceIcon(service.icon)}
-                  </div>
-                  <h3 className="text-xl font-bold text-slate-100 mb-2">{service.title}</h3>
-                  <p className="text-slate-300/80 text-sm mb-4">{service.description}</p>
-
-                  <ul className="space-y-2 mb-5">
-                    {service.features.map((feature, featureIndex) => (
-                      <li key={featureIndex} className="text-sm text-slate-200 flex items-start">
-                        <span className="text-[#e8a030] mr-2">•</span>{feature}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <p className="text-sm font-semibold text-[#2f4a8a] dark:text-[#4a6cb3]">Outcome: {service.outcome}</p>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
+      <div className="relative z-10 border-y border-slate-800 bg-[#0b1220] overflow-hidden">
+        <div className="bf-ticker-track py-4">
+          {[...tickerItems, ...tickerItems].map((item, index) => (
+            <span key={index} className="inline-flex items-center gap-4 px-8 text-xs uppercase tracking-[0.08em] text-slate-300 whitespace-nowrap">
+              <span className="text-[#c8ff57] text-[10px]">●</span>
+              {item}
+            </span>
+          ))}
         </div>
-      </section>
+      </div>
 
-      <section className="section-padding bg-[#060b17] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="section-title">{content.idealClients.title}</h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-5 gap-4 max-w-6xl mx-auto mb-8">
-            {content.idealClients.industries.map((industry, index) => (
-              <ScrollReveal key={index} delay={100 + index * 60}>
-                <div className="rounded-2xl border border-slate-700 bg-slate-900/70 px-4 py-5 text-center font-semibold text-slate-100 h-full">
-                  {industry}
-                </div>
-              </ScrollReveal>
-            ))}
-          </div>
-
-          <ScrollReveal delay={360}>
-            <p className="text-center text-slate-300/80 max-w-3xl mx-auto text-lg">
-              {content.idealClients.description}
-            </p>
-          </ScrollReveal>
-        </div>
-      </section>
-
-      <section id="case-studies" className="section-padding bg-[#0b1220] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="section-title">{content.caseStudies.title}</h2>
-            </div>
-          </ScrollReveal>
-
-          <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
-            {content.caseStudies.items.map((study, index) => (
-              <ScrollReveal key={index} delay={120 + index * 100}>
-                <article className="card border border-gray-100 dark:border-slate-700 h-full">
-                  <h3 className="text-2xl font-bold text-slate-100 mb-5">{study.name}</h3>
-
-                  <div className="mb-4">
-                    <p className="text-sm uppercase tracking-wide text-slate-400 mb-1">Problem</p>
-                    <p className="text-slate-200">{study.problem}</p>
-                  </div>
-
-                  <div className="mb-4">
-                    <p className="text-sm uppercase tracking-wide text-slate-400 mb-1">Solution</p>
-                    <ul className="space-y-1">
-                      {study.solution.map((item, solutionIndex) => (
-                        <li key={solutionIndex} className="text-slate-200"><span className="text-[#e8a030] mr-2">•</span>{item}</li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  <div>
-                    <p className="text-sm uppercase tracking-wide text-slate-400 mb-1">Outcome</p>
-                    <p className="font-semibold text-[#2f4a8a] dark:text-[#4a6cb3]">{study.outcome}</p>
-                  </div>
-                </article>
-              </ScrollReveal>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      <section id="about" className="section-padding bg-[#060b17] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <div className="max-w-6xl mx-auto grid lg:grid-cols-2 gap-12 items-center">
-            <ScrollReveal direction="left">
-              <div className="relative">
-                <div className="absolute -top-4 -left-4 w-full h-full bg-gradient-to-br from-[#2f4a8a] to-[#4a6cb3] rounded-3xl"></div>
-                <div className="relative rounded-3xl overflow-hidden shadow-2xl">
-                  <Image
-                    src={content.founder.image}
-                    alt="Founder of Pyow Digitals"
-                    width={500}
-                    height={600}
-                    className="w-full h-auto object-cover"
-                  />
-                </div>
-              </div>
-            </ScrollReveal>
-
+      <section className="relative z-10 px-5 md:px-8 py-24 bg-[#090f1d]">
+        <div className="mx-auto max-w-[1180px]">
+          <div className="grid lg:grid-cols-2 gap-10 lg:gap-16 mb-14 items-end">
             <div>
-              <ScrollReveal delay={120}>
-                <span className="inline-block bg-[#e8a030]/10 text-[#e8a030] px-4 py-1 rounded-full text-sm font-semibold mb-4">
-                  {content.founder.tagline}
-                </span>
-              </ScrollReveal>
+              <p className="bf-label">The Problem</p>
+              <h2 className="bf-title">{content.problem.title}</h2>
+            </div>
+            <div>
+              <p className="text-slate-300 mb-4">{content.problem.subtitle}</p>
+              <p className="border-l-2 border-[#c8ff57] pl-4 text-sm text-slate-400 leading-relaxed">{content.problem.cta}</p>
+            </div>
+          </div>
 
-              <ScrollReveal delay={180}>
-                <h2 className="text-3xl md:text-4xl font-bold text-slate-100 mb-4">{content.founder.title}</h2>
-              </ScrollReveal>
+          <div className="grid md:grid-cols-2 gap-px bg-slate-800 border border-slate-800 rounded-xl overflow-hidden">
+            {content.problem.items.map((item, index) => (
+              <article key={index} className="bg-[#060b17] p-8 md:p-10 hover:bg-[#0b1220] transition-colors">
+                <p className="text-[11px] tracking-[0.18em] uppercase text-slate-500 mb-5">0{index + 1} / 04</p>
+                <h3 className="font-bold text-xl mb-3">{item.title}</h3>
+                <p className="text-slate-300 leading-relaxed">{item.description}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
 
-              <ScrollReveal delay={240}>
-                <p className="text-lg text-slate-300/80 mb-5">{content.founder.description}</p>
-              </ScrollReveal>
+      <section id="case-studies" className="relative z-10 px-5 md:px-8 py-24 bg-[#060b17]">
+        <div className="mx-auto max-w-[1180px]">
+          <p className="bf-label">Case Studies</p>
+          <h2 className="bf-title">{content.caseStudies.title}</h2>
+          <p className="bf-sub">How the system translates into better conversion outcomes.</p>
 
-              <ScrollReveal delay={300}>
-                <p className="text-slate-300/80 mb-7 leading-relaxed">{content.founder.story}</p>
-              </ScrollReveal>
+          <div className="grid lg:grid-cols-2 gap-6 mt-12">
+            {content.caseStudies.items.map((study, index) => (
+              <article key={index} className="bg-[#0a1222] border border-slate-700 rounded-xl p-8 hover:border-[#c8ff57]/40 transition-colors">
+                <div className="inline-flex px-3 py-1 rounded border border-[#c8ff57]/30 bg-[#c8ff57]/10 text-[#c8ff57] text-[11px] uppercase tracking-[0.14em] font-semibold mb-4">
+                  Case {index + 1}
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{study.name}</h3>
+                <p className="text-slate-400 text-sm mb-5">{study.problem}</p>
 
-              <ScrollReveal delay={360}>
-                <ul className="space-y-2">
-                  {content.founder.highlights.map((highlight, index) => (
-                    <li key={index} className="text-slate-200">
-                      <span className="text-[#e8a030] mr-2">•</span>{highlight}
-                    </li>
+                <div className="grid grid-cols-3 gap-3 py-4 border-y border-slate-700 mb-5">
+                  <div>
+                    <div className="text-2xl font-extrabold text-[#c8ff57]">{study.solution.length}</div>
+                    <div className="text-[11px] text-slate-400 uppercase tracking-[0.08em]">Stack Parts</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-extrabold text-[#c8ff57]">24/7</div>
+                    <div className="text-[11px] text-slate-400 uppercase tracking-[0.08em]">Automation</div>
+                  </div>
+                  <div>
+                    <div className="text-2xl font-extrabold text-[#c8ff57]">ROI</div>
+                    <div className="text-[11px] text-slate-400 uppercase tracking-[0.08em]">Focus</div>
+                  </div>
+                </div>
+
+                <ul className="space-y-2 mb-5">
+                  {study.solution.map((line, lineIndex) => (
+                    <li key={lineIndex} className="text-slate-300 text-sm"><span className="text-[#c8ff57]">-</span> {line}</li>
                   ))}
                 </ul>
-              </ScrollReveal>
+
+                <p className="text-slate-200 italic">{study.outcome}</p>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="solutions" className="relative z-10 px-5 md:px-8 py-24 bg-[#090f1d]">
+        <div className="mx-auto max-w-[1180px] grid lg:grid-cols-[0.9fr_2fr] gap-10 lg:gap-16">
+          <aside className="lg:sticky lg:top-24 h-fit">
+            <p className="bf-label">Solutions</p>
+            <h2 className="bf-title">{content.solution.title}</h2>
+            <p className="bf-sub">{content.solution.subtitle}</p>
+            <div className="mt-8 p-5 rounded-xl border border-slate-700 bg-[#0b1220] text-sm text-slate-300 leading-relaxed">
+              All systems are built for your workflow: capture, qualify, follow up, and booking automation.
+            </div>
+          </aside>
+
+          <div className="relative border border-slate-800 rounded-xl overflow-hidden bg-slate-800/80">
+            <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#090f1d] to-transparent z-10 hidden lg:block"></div>
+            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#090f1d] to-transparent z-10 hidden lg:block"></div>
+            <div className="lg:max-h-[760px] lg:overflow-y-auto scrollbar-hide lg:scroll-smooth lg:snap-y lg:snap-mandatory">
+            {content.services.items.map((service, index) => (
+              <article
+                key={index}
+                className={`bg-[#060b17] p-8 md:p-9 border-b border-slate-800 last:border-b-0 lg:snap-start transition-all duration-300 hover:bg-[#0a1324] ${index === 0 ? 'border-l-2 border-l-[#c8ff57]' : ''}`}
+              >
+                <div className="inline-flex px-3 py-1 rounded border border-[#c8ff57]/25 bg-[#c8ff57]/10 text-[#c8ff57] text-[11px] uppercase tracking-[0.14em] font-semibold mb-4">
+                  {index === 0 ? 'Featured' : 'System'}
+                </div>
+                <h3 className="text-2xl font-bold mb-3">{service.title}</h3>
+                <p className="text-slate-300 mb-4 leading-relaxed">{service.description}</p>
+                <ul className="space-y-2 mb-4">
+                  {service.features.map((feature, featureIndex) => (
+                    <li key={featureIndex} className="text-sm text-slate-300"><span className="text-[#c8ff57]">-</span> {feature}</li>
+                  ))}
+                </ul>
+                <p className="text-sm text-slate-400">Outcome: <span className="text-[#c8ff57] font-semibold">{service.outcome}</span></p>
+              </article>
+            ))}
             </div>
           </div>
         </div>
       </section>
 
-      <section id="contact" className="section-padding gradient-bg text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-mesh opacity-20"></div>
-        <div className="absolute top-8 right-8 w-72 h-72 bg-[#e8a030]/20 rounded-full blur-3xl"></div>
-        <div className="container mx-auto px-4 relative z-10">
-          <div className="max-w-5xl mx-auto">
-            <ScrollReveal>
-              <div className="text-center mb-10">
-                <h2 className="text-3xl md:text-5xl font-bold mb-4 text-shadow">{content.contact.title}</h2>
-                <p className="text-lg text-white/90 max-w-2xl mx-auto mb-6">{content.contact.subtitle}</p>
-                <ul className="inline-flex flex-col sm:flex-row gap-3 text-sm sm:text-base">
-                  {content.contact.benefits.map((benefit, index) => (
-                    <li key={index} className="glass-effect rounded-full px-4 py-2">{benefit}</li>
-                  ))}
-                </ul>
-              </div>
-            </ScrollReveal>
+      <section id="how-it-works" className="relative z-10 px-5 md:px-8 py-24 bg-[#060b17]">
+        <div className="mx-auto max-w-[1180px]">
+          <p className="bf-label">Process</p>
+          <h2 className="bf-title">{content.howItWorks.title}</h2>
+          <p className="bf-sub">{content.howItWorks.subtitle}</p>
 
-            <ScrollReveal delay={140}>
-              <div className="bg-slate-900/80 border border-slate-700 rounded-3xl shadow-2xl p-8 md:p-12">
-                <ContactForm />
-              </div>
-            </ScrollReveal>
+          <div className="mt-12 grid md:grid-cols-2 lg:grid-cols-4 gap-px bg-slate-800 border border-slate-800 rounded-xl overflow-hidden">
+            {content.howItWorks.steps.map((step, index) => (
+              <article key={index} className="bg-[#060b17] p-8">
+                <div className="text-5xl font-extrabold text-[#c8ff57]/15 leading-none mb-5">0{index + 1}</div>
+                <h3 className="font-bold text-xl mb-2">{step.title}</h3>
+                <p className="text-slate-300 text-sm leading-relaxed">{step.description}</p>
+              </article>
+            ))}
           </div>
         </div>
       </section>
 
-      <section id="resources" className="section-padding bg-[#060b17] transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <ScrollReveal>
-            <div className="text-center mb-12">
-              <h2 className="section-title">{content.blog.title}</h2>
-              <p className="section-subtitle">{content.blog.subtitle}</p>
-            </div>
-          </ScrollReveal>
+      <section className="relative z-10 px-5 md:px-8 py-24 bg-[#090f1d] border-y border-slate-800 overflow-hidden">
+        <div className="absolute inset-0 pointer-events-none bg-[radial-gradient(ellipse_at_center,rgba(200,255,87,0.08)_0%,transparent_70%)]" />
+        <div className="mx-auto max-w-[1180px] text-center relative">
+          <h2 className="font-extrabold tracking-[-0.03em] leading-[0.95] text-[clamp(2.1rem,5.2vw,5.2rem)] mb-6">
+            Your Competitors Are
+            <br />
+            Booking While You Sleep.
+          </h2>
+          <p className="text-slate-300 text-[clamp(1rem,1.5vw,1.15rem)] mb-10">
+            Find out where your leads are leaking - free, no obligation.
+          </p>
+          <div className="flex flex-wrap justify-center gap-3">
+            <a href="#contact" className="bf-btn-main">
+              Get Free Audit Call {'->'}
+            </a>
+            <a href="#case-studies" className="bf-btn-line">
+              See Client Results
+            </a>
+          </div>
+        </div>
+      </section>
 
-          <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-            {[...content.blog.posts]
-              .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
-              .slice(0, 3)
-              .map((post, index) => (
-                <ScrollReveal key={index} delay={100 + index * 80}>
-                  <a href={`/blog/${post.slug}`} className="group block h-full">
-                    <article className="interactive-card card overflow-hidden p-0 border border-gray-100 dark:border-slate-700 h-full">
-                      <div className="aspect-[16/10] bg-gradient-to-br from-[#4a6cb3] to-[#2f4a8a] relative overflow-hidden">
-                        <Image
-                          src={post.image}
-                          alt={post.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 33vw, 420px"
-                          className="object-cover group-hover:scale-110 transition-transform duration-500"
-                        />
-                      </div>
-                      <div className="p-6">
-                        <p className="text-sm text-[#2f4a8a] dark:text-[#4a6cb3] font-semibold mb-2">{post.category}</p>
-                        <h3 className="text-lg font-bold text-slate-100 mb-2 group-hover:text-[#2f4a8a] dark:group-hover:text-[#4a6cb3] transition-colors">
-                          {post.title}
-                        </h3>
-                        <p className="text-slate-300/80 text-sm">{post.excerpt}</p>
-                      </div>
-                    </article>
-                  </a>
-                </ScrollReveal>
+      <section id="resources" className="relative z-10 px-5 md:px-8 py-24 bg-[#090f1d]">
+        <div className="mx-auto max-w-[1180px]">
+          <p className="bf-label">Resources</p>
+          <h2 className="bf-title">{content.blog.title}</h2>
+          <p className="bf-sub">{content.blog.subtitle}</p>
+
+          <div className="grid md:grid-cols-3 gap-6 mt-12">
+            {[...content.blog.posts].slice(0, 3).map((post, index) => (
+              <a key={index} href={`/blog/${post.slug}`} className="group block rounded-xl overflow-hidden border border-slate-700 bg-[#060b17] hover:border-[#c8ff57]/40 transition-colors">
+                <div className="relative aspect-[16/10]">
+                  <Image src={post.image} alt={post.title} fill className="object-cover group-hover:scale-105 transition-transform duration-500" />
+                </div>
+                <div className="p-6">
+                  <p className="text-[11px] uppercase tracking-[0.12em] text-[#c8ff57] mb-2">{post.category}</p>
+                  <h3 className="text-lg font-bold mb-2">{post.title}</h3>
+                  <p className="text-sm text-slate-300">{post.excerpt}</p>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section id="about" className="relative z-10 px-5 md:px-8 py-24 bg-[#060b17]">
+        <div className="mx-auto max-w-[1180px] border border-slate-700 rounded-2xl overflow-hidden bg-[#070d1a]">
+          <div className="grid lg:grid-cols-[0.85fr_1.4fr]">
+            <div className="relative min-h-[540px] border-r border-slate-700 bg-[linear-gradient(0deg,rgba(30,41,59,0.35)_1px,transparent_1px),linear-gradient(90deg,rgba(30,41,59,0.35)_1px,transparent_1px)] bg-[size:26px_26px]">
+              <Image src={content.founder.image} alt="Olympio - Founder of Pyow Digitals" fill className="object-cover opacity-75" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060b17] via-[#060b17]/20 to-transparent"></div>
+              <div className="absolute top-4 left-4">
+                <span className="inline-flex items-center px-3 py-1 rounded-md text-[11px] font-bold uppercase tracking-[0.1em] border border-[#c8ff57]/35 bg-[#c8ff57]/10 text-[#c8ff57]">Founder</span>
+              </div>
+              <div className="absolute bottom-4 left-4 right-4 bg-[#0b1220]/90 border border-slate-700 rounded-xl p-4">
+                <p className="text-sm font-semibold text-slate-100">Olympio Sumbilon Jr</p>
+                <p className="text-xs text-[#c8ff57]">Founder & Lead Developer</p>
+              </div>
+            </div>
+
+            <div className="p-7 md:p-10 lg:p-12">
+              <p className="bf-label">About</p>
+              <h2 className="font-extrabold tracking-[-0.03em] leading-[0.92] text-[clamp(2rem,4.5vw,3.8rem)] mb-3">
+                Built by a developer
+                <br />
+                who actually <span className="text-[#c8ff57]">gets business</span>
+              </h2>
+              <p className="text-slate-400 mb-7 text-[0.95rem]">Not just code - systems that close clients.</p>
+
+              <p className="text-slate-300 leading-relaxed mb-4">{content.founder.description}</p>
+              <p className="text-slate-300 leading-relaxed mb-8">{content.founder.story}</p>
+
+              <div className="grid sm:grid-cols-2 gap-3 mb-8">
+                <div className="border border-slate-700 rounded-lg px-4 py-3 bg-[#0b1220]">
+                  <p className="text-sm font-semibold text-slate-100">⚡ Full-Stack Developer</p>
+                  <p className="text-xs text-slate-400 mt-1">Next.js, React, modern web stack</p>
+                </div>
+                <div className="border border-slate-700 rounded-lg px-4 py-3 bg-[#0b1220]">
+                  <p className="text-sm font-semibold text-slate-100">🤖 Automation Specialist</p>
+                  <p className="text-xs text-slate-400 mt-1">CRM, email, messenger flows</p>
+                </div>
+                <div className="border border-slate-700 rounded-lg px-4 py-3 bg-[#0b1220]">
+                  <p className="text-sm font-semibold text-slate-100">📈 Conversion-Focused</p>
+                  <p className="text-xs text-slate-400 mt-1">Every build tied to a business outcome</p>
+                </div>
+                <div className="border border-slate-700 rounded-lg px-4 py-3 bg-[#0b1220]">
+                  <p className="text-sm font-semibold text-slate-100">📍 Based in Davao, PH</p>
+                  <p className="text-xs text-slate-400 mt-1">Serving PH service businesses</p>
+                </div>
+              </div>
+
+              <div className="border-l-2 border-[#c8ff57] bg-[#0b1220]/80 rounded-r-lg px-4 py-4 mb-8">
+                <p className="text-sm italic text-slate-200 mb-2">
+                  &quot;Most businesses don&apos;t need more leads. They need a system that actually converts the ones they&apos;re already getting.&quot;
+                </p>
+                <p className="text-sm font-semibold text-[#c8ff57]">- Olympio, Founder of Pyow Digitals</p>
+              </div>
+
+              <div className="flex flex-wrap items-center gap-3 mb-8">
+                <a href="#contact" className="bf-btn-main">Work With Olympio {'->'}</a>
+                <a href="https://www.linkedin.com/in/olympiosumbilonjr/" target="_blank" rel="noopener noreferrer" className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 text-slate-300 hover:text-[#c8ff57]">in</a>
+                <a href="https://www.facebook.com/olympiosumbilonjr" target="_blank" rel="noopener noreferrer" className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 text-slate-300 hover:text-[#c8ff57]">fb</a>
+                <a href="https://wa.me/639357258656" target="_blank" rel="noopener noreferrer" className="w-9 h-9 inline-flex items-center justify-center rounded-md border border-slate-700 text-slate-300 hover:text-[#c8ff57]">wa</a>
+              </div>
+
+              <div className="grid grid-cols-3 border-t border-slate-800 pt-5">
+                <div className="text-center border-r border-slate-800">
+                  <p className="text-3xl font-extrabold text-[#c8ff57] leading-none">15+</p>
+                  <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500 mt-2">Systems Built</p>
+                </div>
+                <div className="text-center border-r border-slate-800">
+                  <p className="text-3xl font-extrabold text-[#c8ff57] leading-none">3x</p>
+                  <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500 mt-2">Avg Booking Lift</p>
+                </div>
+                <div className="text-center">
+                  <p className="text-3xl font-extrabold text-[#c8ff57] leading-none">48h</p>
+                  <p className="text-[11px] uppercase tracking-[0.08em] text-slate-500 mt-2">Avg Setup Time</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative z-10 px-5 md:px-8 py-24 bg-[#090f1d] border-t border-slate-800">
+        <div className="mx-auto max-w-[1180px] grid lg:grid-cols-[1fr_1.1fr] gap-12">
+          <div>
+            <p className="bf-label">Free Consultation</p>
+            <h2 className="font-extrabold tracking-[-0.03em] leading-[0.9] text-[clamp(2.2rem,5.2vw,5rem)] max-w-[620px] mb-6">
+              Find Out Where Your Leads Are Leaking
+            </h2>
+            <p className="text-slate-300 mb-10 leading-relaxed max-w-[620px] text-[clamp(1rem,1.4vw,1.1rem)]">
+              Book a free 30-minute audit call. We&apos;ll review your current inquiry flow and show you exactly where leads are dropping off - no pitch, just clarity.
+            </p>
+            <div className="space-y-4">
+              {[
+                {
+                  icon: '🔎',
+                  title: 'Lead Conversion Audit',
+                  desc: 'We map where inquiries go cold in your current setup',
+                },
+                {
+                  icon: '⚡',
+                  title: 'Automation Recommendations',
+                  desc: 'Specific tools and flows for your business type',
+                },
+                {
+                  icon: '📋',
+                  title: 'Funnel Improvement Plan',
+                  desc: 'A clear roadmap you can implement with or without us',
+                },
+              ].map((item, index) => (
+                <div key={index} className="flex items-start gap-4">
+                  <span className="w-10 h-10 rounded-lg border border-[#c8ff57]/30 bg-[#c8ff57]/10 text-[#c8ff57] flex items-center justify-center text-sm flex-shrink-0">{item.icon}</span>
+                  <div>
+                    <p className="text-slate-100 font-semibold text-[1.05rem] mb-1">{item.title}</p>
+                    <p className="text-slate-400 text-[1.02rem] leading-relaxed">{item.desc}</p>
+                  </div>
+                </div>
               ))}
+            </div>
+          </div>
+
+          <div className="bg-[#060b17] border border-slate-700 rounded-2xl p-7 md:p-9">
+            <h3 className="text-xl font-bold mb-6">Book Your Free Audit</h3>
+            <ContactForm />
           </div>
         </div>
       </section>
 
-      <footer className="bg-gray-900 dark:bg-slate-950 text-white py-16 transition-colors duration-300">
-        <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-3 gap-10 mb-12">
+      <footer className="relative z-10 bg-[#060b17] border-t border-slate-800 px-5 md:px-8 pt-16 pb-8">
+        <div className="mx-auto max-w-[1180px]">
+          <div className="grid md:grid-cols-3 gap-10 mb-10">
             <div>
               <div className="mb-4">
                 <span className="font-bold text-xl text-white">PYOW</span>
-                <span className="block text-sm font-semibold tracking-wider text-[#e8a030]">DIGITALS</span>
+                <span className="block text-sm font-semibold tracking-wider text-[#c8ff57]">DIGITALS</span>
               </div>
-              <p className="text-gray-400 max-w-md">{content.footer.description}</p>
-              <a href="#contact" className="inline-block mt-5 btn-accent">{content.footer.cta}</a>
+              <p className="text-slate-400 text-sm max-w-sm mb-6">{content.footer.description}</p>
+              <SocialLinks />
             </div>
 
             <div>
-              <h4 className="font-bold text-lg mb-4">Links</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="#" className="hover:text-[#e8a030] transition-colors">Home</a></li>
-                <li><a href="#solutions" className="hover:text-[#e8a030] transition-colors">Solutions</a></li>
-                <li><a href="#case-studies" className="hover:text-[#e8a030] transition-colors">Case Studies</a></li>
-                <li><a href="#about" className="hover:text-[#e8a030] transition-colors">About</a></li>
-                <li><a href="/blog" className="hover:text-[#e8a030] transition-colors">Blog</a></li>
-                <li><a href="#contact" className="hover:text-[#e8a030] transition-colors">Contact</a></li>
+              <h4 className="text-xs uppercase tracking-[0.14em] text-slate-500 mb-4 font-semibold">Navigation</h4>
+              <ul className="space-y-2 text-sm text-slate-300">
+                <li><a href="#" className="hover:text-white">Home</a></li>
+                <li><a href="#solutions" className="hover:text-white">Solutions</a></li>
+                <li><a href="#case-studies" className="hover:text-white">Case Studies</a></li>
+                <li><a href="#how-it-works" className="hover:text-white">How It Works</a></li>
+                <li><a href="#contact" className="hover:text-white">Contact</a></li>
               </ul>
             </div>
 
             <div>
-              <h4 className="font-bold text-lg mb-4">Contact</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li><a href="mailto:olympiosumbilonpersonal@gmail.com" className="hover:text-[#e8a030] transition-colors">Email</a></li>
-                <li><a href="https://www.linkedin.com/in/olympiosumbilonjr/" target="_blank" rel="noopener noreferrer" className="hover:text-[#e8a030] transition-colors">LinkedIn</a></li>
-                <li><a href="https://www.facebook.com/olympiosumbilonjr" target="_blank" rel="noopener noreferrer" className="hover:text-[#e8a030] transition-colors">Facebook</a></li>
+              <h4 className="text-xs uppercase tracking-[0.14em] text-slate-500 mb-4 font-semibold">Connect</h4>
+              <ul className="space-y-2 text-sm text-slate-300">
+                <li><a href="mailto:olympiosumbilonpersonal@gmail.com" className="hover:text-white">Email</a></li>
+                <li><a href="https://www.linkedin.com/in/olympiosumbilonjr/" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a></li>
+                <li><a href="https://www.facebook.com/olympiosumbilonjr" target="_blank" rel="noopener noreferrer" className="hover:text-white">Facebook</a></li>
               </ul>
-              <div className="mt-6">
-                <SocialLinks />
-              </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
-            <p className="text-gray-400 text-sm mb-4 md:mb-0">&copy; {new Date().getFullYear()} Pyow Digitals. All rights reserved.</p>
-            <div className="flex space-x-6">
+          <div className="pt-6 border-t border-slate-800 flex flex-col md:flex-row justify-between gap-3 text-xs text-slate-500">
+            <p>&copy; {new Date().getFullYear()} Pyow Digitals. All rights reserved.</p>
+            <div className="flex gap-5">
               {content.footer.links.map((link, index) => (
-                <a key={index} href={link.href} className="text-gray-400 hover:text-[#e8a030] text-sm transition-colors">
-                  {link.name}
-                </a>
+                <a key={index} href={link.href} className="hover:text-slate-300">{link.name}</a>
               ))}
             </div>
           </div>
@@ -483,5 +495,4 @@ export default function Home() {
     </main>
   )
 }
-
 

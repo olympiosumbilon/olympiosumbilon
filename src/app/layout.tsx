@@ -14,8 +14,8 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'Pyow Digitals - Web Design & Development',
-  description: 'Professional web design and development services. Transform your ideas into stunning, high-converting websites.',
+  title: 'PyowDigitals | Stop Losing Leads with Automated Funnels',
+  description: 'Turn social media inquiries into booked clients with conversion funnels, websites, and marketing automation built for service businesses.',
   icons: {
     icon: '/favicon.svg',
     apple: '/favicon.svg',

@@ -3,9 +3,12 @@ import React, { useState } from 'react'
 
 const ContactForm = () => {
   const [formData, setFormData] = useState({
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
-    message: ''
+    businessType: '',
+    inquiriesPerWeek: '',
+    challenge: ''
   })
   const [status, setStatus] = useState('')
 
@@ -19,12 +22,23 @@ const ContactForm = () => {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          name: `${formData.firstName} ${formData.lastName}`.trim(),
+          email: formData.email,
+          message: `Business Type: ${formData.businessType || 'N/A'}\nInquiries Per Week: ${formData.inquiriesPerWeek || 'N/A'}\n\nBiggest Challenge:\n${formData.challenge}`,
+        }),
       })
 
       if (response.ok) {
         setStatus('success')
-        setFormData({ name: '', email: '', message: '' })
+        setFormData({
+          firstName: '',
+          lastName: '',
+          email: '',
+          businessType: '',
+          inquiriesPerWeek: '',
+          challenge: ''
+        })
       } else {
         setStatus('error')
       }
@@ -33,7 +47,7 @@ const ContactForm = () => {
     }
   }
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value
@@ -41,26 +55,44 @@ const ContactForm = () => {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
-      <div>
-        <label htmlFor="name" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-          Name
-        </label>
-        <input
-          type="text"
-          name="name"
-          id="name"
-          value={formData.name}
-          onChange={handleChange}
-          required
-          className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors"
-          placeholder="Fullname"
-        />
+    <form onSubmit={handleSubmit} className="space-y-4">
+      <div className="grid md:grid-cols-2 gap-4">
+        <div>
+          <label htmlFor="firstName" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
+            First Name
+          </label>
+          <input
+            type="text"
+            name="firstName"
+            id="firstName"
+            value={formData.firstName}
+            onChange={handleChange}
+            required
+            className="block w-full rounded-lg border border-slate-700 focus:border-[#c8ff57]/50 focus:outline-none text-slate-100 text-base py-3 px-4 bg-[#0b1220] transition-colors"
+            placeholder="Maria"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="lastName" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
+            Last Name
+          </label>
+          <input
+            type="text"
+            name="lastName"
+            id="lastName"
+            value={formData.lastName}
+            onChange={handleChange}
+            required
+            className="block w-full rounded-lg border border-slate-700 focus:border-[#c8ff57]/50 focus:outline-none text-slate-100 text-base py-3 px-4 bg-[#0b1220] transition-colors"
+            placeholder="Santos"
+          />
+        </div>
       </div>
 
       <div>
-        <label htmlFor="email" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-          Email
+        <label htmlFor="email" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
+          Business Email
         </label>
         <input
           type="email"
@@ -69,40 +101,82 @@ const ContactForm = () => {
           value={formData.email}
           onChange={handleChange}
           required
-          className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors"
-          placeholder="your@email.com"
+          className="block w-full rounded-lg border border-slate-700 focus:border-[#c8ff57]/50 focus:outline-none text-slate-100 text-base py-3 px-4 bg-[#0b1220] transition-colors"
+          placeholder="maria@yourbusiness.com"
         />
       </div>
 
       <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">
-          Message
+        <label htmlFor="businessType" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
+          Business Type
         </label>
-        <textarea
-          name="message"
-          id="message"
-          rows={4}
-          value={formData.message}
+        <select
+          name="businessType"
+          id="businessType"
+          value={formData.businessType}
           onChange={handleChange}
           required
-          className="block w-full rounded-xl border border-gray-200 dark:border-slate-600 shadow-sm focus:outline-none focus:ring-2 focus:ring-[#2f4a8a] dark:focus:ring-[#4a6cb3] text-gray-900 dark:text-white text-lg py-3 px-4 bg-white dark:bg-slate-700 transition-colors resize-none"
-          placeholder="Tell us about your project..."
+          className="block w-full rounded-lg border border-slate-700 focus:border-[#c8ff57]/50 focus:outline-none text-slate-100 text-base py-3 px-4 bg-[#0b1220] transition-colors"
+        >
+          <option value="" className="bg-[#0b1220] text-slate-400">Select your industry...</option>
+          <option value="Dental Clinic" className="bg-[#0b1220] text-slate-100">Dental Clinic</option>
+          <option value="Beauty / Wellness Clinic" className="bg-[#0b1220] text-slate-100">Beauty / Wellness Clinic</option>
+          <option value="Coaching / Consulting" className="bg-[#0b1220] text-slate-100">Coaching / Consulting</option>
+          <option value="Other Service Business" className="bg-[#0b1220] text-slate-100">Other Service Business</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="inquiriesPerWeek" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
+          Inquiries Per Week?
+        </label>
+        <select
+          name="inquiriesPerWeek"
+          id="inquiriesPerWeek"
+          value={formData.inquiriesPerWeek}
+          onChange={handleChange}
+          required
+          className="block w-full rounded-lg border border-slate-700 focus:border-[#c8ff57]/50 focus:outline-none text-slate-100 text-base py-3 px-4 bg-[#0b1220] transition-colors"
+        >
+          <option value="" className="bg-[#0b1220] text-slate-400">Select a range...</option>
+          <option value="Less than 10" className="bg-[#0b1220] text-slate-100">Less than 10</option>
+          <option value="10-30" className="bg-[#0b1220] text-slate-100">10-30</option>
+          <option value="30-60" className="bg-[#0b1220] text-slate-100">30-60</option>
+          <option value="60+" className="bg-[#0b1220] text-slate-100">60+</option>
+        </select>
+      </div>
+
+      <div>
+        <label htmlFor="challenge" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
+          Biggest Challenge Right Now
+        </label>
+        <textarea
+          name="challenge"
+          id="challenge"
+          rows={4}
+          value={formData.challenge}
+          onChange={handleChange}
+          required
+          className="block w-full rounded-lg border border-slate-700 focus:border-[#c8ff57]/50 focus:outline-none text-slate-100 text-base py-3 px-4 bg-[#0b1220] transition-colors resize-none"
+          placeholder="e.g. Leads go cold before we can follow up, or bookings are all manual..."
         />
       </div>
 
       <button
         type="submit"
         disabled={status === 'sending'}
-        className="w-full bg-gradient-to-r from-[#e8a030] to-[#f0b840] hover:from-[#d99020] hover:to-[#e8a030] text-white font-bold py-4 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-[1.02] disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3.5 px-6 rounded-lg transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed text-[1.1rem]"
       >
-        {status === 'sending' ? 'Sending...' : 'Send Message'}
+        {status === 'sending' ? 'Sending...' : 'Book My Free Audit Call ->'}
       </button>
 
+      <p className="text-center text-slate-500 text-sm">🔒 No spam. No sales pressure. Just clarity on your lead system.</p>
+
       {status === 'success' && (
-        <p className="text-green-600 dark:text-green-400 text-center font-medium">Message sent successfully!</p>
+        <p className="text-green-500 text-center font-medium">Message sent successfully!</p>
       )}
       {status === 'error' && (
-        <p className="text-red-600 dark:text-red-400 text-center font-medium">Failed to send message. Please try again.</p>
+        <p className="text-red-500 text-center font-medium">Failed to send message. Please try again.</p>
       )}
     </form>
   )

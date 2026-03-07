@@ -3,15 +3,12 @@
     "logo": "OS",
     "name": "Olympio",
     "navigation": [
-      { "name": "Home", "href": "#" },
       { "name": "Solutions", "href": "#solutions" },
-      { "name": "How It Works", "href": "#how-it-works" },
-      { "name": "Case Studies", "href": "#case-studies" },
-      { "name": "Resources", "href": "#resources" },
-      { "name": "About", "href": "#about" },
+      { "name": "Results", "href": "#case-studies" },
+      { "name": "Process", "href": "#how-it-works" },
       { "name": "Contact", "href": "#contact" }
     ],
-    "ctaButton": { "text": "Get Free Lead System Audit", "href": "#contact" }
+    "ctaButton": { "text": "Get Free Audit", "href": "#contact" }
   },
   "hero": {
     "tagline": "Automated Client Acquisition Systems",
@@ -61,19 +58,24 @@
     "flow": ["Traffic", "Funnel", "CRM", "Automation", "Booking", "Client"]
   },
   "howItWorks": {
-    "title": "Our 3-Step Client Conversion System",
+    "title": "From Idea to Launch",
+    "subtitle": "A clear, repeatable process - no guesswork, no delays.",
     "steps": [
       {
-        "title": "Capture Leads",
-        "description": "High-converting landing pages and funnels collect qualified leads."
+        "title": "Discovery",
+        "description": "We audit your current lead flow and identify exactly where clients are dropping off."
       },
       {
-        "title": "Automate Follow-Up",
-        "description": "Every inquiry receives automated messages and reminders."
+        "title": "Strategy",
+        "description": "We map the customer journey and design the automation sequence before building anything."
       },
       {
-        "title": "Convert to Clients",
-        "description": "Booking systems and nurturing workflows convert leads into customers."
+        "title": "The Build",
+        "description": "We build and connect your funnel, CRM, automations, and booking in one integrated system."
+      },
+      {
+        "title": "Launch",
+        "description": "We go live, test every flow, and stay on for 30 days to optimize conversion rates."
       }
     ]
   },
@@ -86,10 +88,10 @@
         "title": "Client Acquisition System",
         "description": "Complete lead conversion setup for service businesses.",
         "features": [
-          "funnel landing page",
+          "Funnel landing page",
           "CRM integration",
-          "automated follow-ups",
-          "booking automation"
+          "Automated follow-ups",
+          "Booking automation"
         ],
         "outcome": "Convert inquiries into booked clients."
       },
@@ -99,8 +101,8 @@
         "description": "A conversion-focused website connected to your funnel stack.",
         "features": [
           "high-converting website",
-          "integrated funnels",
-          "lead capture automation"
+          "Integrated funnels",
+          "Lead capture automation"
         ],
         "outcome": "Turn your website into a lead generation machine."
       },
@@ -109,9 +111,9 @@
         "title": "Marketing Automation Setup",
         "description": "Automated follow-up infrastructure so no inquiry gets missed.",
         "features": [
-          "email automation",
-          "messenger automation",
-          "lead tracking",
+          "Email automation",
+          "Messenger automation",
+          "Lead tracking",
           "CRM setup"
         ],
         "outcome": "Never lose a lead again."
@@ -121,9 +123,9 @@
         "title": "Brand Refresh",
         "description": "Optional add-on to improve trust and conversion clarity.",
         "features": [
-          "brand identity update",
-          "landing page UI design",
-          "visual consistency"
+          "Brand identity update",
+          "Landing page UI design",
+          "Visual consistency"
         ],
         "outcome": "Improve trust and conversions."
       }
@@ -147,9 +149,9 @@
         "name": "Clinic Booking Automation",
         "problem": "Manual booking and missed inquiries.",
         "solution": [
-          "landing page funnel",
-          "booking automation",
-          "follow-up system"
+          "Landing page funnel",
+          "Booking automation",
+          "Follow-up system"
         ],
         "outcome": "More consistent appointment bookings."
       },
@@ -157,8 +159,8 @@
         "name": "Service Business Lead Funnel",
         "problem": "Website visitors not converting.",
         "solution": [
-          "lead capture funnel",
-          "automated nurturing sequence"
+          "Lead capture funnel",
+          "Automated nurturing sequence"
         ],
         "outcome": "Higher inquiry-to-client conversion."
       }
@@ -171,9 +173,9 @@
     "description": "PyowDigitals was founded by Olympio, a developer with experience building modern web systems.",
     "story": "After working in development, he noticed many businesses were losing customers due to broken systems: no follow-up, manual booking, and poor conversion funnels. PyowDigitals was created to solve this by building automated marketing systems that convert leads into clients.",
     "highlights": [
-      "no follow-up",
-      "manual booking",
-      "poor conversion funnels"
+      "No follow-up",
+      "Manual booking",
+      "Poor conversion funnels"
     ],
     "image": "/images/me.jpg"
   },

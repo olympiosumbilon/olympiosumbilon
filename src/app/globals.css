@@ -6,8 +6,8 @@
   --primary: #0f172a;
   --primary-light: #1e293b;
   --primary-dark: #060b17;
-  --accent: #f59e0b;
-  --accent-light: #fbbf24;
+  --accent: #c8ff57;
+  --accent-light: #d8ff84;
   --secondary: #38bdf8;
   --background: #060b17;
   --background-alt: #0c1426;
@@ -21,8 +21,8 @@
   --primary: #0f172a;
   --primary-light: #1e293b;
   --primary-dark: #060b17;
-  --accent: #f59e0b;
-  --accent-light: #fbbf24;
+  --accent: #c8ff57;
+  --accent-light: #d8ff84;
   --background: #060b17;
   --background-alt: #0c1426;
   --foreground: #f4f7fb;
@@ -74,7 +74,7 @@ h1, h2, h3, h4, h5, h6 {
 
 @layer components {
   .btn-primary {
-    @apply bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-400 hover:to-orange-400 text-[#0b1020] font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-amber-500/20 transform hover:-translate-y-0.5;
+    @apply bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#0b1020] font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#c8ff57]/25 transform hover:-translate-y-0.5;
   }
 
   .btn-secondary {
@@ -90,7 +90,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .btn-accent {
-    @apply bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-[#0b1020] font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/20;
+    @apply bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#0b1020] font-bold py-3 px-8 rounded-xl transition-all duration-300 shadow-lg hover:shadow-[#c8ff57]/25;
   }
 
   .section-padding {
@@ -125,7 +125,7 @@ h1, h2, h3, h4, h5, h6 {
   }
 
   .accent-gradient {
-    @apply bg-gradient-to-r from-[#e8a030] to-[#f0b840];
+    @apply bg-[#c8ff57];
   }
 
   .glass-effect {
@@ -138,7 +138,7 @@ h1, h2, h3, h4, h5, h6 {
 
   .interactive-card::before {
     content: '';
-    @apply absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-amber-400/10 opacity-0 transition-opacity duration-500;
+    @apply absolute inset-0 bg-gradient-to-r from-cyan-400/10 to-[#c8ff57]/10 opacity-0 transition-opacity duration-500;
   }
 
   .interactive-card:hover::before {
@@ -316,4 +316,94 @@ h1, h2, h3, h4, h5, h6 {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow: hidden;
+}
+
+.bf-canvas {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.45;
+}
+
+.bf-ticker-track {
+  width: max-content;
+  display: flex;
+  animation: bf-ticker 26s linear infinite;
+}
+
+@keyframes bf-ticker {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+.bf-label {
+  font-size: 0.7rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #c8ff57;
+  margin-bottom: 0.9rem;
+  font-weight: 700;
+}
+
+.bf-title {
+  font-size: clamp(2rem, 4vw, 3.4rem);
+  line-height: 1.02;
+  letter-spacing: -0.03em;
+  margin-bottom: 0.8rem;
+  color: #f8fafc;
+  font-weight: 800;
+}
+
+.bf-sub {
+  color: #a8b4c9;
+  max-width: 38rem;
+  line-height: 1.75;
+  font-size: 0.98rem;
+}
+
+.bf-btn-main {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.15rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.65rem;
+  background: #c8ff57;
+  color: #070b15;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  font-weight: 800;
+  border: 1px solid rgba(200, 255, 87, 0.6);
+  box-shadow: 0 12px 28px rgba(200, 255, 87, 0.2);
+  transition: transform .2s ease, background-color .2s ease, box-shadow .2s ease;
+}
+
+.bf-btn-main:hover {
+  transform: translateY(-1px);
+  background: #d4ff7a;
+  box-shadow: 0 14px 30px rgba(200, 255, 87, 0.28);
+}
+
+.bf-btn-line {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.15rem;
+  padding: 0.9rem 1.6rem;
+  border-radius: 0.65rem;
+  border: 1px solid rgba(148, 163, 184, 0.32);
+  background: rgba(15, 23, 42, 0.45);
+  color: #e2e8f0;
+  font-size: 0.9rem;
+  letter-spacing: 0.01em;
+  font-weight: 700;
+  transition: border-color .2s ease, color .2s ease, background-color .2s ease, transform .2s ease;
+}
+
+.bf-btn-line:hover {
+  border-color: rgba(200, 255, 87, 0.55);
+  background: rgba(18, 28, 48, 0.75);
+  color: #f8fafc;
+  transform: translateY(-1px);
 }

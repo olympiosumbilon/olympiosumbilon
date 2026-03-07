@@ -2,7 +2,6 @@
 import React, { useState, useEffect } from 'react'
 import content from '@/data/content.json'
 import Link from 'next/link'
-import ThemeToggle from './ThemeToggle'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -13,9 +12,7 @@ const Header = () => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50)
       
-      // const sections = ['services', 'portfolio', 'pricing', 'testimonials', 'blog', 'contact']
-     
-      const sections = ['services', 'portfolio', 'pricing', 'blog','about','contact']
+      const sections = ['solutions', 'how-it-works', 'case-studies', 'resources', 'about', 'contact']
       const scrollPosition = window.scrollY + 100
 
       if (scrollPosition < 300) {
@@ -52,15 +49,15 @@ const Header = () => {
   }
 
   return (
-    <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-white/95 dark:bg-slate-900/95 backdrop-blur-md shadow-lg' : 'bg-transparent'}`}>
+    <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-[#060b17]/90 backdrop-blur-xl border-b border-slate-700/70 shadow-2xl shadow-black/30' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-20">
           <Link href="/" className="flex items-center group">
             <div className="flex flex-col">
-              <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled ? 'text-[#2f4a8a] dark:text-[#4a6cb3]' : 'text-white'}`}>
+              <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled ? 'text-slate-100' : 'text-white'}`}>
                 PYOW
               </span>
-              <span className={`text-xs font-semibold tracking-wider transition-colors ${isScrolled ? 'text-[#e8a030]' : 'text-[#f0b840]'}`}>
+              <span className={`text-xs font-semibold tracking-wider transition-colors ${isScrolled ? 'text-amber-400' : 'text-amber-300'}`}>
                 DIGITALS
               </span>
             </div>
@@ -74,25 +71,25 @@ const Header = () => {
                 <Link
                   key={index}
                   href={href}
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? '!text-[#2f4a8a] dark:!text-[#4a6cb3]' : '!text-white') : ''}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-slate-800/70 ${isScrolled ? 'text-slate-300 hover:text-white' : 'text-white/85 hover:text-white'} ${active ? '!text-white' : ''}`}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'} ${active ? 'w-8' : 'w-0'}`}></span>
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 bg-amber-400 ${active ? 'w-8' : 'w-0'}`}></span>
                 </Link>
               ) : (
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-white/10 ${isScrolled ? 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5' : 'text-white/90 hover:text-white'} ${active ? (isScrolled ? '!text-[#2f4a8a] dark:!text-[#4a6cb3]' : '!text-white') : ''}`}
+                  className={`relative px-4 py-2 font-medium transition-all duration-300 rounded-lg hover:bg-slate-800/70 ${isScrolled ? 'text-slate-300 hover:text-white' : 'text-white/85 hover:text-white'} ${active ? '!text-white' : ''}`}
                 >
                   {item.name}
-                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 ${isScrolled ? 'bg-[#e8a030]' : 'bg-[#f0b840]'} ${active ? 'w-8' : 'w-0'}`}></span>
+                  <span className={`absolute bottom-0 left-1/2 -translate-x-1/2 h-0.5 rounded-full transition-all duration-300 bg-amber-400 ${active ? 'w-8' : 'w-0'}`}></span>
                 </a>
               )
             })}
             <a 
               href={content.header.ctaButton.href}
-              className="ml-2 bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] hover:from-[#243b6e] hover:to-[#3d5a96] text-white font-semibold py-2.5 px-6 rounded-full transition-all duration-300 shadow-lg hover:shadow-xl hover:scale-105"
+              className="ml-2 bg-gradient-to-r from-amber-400 to-orange-500 hover:from-amber-300 hover:to-orange-400 text-[#0b1020] font-bold py-2.5 px-6 rounded-xl transition-all duration-300 shadow-lg hover:shadow-orange-500/20"
             >
               {content.header.ctaButton.text}
             </a>
@@ -105,16 +102,16 @@ const Header = () => {
               aria-label="Toggle mobile menu"
             >
               <div className="relative w-6 h-5">
-                <span className={`absolute left-0 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-700 dark:bg-gray-300' : 'bg-white'} ${isMobileMenuOpen ? 'top-2 rotate-45' : 'top-0'}`}></span>
-                <span className={`absolute left-0 top-2 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-700 dark:bg-gray-300' : 'bg-white'} ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
-                <span className={`absolute left-0 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-gray-700 dark:bg-gray-300' : 'bg-white'} ${isMobileMenuOpen ? 'top-2 -rotate-45' : 'top-4'}`}></span>
+                <span className={`absolute left-0 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-slate-200' : 'bg-white'} ${isMobileMenuOpen ? 'top-2 rotate-45' : 'top-0'}`}></span>
+                <span className={`absolute left-0 top-2 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-slate-200' : 'bg-white'} ${isMobileMenuOpen ? 'opacity-0' : 'opacity-100'}`}></span>
+                <span className={`absolute left-0 w-full h-0.5 transition-all duration-300 ${isScrolled ? 'bg-slate-200' : 'bg-white'} ${isMobileMenuOpen ? 'top-2 -rotate-45' : 'top-4'}`}></span>
               </div>
             </button>
           </div>
         </div>
 
         <div className={`lg:hidden overflow-hidden transition-all duration-500 ${isMobileMenuOpen ? 'max-h-[500px] opacity-100' : 'max-h-0 opacity-0'}`}>
-          <nav className="bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl shadow-xl mb-4 overflow-hidden">
+          <nav className="bg-[#0a1324]/95 backdrop-blur-md rounded-2xl shadow-xl border border-slate-700/60 mb-4 overflow-hidden">
             {content.header.navigation.map((item, index) => {
               const href = item.href.startsWith('#') ? `/${item.href}` : item.href
               const active = isActive(item.href)
@@ -122,7 +119,7 @@ const Header = () => {
                 <Link
                   key={index}
                   href={href}
-                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0 ${active ? 'text-[#2f4a8a] dark:text-[#4a6cb3] bg-[#2f4a8a]/5 dark:bg-[#4a6cb3]/10 border-l-4 border-l-[#e8a030]' : 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10'}`}
+                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-slate-800 last:border-b-0 ${active ? 'text-white bg-slate-800/70 border-l-4 border-l-amber-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/55'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -131,7 +128,7 @@ const Header = () => {
                 <a 
                   key={index}
                   href={item.href} 
-                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-gray-100 dark:border-slate-700 last:border-b-0 ${active ? 'text-[#2f4a8a] dark:text-[#4a6cb3] bg-[#2f4a8a]/5 dark:bg-[#4a6cb3]/10 border-l-4 border-l-[#e8a030]' : 'text-gray-700 dark:text-gray-300 hover:text-[#2f4a8a] dark:hover:text-[#4a6cb3] hover:bg-[#2f4a8a]/5 dark:hover:bg-[#4a6cb3]/10'}`}
+                  className={`block px-6 py-4 font-medium transition-all duration-300 border-b border-slate-800 last:border-b-0 ${active ? 'text-white bg-slate-800/70 border-l-4 border-l-amber-400' : 'text-slate-300 hover:text-white hover:bg-slate-800/55'}`}
                   onClick={() => setIsMobileMenuOpen(false)}
                 >
                   {item.name}
@@ -141,7 +138,7 @@ const Header = () => {
             <div className="p-4">
               <a 
                 href={content.header.ctaButton.href}
-                className="block text-center bg-gradient-to-r from-[#2f4a8a] to-[#4a6cb3] text-white font-semibold py-3 px-6 rounded-full transition-all duration-300 shadow-lg"
+                className="block text-center bg-gradient-to-r from-amber-400 to-orange-500 text-[#0b1020] font-bold py-3 px-6 rounded-xl transition-all duration-300 shadow-lg"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {content.header.ctaButton.text}

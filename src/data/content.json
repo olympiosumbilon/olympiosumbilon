@@ -1,430 +1,237 @@
-{
+﻿{
   "header": {
     "logo": "OS",
     "name": "Olympio",
     "navigation": [
       { "name": "Home", "href": "#" },
-      { "name": "Blog", "href": "/blog" },
-      { "name": "Services", "href": "#services" },
-      { "name": "Portfolio", "href": "#portfolio" },
+      { "name": "Solutions", "href": "#solutions" },
+      { "name": "How It Works", "href": "#how-it-works" },
+      { "name": "Case Studies", "href": "#case-studies" },
+      { "name": "Resources", "href": "#resources" },
       { "name": "About", "href": "#about" },
       { "name": "Contact", "href": "#contact" }
     ],
-    "ctaButton": { "text": "Get Started", "href": "#contact" }
+    "ctaButton": { "text": "Get Free Lead System Audit", "href": "#contact" }
   },
   "hero": {
-    "tagline": "Full-Stack Web & Marketing Automation Specialist",
-    "title": "Transform Your Ideas Into Stunning, High-Converting Websites Powered by Smart Automation",
-    "subtitle": "I help businesses and entrepreneurs build professional websites and automate processes 24/7 — from lead capture to conversion. Let’s turn your vision into reality.",
-    "ctaButton": { "text": "Book A Free Consultation", "href": "#contact" },
-    "secondaryButton": { "text": "View My Work", "href": "#portfolio" },
-    "image": "/src/images/assets/modern_dark_website_mockup_laptop.png",
-    "stats": [
-      { "number": "50+", "label": "Projects Completed" },
-      { "number": "100%", "label": "Client Satisfaction" },
-      { "number": "3+", "label": "Years Experience" }
-    ]
+    "tagline": "Automated Client Acquisition Systems",
+    "title": "Stop Losing Leads - We Build Automated Client Acquisition Systems",
+    "subtitle": "Turn your social media inquiries into booked clients using funnels, websites, and automation that work 24/7.",
+    "bullets": [
+      "Capture every lead automatically",
+      "Follow up instantly with automation",
+      "Turn inquiries into booked clients"
+    ],
+    "ctaButton": { "text": "Get Free Lead System Audit", "href": "#contact" },
+    "secondaryButton": { "text": "See How It Works", "href": "#how-it-works" }
   },
   "problem": {
-    "title": "Does This Sound Familiar?",
-    "subtitle": "Many business owners struggle with these challenges every day",
+    "title": "Is Your Business Leaking Leads?",
+    "subtitle": "Many businesses get inquiries but struggle to convert them into clients.",
     "items": [
       {
-        "icon": "frustrated",
-        "title": "Your website looks outdated",
-        "description": "First impressions matter. An old, unprofessional website drives potential customers away before they even see what you offer."
+        "title": "Leads stuck in Messenger",
+        "description": "Inquiries pile up in DMs with no clear workflow to move people to booked calls."
       },
       {
-        "icon": "invisible",
-        "title": "You're invisible online",
-        "description": "Your competitors show up on Google, but you don't. You're missing out on customers who are actively searching for your services."
+        "title": "Manual booking system",
+        "description": "Your team spends hours coordinating schedules instead of serving paying clients."
       },
       {
-        "icon": "confused",
-        "title": "Visitors leave without taking action",
-        "description": "People visit your site but don't contact you, buy, or sign up. Your website isn't converting visitors into customers."
+        "title": "No follow-up automation",
+        "description": "Interested leads go cold because nobody follows up at the right time."
+      },
+      {
+        "title": "Website with no funnel",
+        "description": "Visitors land on your site but there is no structured path to conversion."
       }
     ],
-    "cta": "If you're nodding your head, you're in the right place."
+    "cta": "These small problems silently cost businesses thousands in lost revenue."
   },
-  "failedSolutions": {
-    "title": "You've Probably Already Tried...",
-    "subtitle": "These common approaches that never seem to work",
-    "items": [
-      {
-        "title": "DIY Website Builders",
-        "description": "Spent hours on Wix or Squarespace, but your site still looks generic and unprofessional. Templates only get you so far."
-      },
-      {
-        "title": "Cheap Freelancers",
-        "description": "Hired someone on Fiverr for $50, got a broken website that doesn't work on mobile, and they disappeared when you needed help."
-      },
-      {
-        "title": "Expensive Agencies",
-        "description": "Got quoted $10,000+ from agencies, waited months for delivery, and still ended up with something that doesn't convert."
-      }
+  "solution": {
+    "title": "We Fix Your Lead Conversion System",
+    "subtitle": "PyowDigitals builds automated systems that capture leads, nurture them, and convert them into paying clients.",
+    "features": [
+      "Conversion landing pages",
+      "Automated follow-up sequences",
+      "CRM lead tracking",
+      "Booking automation",
+      "Funnel optimization"
     ],
-    "conclusion": "None of these solutions address the real problem: you need a partner who understands your business and delivers results."
+    "flow": ["Traffic", "Funnel", "CRM", "Automation", "Booking", "Client"]
   },
-  "regrets": {
-    "title": "What Happens If You Do Nothing?",
-    "subtitle": "The cost of inaction is greater than you think",
-    "items": [
+  "howItWorks": {
+    "title": "Our 3-Step Client Conversion System",
+    "steps": [
       {
-        "icon": "money",
-        "stat": "$50,000+",
-        "description": "Lost revenue every year from customers who chose your competitors because their website looked more trustworthy"
+        "title": "Capture Leads",
+        "description": "High-converting landing pages and funnels collect qualified leads."
       },
       {
-        "icon": "clock",
-        "stat": "1,000+ Hours",
-        "description": "Wasted trying to figure out web design, SEO, and marketing instead of focusing on what you do best"
+        "title": "Automate Follow-Up",
+        "description": "Every inquiry receives automated messages and reminders."
       },
       {
-        "icon": "users",
-        "stat": "Hundreds",
-        "description": "Of potential customers who will never find you because you're buried on page 10 of Google"
-      }
-    ],
-    "cta": "Every day you wait is another day your competitors are winning."
-  },
-  "usp": {
-    "title": "Why Choose Pyow Digitals?",
-    "subtitle": "What makes us different from everyone else",
-    "headline": "I Don't Just Build Websites. I Build Revenue Machines.",
-    "description": "While other designers focus on making things 'look pretty,' I obsess over one thing: getting you more customers. Every design decision, every line of code, every strategy is built around one goal — growing your business.",
-    "points": [
-      {
-        "title": "Results-Focused Approach",
-        "description": "I measure success by your ROI, not by how many pages I deliver"
-      },
-      {
-        "title": "Full-Stack Expertise",
-        "description": "Design, development, marketing, automation — all from one partner"
-      },
-      {
-        "title": "Personal Attention",
-        "description": "You work directly with me, not a rotating team of juniors"
-      },
-      {
-        "title": "Ongoing Partnership",
-        "description": "I'm invested in your long-term success, not just a quick project"
+        "title": "Convert to Clients",
+        "description": "Booking systems and nurturing workflows convert leads into customers."
       }
     ]
   },
-  "transition": {
-    "title": "Imagine This Instead...",
-    "subtitle": "Picture your business 90 days from now",
-    "items": [
-      "A stunning website that makes you proud to share your link",
-      "Customers finding you on Google and reaching out daily",
-      "A sales funnel that converts visitors into paying clients automatically",
-      "More time to focus on your craft while your online presence works for you",
-      "Confidence knowing your digital presence matches the quality of your work"
-    ],
-    "cta": "This isn't a dream. This is what I deliver to my clients every month."
-  },
-  "founder": {
-    "tagline": "Meet the Founder",
-    "title": "Hi, I'm Olympio",
-    "subtitle": "The person behind Pyow Digitals",
-    "description": "I’m a Web Developer with over 2 years of experience building scalable web applications using ASP.NET Core, APIs, SQL, and modern front-end technologies. I help businesses create reliable, high-performance websites and systems and I’m expanding my expertise into marketing automation and funnel design to build platforms that don’t just function, but convert and follow up with customers automatically.",
-    "story": "I started Pyow Digitals after seeing many businesses invest in websites that looked good but failed to generate leads or follow up with customers. My goal is to bridge the gap between strong software development and modern digital marketing by building websites, funnels, and automated systems that work 24/7 to attract, engage, and convert customers.",
-    "highlights": [
-      "2+ years of real-world web development experience",
-      "Strong backend foundation with ASP.NET Core, APIs, and SQL",
-      "Blending software engineering with funnel design and marketing automation",
-      "Focused on building websites and systems that grow with your business"
-    ],
-    "image": "/images/me.jpg"
-  },
   "services": {
-    "title": "How I Can Help You",
-    "subtitle": "Professional web solutions tailored to your business needs",
+    "title": "Our Systems",
+    "subtitle": "Purpose-built systems that move inquiries to booked clients.",
     "items": [
       {
-        "icon": "design",
-        "title": "Web Design",
-        "description": "Beautiful, modern designs that capture your brand identity and engage your audience. From wireframes to pixel-perfect mockups, I create visuals that convert.",
-        "features": ["Custom UI/UX Design", "Mobile-First Approach", "Brand-Aligned Aesthetics", "User Research & Testing"]
+        "icon": "funnel",
+        "title": "Client Acquisition System",
+        "description": "Complete lead conversion setup for service businesses.",
+        "features": [
+          "funnel landing page",
+          "CRM integration",
+          "automated follow-ups",
+          "booking automation"
+        ],
+        "outcome": "Convert inquiries into booked clients."
       },
       {
         "icon": "code",
-        "title": "Web Development",
-        "description": "Fast, responsive, and scalable websites built with the latest technologies. Your site will perform flawlessly across all devices and browsers.",
-        "features": ["Clean, Maintainable Code", "SEO Optimization", "Performance Focused", "Cross-Browser Compatible"]
-      },
-      {
-        "icon": "social",
-        "title": "Social Media Management",
-        "description": "Grow your audience and engagement across all platforms. From content creation to community management, I handle your social presence.",
-        "features": ["Content Strategy", "Post Scheduling", "Community Engagement", "Analytics & Reporting"]
+        "title": "Website + Funnel System",
+        "description": "A conversion-focused website connected to your funnel stack.",
+        "features": [
+          "high-converting website",
+          "integrated funnels",
+          "lead capture automation"
+        ],
+        "outcome": "Turn your website into a lead generation machine."
       },
       {
         "icon": "email",
-        "title": "Email Marketing & Automation",
-        "description": "Nurture leads and convert them into loyal customers on autopilot. Build relationships that drive sales with strategic email campaigns.",
-        "features": ["Email Sequences", "Lead Nurturing", "Newsletter Design", "A/B Testing"]
+        "title": "Marketing Automation Setup",
+        "description": "Automated follow-up infrastructure so no inquiry gets missed.",
+        "features": [
+          "email automation",
+          "messenger automation",
+          "lead tracking",
+          "CRM setup"
+        ],
+        "outcome": "Never lose a lead again."
       },
       {
-        "icon": "funnel",
-        "title": "Funnel Design",
-        "description": "High-converting sales funnels that turn visitors into buyers. From landing pages to checkout, I optimize every step of the customer journey.",
-        "features": ["Landing Page Design", "Lead Magnets", "Conversion Optimization", "Upsell Sequences"]
+        "icon": "design",
+        "title": "Brand Refresh",
+        "description": "Optional add-on to improve trust and conversion clarity.",
+        "features": [
+          "brand identity update",
+          "landing page UI design",
+          "visual consistency"
+        ],
+        "outcome": "Improve trust and conversions."
       }
     ]
   },
-  "tools": {
-    "title": "Tools & Technologies I Use",
-    "subtitle": "Industry-standard tools to deliver exceptional results",
-    "items": [
-      { "name": "Figma", "category": "Design" },
-      { "name": "Framer", "category": "Design & Dev" },
-      { "name": "WordPress", "category": "CMS" },
-      { "name": "React", "category": "Frontend" },
-      { "name": "Next.js", "category": "Framework" },
-      { "name": "ASP CORE .NET", "category": "Backend" },
-      { "name": "Tailwind CSS", "category": "Styling" },
-      { "name": "TypeScript", "category": "Language" },
-      { "name": "GoHighLevel", "category": "Marketing" },
-      { "name": "Git", "category": "Version Control" },
-      { "name": "n8n", "category": "Automation" }
-    ]
+  "idealClients": {
+    "title": "Who This Is For",
+    "industries": [
+      "Beauty and Wellness Clinics",
+      "Dental Clinics",
+      "Coaches",
+      "Service Businesses",
+      "Consultants"
+    ],
+    "description": "If your business already receives inquiries but struggles to convert them into customers, our system is built for you."
   },
-  "pricing": {
-    "title": "Investment Options",
-    "subtitle": "Choose the package that fits your needs and budget",
-    "tiers": [
-      {
-        "name": "Free Consultation",
-        "price": "Free",
-        "originalPrice": "$150",
-        "savings": "Save $150",
-        "description": "Let's discuss your project and see how I can help",
-        "features": [
-          "30-minute discovery call",
-          "Project scope discussion",
-          "Timeline & budget estimate",
-          "No obligation"
-        ],
-        "ctaText": "Book Free Call",
-        "popular": false
-      },
-      {
-        "name": "Basic Package",
-        "price": "$997",
-        "originalPrice": "$1,997",
-        "savings": "Save $1,000",
-        "description": "Perfect for small businesses and startups",
-        "features": [
-          "Up to 5 pages",
-          "Mobile responsive design",
-          "Basic SEO setup",
-          "Contact form integration",
-          "2 rounds of revisions",
-          "1 week delivery"
-        ],
-        "ctaText": "Get Started",
-        "popular": true
-      },
-      {
-        "name": "Advanced Package",
-        "price": "$2,497",
-        "originalPrice": "$4,997",
-        "savings": "Save $2,500",
-        "description": "For businesses ready to scale and dominate",
-        "features": [
-          "Up to 15 pages",
-          "Custom UI/UX design",
-          "Advanced SEO optimization",
-          "CMS integration",
-          "Analytics setup",
-          "E-commerce ready",
-          "Unlimited revisions",
-          "Priority support",
-          "2-3 weeks delivery"
-        ],
-        "ctaText": "Let's Talk",
-        "popular": false
-      }
-    ]
-  },
-  "portfolio": {
-    "title": "My Work",
-    "subtitle": "A showcase of projects across different platforms and technologies",
-    "categories": ["All","Programming","AI Automation","Branding","Web Design"],
-    "projects": [
-      {
-        "title": "Todo Management System (ASP.NET & React)",
-        "category": "Programming",
-        "description": "A full-stack application with ASP.NET Core and React",
-        "image": "/images/projects/TodoTracker.png",
-        "client": "Personal",
-        "year": "2025",
-        "technologies": ["C#, ASP.NET Core Web API, Entity Framework Core, SQL Server, React, TypeScript, Docker, Swagger"],
-        "features": ["Full RESTful API backend",
-                      "React frontend client",
-                      "Docker Compose environment",
-                      "Task management (Create/Read/Update/Delete)",
-                      "API documentation via Swagger"],
-        "url": "#"
-      },
-       {
-        "title": "UI HR Hiring Automation",
-        "category": "Programming",
-        "description": "Automated HR hiring process with AI-powered candidate screening",
-        "image": "/images/projects/UISubmmisionForm.png",
-        "client": "Personal",
-        "year": "2025",
-        "technologies": ["HTML", "CSS", "JavaScript", "n8n API Integration"],
-        "features": ["Upload and process candidate data", "Automated candidate screening", "Email notifications", "Progress tracking", "Data analytics"],
-        "url": "https://www.linkedin.com/posts/olympiosumbilonjr_%F0%9D%90%87%F0%9D%90%91-%F0%9D%90%84%F0%9D%90%B1%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%F0%9D%90%AD-%F0%9D%90%82%F0%9D%90%95-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%A8%F0%9D%90%9C%F0%9D%90%9E%F0%9D%90%AC%F0%9D%90%AC%F0%9D%90%A8%F0%9D%90%AB-activity-7390397980761264128-OzmN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFpoMC0BDU7f9OlkGGnJNgcIjdzgdFuoTZY"
-      },
-      {
-        "title": "HR Hiring Automation",
-        "category": "AI Automation",
-        "description": "Automated HR hiring process with AI-powered candidate screening",
-        "image": "/images/projects/HR_HIRING_AUTOMATION_WORKFLOW.png",
-        "client": "Personal",
-        "year": "2025",
-        "technologies": ["n8n", "Gmail", "Google Sheets", "ChatGPT API"],
-        "features": ["Automated candidate screening", "Email notifications", "Progress tracking", "Data analytics"],
-        "url": "https://www.linkedin.com/posts/olympiosumbilonjr_%F0%9D%90%87%F0%9D%90%91-%F0%9D%90%84%F0%9D%90%B1%F0%9D%90%A9%F0%9D%90%9E%F0%9D%90%AB%F0%9D%90%AD-%F0%9D%90%82%F0%9D%90%95-%F0%9D%90%8F%F0%9D%90%AB%F0%9D%90%A8%F0%9D%90%9C%F0%9D%90%9E%F0%9D%90%AC%F0%9D%90%AC%F0%9D%90%A8%F0%9D%90%AB-activity-7390397980761264128-OzmN?utm_source=share&utm_medium=member_desktop&rcm=ACoAAFpoMC0BDU7f9OlkGGnJNgcIjdzgdFuoTZY"
-      },
-      {
-        "title": "Client Onboarding with Multiple Agents",
-        "category": "AI Automation",
-        "description": "Automated client onboarding process with multiple AI agents that automatically send emails, such as welcome email and TOS contract",
-        "image": "/images/projects/Client_Onboarding_with_Multiple_Agents.png",
-        "client": "Personal",
-        "year": "2025",
-        "technologies": ["n8n", "Gmail", "Grock", "ChatGPT & Groq API"],
-        "features": ["Automated client onboarding", "Email notifications"],
-        "url": "#"
-      },
-        {
-        "title": "Online Appointment System (Laravel &  Boostrap)",
-        "category": "Programming",
-        "description": "A full-stack Web Development with MVC Laravel",
-        "image": "/images/projects/AppointmentSystem.jpg",
-        "client": "Capstone:MSU-MSAT",
-        "year": "2022",
-        "technologies": ["Bootstrap", "JavaScript", "MySQL", "Laravel"],
-        "features": ["Real-time Booking", "Appointment Calendar", "Payment tracking", "School Announcement"],
-        "url": "#"
-      }
-    ]
-  },
-  "testimonials": {
-    "title": "What Clients Say",
-    "subtitle": "Real feedback from real clients",
+  "caseStudies": {
+    "title": "System Results",
     "items": [
       {
-        "name": "Sarah Johnson",
-        "role": "CEO, TechStart",
-        "content": "Olympio delivered exactly what we needed. Our new website has increased our conversions by 40%. Highly recommend!",
-        "avatar": ""
+        "name": "Clinic Booking Automation",
+        "problem": "Manual booking and missed inquiries.",
+        "solution": [
+          "landing page funnel",
+          "booking automation",
+          "follow-up system"
+        ],
+        "outcome": "More consistent appointment bookings."
       },
       {
-        "name": "Michael Chen",
-        "role": "Founder, GrowthLab",
-        "content": "Professional, responsive, and incredibly talented. The design exceeded our expectations and was delivered on time.",
-        "avatar": ""
-      },
-      {
-        "name": "Emily Rodriguez",
-        "role": "Marketing Director",
-        "content": "Working with Olympio was a game-changer for our brand. The attention to detail and creative solutions made all the difference.",
-        "avatar": ""
+        "name": "Service Business Lead Funnel",
+        "problem": "Website visitors not converting.",
+        "solution": [
+          "lead capture funnel",
+          "automated nurturing sequence"
+        ],
+        "outcome": "Higher inquiry-to-client conversion."
       }
     ]
   },
-  "faq": {
-    "title": "Frequently Asked Questions",
-    "subtitle": "Got questions? I've got answers",
-    "items": [
-      {
-        "question": "How long does it take to build a website?",
-        "answer": "The timeline depends on the project scope. A basic website typically takes 1-2 weeks, while more complex projects with custom features can take 3-4 weeks. I'll provide a detailed timeline during our initial consultation."
-      },
-      {
-        "question": "What's included in your web design packages?",
-        "answer": "All packages include custom design, mobile responsiveness, basic SEO setup, and a contact form. Higher-tier packages include additional pages, CMS integration, advanced SEO, analytics setup, and priority support."
-      },
-      {
-        "question": "Do you offer ongoing maintenance and support?",
-        "answer": "Yes! I offer ongoing maintenance packages to keep your website secure, updated, and running smoothly. This includes regular backups, security updates, content updates, and technical support."
-      },
-      {
-        "question": "Can you help with an existing website?",
-        "answer": "Absolutely! I can help redesign, optimize, or add new features to your existing website. We'll assess your current site and create a plan to improve its performance and appearance."
-      },
-      {
-        "question": "What platforms do you work with?",
-        "answer": "I work with various platforms including WordPress, Framer, Webflow, GoHighLevel, and custom-coded solutions using React and Next.js. I'll recommend the best platform based on your specific needs and goals."
-      },
-      {
-        "question": "How do we communicate during the project?",
-        "answer": "I keep communication clear and consistent through email, video calls, and project management tools. You'll receive regular updates and have opportunities to provide feedback at each stage of the project."
-      }
-    ]
+  "founder": {
+    "tagline": "Built By Developers Who Understand Business Systems",
+    "title": "Built By Developers Who Understand Business Systems",
+    "subtitle": "Founder Story",
+    "description": "PyowDigitals was founded by Olympio, a developer with experience building modern web systems.",
+    "story": "After working in development, he noticed many businesses were losing customers due to broken systems: no follow-up, manual booking, and poor conversion funnels. PyowDigitals was created to solve this by building automated marketing systems that convert leads into clients.",
+    "highlights": [
+      "no follow-up",
+      "manual booking",
+      "poor conversion funnels"
+    ],
+    "image": "/images/me.jpg"
   },
   "blog": {
-    "title": "Latest Insights",
-    "subtitle": "Tips, tutorials, and thoughts on web design and development",
+    "title": "Learn How Automation Grows Businesses",
+    "subtitle": "Practical resources for building better lead conversion systems.",
     "posts": [
       {
-        "title": "4 Practical Lessons From Building Accounting Systems and Learning Marketing Automation",
-        "excerpt": "What building accounting systems with ASP.NET Core taught me about funnels, automation, branding, and building digital systems that actually convert.",
+        "title": "Why Most Businesses Lose Leads",
+        "excerpt": "The common breakdowns in response time, follow-up, and booking flow that kill conversions.",
         "date": "2026-02-11",
-        "category": "Web Development",
-        "slug": "aspnet-core-accounting-systems-marketing-automation-lessons",
+        "category": "Lead Conversion",
+        "slug": "why-most-businesses-lose-leads",
         "image": "/images/blog/4_Practical_Lessons.png",
-        "content": "Building accounting systems with ASP.NET Core and DevExtreme taught me one thing: logic wins. But recently, I’ve been diving into marketing automation, funnels, web design, and branding—and the biggest realization is this: marketing is also a system.\n\nHere are four practical lessons I’m learning.\n\n1. Stop Building Features. Start Building Flows.\nWhen building accounting systems, we don’t randomly add buttons. We design user roles, validation rules, workflows, and reports. Marketing works the same way. A funnel is simply Input → Process → Output. Visitor → Nurture → Conversion. If your website has no clear lead capture and no automated follow-up, you don’t have marketing. You have a brochure.\n\n2. Good Code Does Not Equal Good Experience.\nASP.NET Core gives structure. DevExtreme gives powerful UI components. But users don’t care about your architecture. They care about trust, clarity, and ease. Design and branding fill the gap between functionality and perception. A system can work perfectly and still fail if it doesn’t communicate value clearly.\n\n3. Automation Is Backend Logic for Marketing.\nIn development, we automate validation, calculations, and reporting. In marketing, we automate emails, segmentation, and lead scoring. It’s the same logic applied to user behavior. Triggers, conditions, and workflows power both systems. If you understand event-driven logic, you already understand marketing automation.\n\n4. Branding Is Consistency at Scale.\nAccounting systems require consistent rules and structure. Branding works the same way. Consistent voice, visuals, and messaging build trust. Branding is not decoration—it’s expectation management.\n\nDevelopers who understand systems and marketing have leverage. Because they don’t just build websites—they build digital machines that attract, convert, and retain."
-      },  {
-    "title": "Stop Building Features. Start Building Flows.",
-    "excerpt": "Why most developer websites fail—and how thinking in systems and funnels changes everything.",
-    "date": "2026-02-09",
-    "category": "Web Development",
-    "slug": "stop-building-features-start-building-flows",
-    "image": "/images/blog/stop_building_features.png",
-    "content": "When building accounting systems using ASP.NET Core and DevExtreme, we don’t randomly add buttons. We define roles, validation rules, workflows, and reports. Everything follows a process.\n\nBut when it comes to websites? Many developers forget that logic.\n\nA website without a funnel is just a brochure.\n\nMarketing follows the same structure as backend development:\nInput → Process → Output.\nVisitor → Nurture → Conversion.\n\nIf someone lands on your website, what happens next?\nDo they subscribe?\nDo they receive automated follow-up emails?\nDo they move through a structured journey?\n\nIf the answer is “they can contact us,” that’s not a system.\n\nDevelopers are natural system builders. When you apply that same thinking to funnels and automation, your website becomes a growth machine—not just a portfolio."
-  },
-  {
-    "title": "Good Code Doesn’t Mean Good Experience",
-    "excerpt": "Why clean architecture is not enough—and how design and branding shape user trust.",
-    "date": "2026-02-08",
-    "category": "Web Design",
-    "slug": "good-code-does-not-mean-good-experience",
-    "image": "/images/blog/Good_Code.png",
-    "content": "ASP.NET Core provides structure. DevExtreme provides powerful UI components. As developers, we focus on performance, architecture, and clean code.\n\nBut users don’t see your repository.\nThey see experience.\n\nDoes the system feel trustworthy?\nIs it clear?\nIs it simple to use?\n\nA perfectly functioning accounting system can still fail if the interface feels outdated or confusing.\n\nDesign is not decoration.\nBranding is not colors.\n\nThey are perception management.\n\nIf users hesitate, feel confused, or doubt credibility, the problem is not your backend. It’s your experience layer.\n\nStrong systems require both logic and presentation."
-  },
-  {
-    "title": "Marketing Automation Is Just Backend Logic for Humans",
-    "excerpt": "If you understand triggers, conditions, and workflows, you already understand marketing automation.",
-    "date": "2026-01-25",
-    "category": "Marketing Automation",
-    "slug": "marketing-automation-backend-logic-for-humans",
-    "image": "/images/blog/marketing_automation.png",
-    "content": "In development, we automate calculations, validation, and reporting.\n\nIn marketing, we automate emails, segmentation, onboarding, and follow-ups.\n\nThe structure is identical.\n\nUser registers → trigger welcome email.\nUser inactive for 3 days → send reminder.\nUser clicks link → move to new segment.\n\nThat’s event-driven architecture.\n\nDevelopers often think marketing is purely creative. It’s not.\nIt’s behavioral system design.\n\nFunnels are user flows.\nAutomation is workflow logic.\nSegmentation is conditional filtering.\n\nIf you already build accounting systems, you already understand structured logic. Marketing automation is simply applying that logic to user behavior."
-  },
-  {
-    "title": "Branding Is Consistency at Scale",
-    "excerpt": "Why branding works the same way as validation rules in accounting systems.",
-    "date": "2026-01-23",
-    "category": "Branding",
-    "slug": "branding-is-consistency-at-scale",
-    "image": "/images/blog/branding_consestency.png",
-    "content": "In accounting systems, consistency is critical. The same rules apply everywhere. Validation logic doesn’t randomly change across modules.\n\nBranding works the same way.\n\nConsistent messaging.\nConsistent visuals.\nConsistent tone.\n\nIf your website sounds corporate, your emails sound casual, and your social media sounds aggressive, users get confused.\n\nConfusion reduces trust.\n\nBranding is not about looking modern.\nIt’s about building expectation.\n\nWhen people see your name, they should know what to expect.\n\nConsistency builds trust. Trust builds conversions."
-  }
+        "content": "Most businesses are not short on inquiries. They are short on systems. Leads get trapped in DMs, follow-up happens too late, and booking steps are unclear. This article breaks down where those leaks happen and how to fix them with a simple, repeatable flow."
+      },
+      {
+        "title": "Automation Systems Every Business Needs",
+        "excerpt": "A simple stack for capturing, nurturing, and converting leads without manual chasing.",
+        "date": "2026-02-09",
+        "category": "Marketing Automation",
+        "slug": "automation-systems-every-business-needs",
+        "image": "/images/blog/marketing_automation.png",
+        "content": "At minimum, every service business needs a lead capture page, CRM pipeline, automated follow-up sequence, and booking automation. This post explains how each piece works together and why missing one step creates avoidable revenue loss."
+      },
+      {
+        "title": "How Funnels Convert Social Media Followers",
+        "excerpt": "Turn attention from social media into qualified inquiries and booked calls.",
+        "date": "2026-02-08",
+        "category": "Funnels",
+        "slug": "how-funnels-convert-social-media-followers",
+        "image": "/images/blog/stop_building_features.png",
+        "content": "Social media creates attention, but attention alone does not book clients. Funnels create structure: clear offer, clear next step, and automated follow-up. Learn how to move followers into a conversion path that runs daily."
+      },
+      {
+        "title": "Lead Routing and Follow-Up Timing",
+        "excerpt": "Why speed-to-lead and smart routing create higher booking rates.",
+        "date": "2026-01-25",
+        "category": "CRM",
+        "slug": "lead-routing-and-follow-up-timing",
+        "image": "/images/blog/Good_Code.png",
+        "content": "Fast response times improve conversion, but only if leads are routed correctly and follow-ups continue over time. This guide covers practical timing rules and CRM stages that improve inquiry-to-client performance."
+      }
     ]
   },
   "contact": {
-    "title": "Let's Build Something Amazing",
-    "subtitle": "Ready to take your online presence to the next level? Get in touch and let's discuss your project.",
-    "ctaButton": { "text": "Send Message", "href": "#contact" }
+    "title": "Find Out Where Your Leads Are Leaking",
+    "subtitle": "Book a free consultation and we will analyze your current marketing system.",
+    "ctaButton": { "text": "Book Your Free Lead System Audit", "href": "#contact" },
+    "benefits": [
+      "lead conversion audit",
+      "funnel improvement suggestions",
+      "automation recommendations"
+    ]
   },
   "footer": {
+    "description": "Helping businesses build automated client acquisition systems.",
+    "cta": "Get Free Lead System Audit",
     "copyright": "Olympio Sumbilon. All rights reserved.",
     "links": [
       { "name": "Privacy Policy", "href": "/privacy" },
@@ -432,3 +239,4 @@
     ]
   }
 }
+

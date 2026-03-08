@@ -34,7 +34,7 @@ const ContactForm = () => {
 
       if (response.ok) {
         setStatus('success')
-        setStatusMessage('Redirecting you to schedule...')
+        setStatusMessage('Opening Calendly in a new tab...')
         setFormData({
           firstName: '',
           lastName: '',
@@ -44,9 +44,10 @@ const ContactForm = () => {
           challenge: ''
         })
 
-        window.setTimeout(() => {
-          window.location.href = calendlyUrl
-        }, 1800)
+        const calendlyWindow = window.open(calendlyUrl, '_blank', 'noopener,noreferrer')
+        if (!calendlyWindow) {
+          setStatusMessage('Please click the button below to open Calendly.')
+        }
       } else {
         const data = await response.json().catch(() => ({}))
         setStatus('error')
@@ -187,15 +188,15 @@ const ContactForm = () => {
 
       {status === 'success' && (
         <div className="space-y-3">
-          <p className="text-green-500 text-center font-medium">{statusMessage}</p>
           <a
             href={calendlyUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="w-full inline-flex items-center justify-center bg-[#c8ff57] hover:bg-[#d4ff7a] text-[#070b15] font-extrabold py-3 px-6 rounded-lg transition-all duration-300 text-base"
           >
-            Book Your Schedule Now {'->'}
+            Open Calendly in New Tab {'->'}
           </a>
+          <p className="text-green-500 text-center font-medium">{statusMessage}</p>
         </div>
       )}
       {status === 'error' && (
@@ -206,4 +207,3 @@ const ContactForm = () => {
 }
 
 export default ContactForm
-

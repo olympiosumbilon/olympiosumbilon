@@ -416,6 +416,14 @@ h1, h2, h3, h4, h5, h6 {
   overflow: hidden;
 }
 
+.bf-hero-texture {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(120% 85% at 22% -8%, rgba(145, 199, 88, 0.2), rgba(145, 199, 88, 0.08) 36%, transparent 68%),
+    linear-gradient(180deg, rgba(44, 74, 54, 0.22) 0%, rgba(6, 11, 23, 0.06) 52%, rgba(6, 11, 23, 0) 100%);
+}
+
 .bf-hero-grid {
   position: absolute;
   inset: -12%;

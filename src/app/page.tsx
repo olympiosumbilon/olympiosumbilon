@@ -100,36 +100,13 @@ export default function Home() {
 
       <section className="relative z-10 min-h-screen flex items-center pt-28 pb-16 px-5 md:px-8 overflow-hidden">
         <div className="bf-hero-fx" aria-hidden="true">
+          <div className="bf-hero-texture" />
           <div className="bf-hero-grid" />
           <div className="bf-hero-lines">
             <span className="bf-run-line bf-run-line-1" />
             <span className="bf-run-line bf-run-line-2" />
             <span className="bf-run-line bf-run-line-3" />
             <span className="bf-run-line bf-run-line-4" />
-          </div>
-          <div className="bf-hero-tiles">
-            {[
-              { left: '6%', top: '9%', delay: '0.1s', duration: '7.2s', opacity: 0.09 },
-              { left: '18%', top: '31%', delay: '0.6s', duration: '8.4s', opacity: 0.12 },
-              { left: '29%', top: '58%', delay: '1.1s', duration: '6.8s', opacity: 0.1 },
-              { left: '42%', top: '16%', delay: '1.7s', duration: '7.9s', opacity: 0.11 },
-              { left: '54%', top: '43%', delay: '2.1s', duration: '9.1s', opacity: 0.08 },
-              { left: '66%', top: '64%', delay: '2.7s', duration: '7.4s', opacity: 0.1 },
-              { left: '79%', top: '22%', delay: '3.2s', duration: '8.8s', opacity: 0.09 },
-              { left: '88%', top: '77%', delay: '3.8s', duration: '7.1s', opacity: 0.1 },
-            ].map((tile, index) => (
-              <span
-                key={index}
-                className="bf-hero-tile"
-                style={{
-                  left: tile.left,
-                  top: tile.top,
-                  animationDelay: tile.delay,
-                  animationDuration: tile.duration,
-                  opacity: tile.opacity,
-                }}
-              />
-            ))}
           </div>
         </div>
 

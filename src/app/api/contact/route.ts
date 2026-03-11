@@ -1,88 +1,114 @@
-﻿import { NextResponse } from 'next/server'
+import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
 
-export async function POST(request: Request) {
-  const recipientEmail = process.env.EMAIL_TO || 'olympiosumbilonpersonal@gmail.com'
+type ContactPayload = {
+  firstName?: string
+  lastName?: string
+  name?: string
+  email?: string
+  businessType?: string
+  inquiriesPerWeek?: string
+  challenge?: string
+  source?: string
+  message?: string
+}
 
+const DEFAULT_N8N_WEBHOOK_URL =
+  'https://n8n-test.hyperaccess.net/webhook-test/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
+
+const escapeHtml = (value: string) =>
+  value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;')
+
+const getLeadScore = (inquiries: string) => {
+  if (inquiries.includes('60+')) return 88
+  if (inquiries.includes('30-60')) return 82
+  if (inquiries.includes('10-30')) return 74
+  return 66
+}
+
+async function sendLeadToN8n(payload: {
+  firstName: string
+  lastName: string
+  name: string
+  email: string
+  businessType: string
+  inquiriesPerWeek: string
+  challenge: string
+  source: string
+  message: string
+  submittedAt: string
+  leadScore: number
+  priority: 'High' | 'Medium'
+}) {
+  const webhookUrl = process.env.N8N_WEBHOOK_URL || DEFAULT_N8N_WEBHOOK_URL
+
+  const response = await fetch(webhookUrl, {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(payload),
+    cache: 'no-store',
+  })
+
+  if (!response.ok) {
+    const details = await response.text().catch(() => '')
+    throw new Error(`n8n webhook failed with status ${response.status}${details ? `: ${details}` : ''}`)
+  }
+}
+
+async function sendLeadEmail(payload: {
+  name: string
+  email: string
+  message: string
+  businessType: string
+  inquiriesPerWeek: string
+  challenge: string
+  submittedAt: string
+  leadScore: number
+  priority: 'High' | 'Medium'
+}) {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
-    console.error('Email configuration is missing: EMAIL_USER / EMAIL_PASS')
-    return NextResponse.json(
-      {
-        message:
-          'Server email is not configured yet. Add EMAIL_USER and EMAIL_PASS in .env.local, then restart the dev server.',
-      },
-      { status: 500 }
-    )
+    return
   }
 
-  try {
-    const { name, email, message } = await request.json()
+  const recipientEmail = process.env.EMAIL_TO || 'olympiosumbilonpersonal@gmail.com'
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: process.env.EMAIL_USER,
+      pass: process.env.EMAIL_PASS,
+    },
+  })
 
-    if (!name || !email || !message) {
-      return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 })
-    }
+  const safeName = escapeHtml(payload.name)
+  const safeEmail = escapeHtml(payload.email)
+  const safeMessage = escapeHtml(payload.message)
+  const safeBusinessType = escapeHtml(payload.businessType)
+  const safeInquiries = escapeHtml(payload.inquiriesPerWeek)
+  const safeChallenge = escapeHtml(payload.challenge)
+  const initials =
+    safeName
+      .split(' ')
+      .filter(Boolean)
+      .slice(0, 2)
+      .map((part) => part[0]?.toUpperCase() || '')
+      .join('') || 'NL'
 
-    const transporter = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: process.env.EMAIL_USER,
-        pass: process.env.EMAIL_PASS,
-      },
-    })
+  const priorityClass = payload.priority === 'High' ? 'priority-high' : 'priority-med'
 
-    const escapeHtml = (value: string) =>
-      value
-        .replace(/&/g, '&amp;')
-        .replace(/</g, '&lt;')
-        .replace(/>/g, '&gt;')
-        .replace(/"/g, '&quot;')
-        .replace(/'/g, '&#39;')
-
-    const safeName = escapeHtml(name)
-    const safeEmail = escapeHtml(email)
-    const safeMessage = escapeHtml(message)
-
-    const businessType =
-      message.match(/Business Type:\s*(.+)/i)?.[1]?.trim() || 'Not specified'
-    const inquiriesPerWeek =
-      message.match(/Inquiries Per Week:\s*(.+)/i)?.[1]?.trim() || 'Not specified'
-    const challenge =
-      message.match(/Biggest Challenge:\s*([\s\S]*)/i)?.[1]?.trim() || message
-
-    const safeBusinessType = escapeHtml(businessType)
-    const safeInquiries = escapeHtml(inquiriesPerWeek)
-    const safeChallenge = escapeHtml(challenge)
-    const initials =
-      safeName
-        .split(' ')
-        .filter(Boolean)
-        .slice(0, 2)
-        .map((part) => part[0]?.toUpperCase() || '')
-        .join('') || 'NL'
-
-    const timestamp = new Date().toLocaleString('en-PH', {
-      dateStyle: 'medium',
-      timeStyle: 'short',
-    })
-
-    const leadScore = safeInquiries.includes('60+')
-      ? 88
-      : safeInquiries.includes('30-60')
-        ? 82
-        : safeInquiries.includes('10-30')
-          ? 74
-          : 66
-
-    const priorityClass = leadScore >= 80 ? 'priority-high' : 'priority-med'
-    const priorityText = leadScore >= 80 ? 'High' : 'Medium'
-
-    await transporter.sendMail({
-      from: `"Pyow Digitals Website" <${process.env.EMAIL_USER}>`,
-      to: recipientEmail,
-      replyTo: email,
-      subject: `Alert: New Leads... Take Action !! [${name}]`,
-      text: `Alert: New Leads... Take Action !!\n\nName: ${name}\nEmail: ${email}\n\nMessage:\n${message}`,
-      html: `
+  await transporter.sendMail({
+    from: `"Pyow Digitals Website" <${process.env.EMAIL_USER}>`,
+    to: recipientEmail,
+    replyTo: payload.email,
+    subject: `Alert: New Leads... Take Action !! [${payload.name}]`,
+    text: `Alert: New Leads... Take Action !!\n\nName: ${payload.name}\nEmail: ${payload.email}\n\nMessage:\n${payload.message}`,
+    html: `
 <!DOCTYPE html>
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -111,7 +137,7 @@ export async function POST(request: Request) {
     .score-label { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #7a7a95; margin-bottom: 4px; }
     .score-val { font-size: 20px; font-weight: 800; color: #00e5a0; }
     .score-bar-track { height: 6px; background: rgba(255,255,255,0.07); border-radius: 3px; overflow: hidden; margin-top: 6px; }
-    .score-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #00e5a0, #7b5cff); width: ${leadScore}%; }
+    .score-bar-fill { height: 100%; border-radius: 3px; background: linear-gradient(90deg, #00e5a0, #7b5cff); width: ${payload.leadScore}%; }
     .priority-pill { display: inline-block; padding: 3px 10px; border-radius: 20px; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; margin-top: 10px; }
     .priority-high { background: rgba(0,229,160,0.12); color: #00e5a0; border: 1px solid rgba(0,229,160,0.25); }
     .priority-med { background: rgba(251,191,36,0.12); color: #fbbf24; border: 1px solid rgba(251,191,36,0.25); }
@@ -170,9 +196,9 @@ export async function POST(request: Request) {
       <p class="header-sub">Submitted via <span>pyowdigitals.com</span></p>
       <div class="score-banner">
         <div class="score-label">Lead Score</div>
-        <div class="score-val">${leadScore}<span style="font-size:13px;color:#4a4a64;">/100</span></div>
+        <div class="score-val">${payload.leadScore}<span style="font-size:13px;color:#4a4a64;">/100</span></div>
         <div class="score-bar-track"><div class="score-bar-fill"></div></div>
-        <span class="priority-pill ${priorityClass}">${priorityText}</span>
+        <span class="priority-pill ${priorityClass}">${payload.priority}</span>
       </div>
     </div>
 
@@ -209,7 +235,7 @@ export async function POST(request: Request) {
 
       <div class="timestamp-strip">
         <div class="ts-item">
-          <div class="ts-val">${escapeHtml(timestamp)}</div>
+          <div class="ts-val">${escapeHtml(payload.submittedAt)}</div>
           <div class="ts-label">Submitted</div>
         </div>
         <div class="ts-divider"></div>
@@ -233,16 +259,74 @@ export async function POST(request: Request) {
 </div>
 </body>
 </html>
-      `,
+    `,
+  })
+}
+
+export async function POST(request: Request) {
+  try {
+    const body = (await request.json()) as ContactPayload
+
+    const firstName = body.firstName?.trim() || ''
+    const lastName = body.lastName?.trim() || ''
+    const name = body.name?.trim() || `${firstName} ${lastName}`.trim()
+    const email = body.email?.trim() || ''
+    const businessType = body.businessType?.trim() || 'Not specified'
+    const inquiriesPerWeek = body.inquiriesPerWeek?.trim() || 'Not specified'
+    const challenge = body.challenge?.trim() || 'Not specified'
+    const source = body.source?.trim() || 'website-contact-form'
+    const message =
+      body.message?.trim() ||
+      `Business Type: ${businessType}\nInquiries Per Week: ${inquiriesPerWeek}\n\nBiggest Challenge:\n${challenge}`
+
+    if (!name || !email || !challenge) {
+      return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 })
+    }
+
+    const submittedAt = new Date().toLocaleString('en-PH', {
+      dateStyle: 'medium',
+      timeStyle: 'short',
+    })
+    const leadScore = getLeadScore(inquiriesPerWeek)
+    const priority = leadScore >= 80 ? 'High' : 'Medium'
+
+    await sendLeadToN8n({
+      firstName,
+      lastName,
+      name,
+      email,
+      businessType,
+      inquiriesPerWeek,
+      challenge,
+      source,
+      message,
+      submittedAt,
+      leadScore,
+      priority,
     })
 
-    return NextResponse.json({ message: 'Email sent successfully.' }, { status: 200 })
+    try {
+      await sendLeadEmail({
+        name,
+        email,
+        message,
+        businessType,
+        inquiriesPerWeek,
+        challenge,
+        submittedAt,
+        leadScore,
+        priority,
+      })
+    } catch (error) {
+      console.error('Lead email notification failed:', error)
+    }
+
+    return NextResponse.json({ message: 'Lead captured successfully.' }, { status: 200 })
   } catch (error) {
-    console.error('Error sending email:', error)
+    console.error('Error processing lead submission:', error)
     return NextResponse.json(
       {
-        message:
-          'Failed to send email. Check Gmail App Password and EMAIL_USER / EMAIL_PASS in .env.local.',
+        message: 'Failed to capture lead. Check the n8n webhook configuration and try again.',
       },
       { status: 500 }
     )

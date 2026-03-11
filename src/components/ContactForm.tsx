@@ -26,8 +26,14 @@ const ContactForm = () => {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          firstName: formData.firstName,
+          lastName: formData.lastName,
           name: `${formData.firstName} ${formData.lastName}`.trim(),
           email: formData.email,
+          businessType: formData.businessType,
+          inquiriesPerWeek: formData.inquiriesPerWeek,
+          challenge: formData.challenge,
+          source: 'website-contact-form',
           message: `Business Type: ${formData.businessType || 'N/A'}\nInquiries Per Week: ${formData.inquiriesPerWeek || 'N/A'}\n\nBiggest Challenge:\n${formData.challenge}`,
         }),
       })

@@ -424,7 +424,7 @@ export default async function CrmDashboardPage() {
               </p>
               <h2 className="mt-2 text-2xl font-black tracking-[-0.03em]">Lead Queue</h2>
             </div>
-            <p className="text-sm text-slate-400">Joined from `leads` + `contacts` + `form_submissions`</p>
+            {/* <p className="text-sm text-slate-400">Joined from `leads` + `contacts` + `form_submissions`</p> */}
           </div>
 
           <div className="overflow-hidden rounded-3xl border border-white/10">

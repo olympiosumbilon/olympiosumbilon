@@ -14,7 +14,8 @@ type ContactPayload = {
 }
 
 const DEFAULT_N8N_WEBHOOK_URL =
-  'https://n8n-test.hyperaccess.net/webhook-test/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
+ // 'https://n8n-test.hyperaccess.net/webhook-test/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
+  'https://n8n-test.hyperaccess.net/webhook/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
 
 const escapeHtml = (value: string) =>
   value

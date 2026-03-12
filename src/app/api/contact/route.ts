@@ -1,5 +1,8 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { createLeadRecordsFromSubmission } from '@/lib/crm/store'
+import { notifyNewLead } from '@/lib/crm/notifications'
+import { calculateLeadScore, getLeadPriority } from '@/lib/crm/scoring'
 
 type ContactPayload = {
   firstName?: string
@@ -25,13 +28,6 @@ const escapeHtml = (value: string) =>
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;')
 
-const getLeadScore = (inquiries: string) => {
-  if (inquiries.includes('60+')) return 88
-  if (inquiries.includes('30-60')) return 82
-  if (inquiries.includes('10-30')) return 74
-  return 66
-}
-
 async function sendLeadToN8n(payload: {
   firstName: string
   lastName: string
@@ -44,7 +40,7 @@ async function sendLeadToN8n(payload: {
   message: string
   submittedAt: string
   leadScore: number
-  priority: 'High' | 'Medium'
+  priority: 'High' | 'Medium' | 'Low'
 }) {
   const webhookUrl = process.env.N8N_WEBHOOK_URL || DEFAULT_N8N_WEBHOOK_URL
 
@@ -72,7 +68,7 @@ async function sendLeadEmail(payload: {
   challenge: string
   submittedAt: string
   leadScore: number
-  priority: 'High' | 'Medium'
+  priority: 'High' | 'Medium' | 'Low'
 }) {
   if (!process.env.EMAIL_USER || !process.env.EMAIL_PASS) {
     return
@@ -101,7 +97,7 @@ async function sendLeadEmail(payload: {
       .map((part) => part[0]?.toUpperCase() || '')
       .join('') || 'NL'
 
-  const priorityClass = payload.priority === 'High' ? 'priority-high' : 'priority-med'
+    const priorityClass = payload.priority === 'High' ? 'priority-high' : 'priority-med'
 
   await transporter.sendMail({
     from: `"Pyow Digitals Website" <${process.env.EMAIL_USER}>`,
@@ -288,8 +284,12 @@ export async function POST(request: Request) {
       dateStyle: 'medium',
       timeStyle: 'short',
     })
-    const leadScore = getLeadScore(inquiriesPerWeek)
-    const priority = leadScore >= 80 ? 'High' : 'Medium'
+    const leadScore = calculateLeadScore({
+      inquiriesPerWeek,
+      businessType,
+      challenge,
+    })
+    const priority = getLeadPriority(leadScore)
 
     await sendLeadToN8n({
       firstName,
@@ -307,6 +307,22 @@ export async function POST(request: Request) {
     })
 
     try {
+      await createLeadRecordsFromSubmission({
+        firstName,
+        lastName,
+        name,
+        email,
+        businessType,
+        inquiriesPerWeek,
+        challenge,
+        source,
+        submittedAt,
+      })
+    } catch (error) {
+      console.error('Supabase CRM persistence failed:', error)
+    }
+
+    try {
       await sendLeadEmail({
         name,
         email,
@@ -320,6 +336,17 @@ export async function POST(request: Request) {
       })
     } catch (error) {
       console.error('Lead email notification failed:', error)
+    }
+
+    try {
+      await notifyNewLead({
+        name,
+        email,
+        businessType,
+        score: leadScore,
+      })
+    } catch (error) {
+      console.error('Lead notification failed:', error)
     }
 
     return NextResponse.json({ message: 'Lead captured successfully.' }, { status: 200 })

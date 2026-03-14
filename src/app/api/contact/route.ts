@@ -1,8 +1,5 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
-import { createLeadRecordsFromSubmission } from '@/lib/crm/store'
-import { notifyNewLead } from '@/lib/crm/notifications'
-import { calculateLeadScore, getLeadPriority } from '@/lib/crm/scoring'
 
 type ContactPayload = {
   firstName?: string
@@ -27,6 +24,32 @@ const escapeHtml = (value: string) =>
     .replace(/>/g, '&gt;')
     .replace(/"/g, '&quot;')
     .replace(/'/g, '&#39;')
+
+const calculateLeadScore = (payload: {
+  inquiriesPerWeek: string
+  businessType: string
+  challenge: string
+}) => {
+  let score = 40
+
+  if (payload.inquiriesPerWeek === '60+') score += 30
+  else if (payload.inquiriesPerWeek === '30-60') score += 22
+  else if (payload.inquiriesPerWeek === '10-30') score += 14
+  else if (payload.inquiriesPerWeek === 'Less than 10') score += 6
+
+  if (payload.businessType !== 'Not specified') score += 10
+
+  if (payload.challenge.trim().length >= 80) score += 12
+  else if (payload.challenge.trim().length >= 30) score += 6
+
+  return Math.min(score, 100)
+}
+
+const getLeadPriority = (score: number): 'High' | 'Medium' | 'Low' => {
+  if (score >= 80) return 'High'
+  if (score >= 55) return 'Medium'
+  return 'Low'
+}
 
 async function sendLeadToN8n(payload: {
   firstName: string
@@ -307,22 +330,6 @@ export async function POST(request: Request) {
     })
 
     try {
-      await createLeadRecordsFromSubmission({
-        firstName,
-        lastName,
-        name,
-        email,
-        businessType,
-        inquiriesPerWeek,
-        challenge,
-        source,
-        submittedAt,
-      })
-    } catch (error) {
-      console.error('Supabase CRM persistence failed:', error)
-    }
-
-    try {
       await sendLeadEmail({
         name,
         email,
@@ -336,17 +343,6 @@ export async function POST(request: Request) {
       })
     } catch (error) {
       console.error('Lead email notification failed:', error)
-    }
-
-    try {
-      await notifyNewLead({
-        name,
-        email,
-        businessType,
-        score: leadScore,
-      })
-    } catch (error) {
-      console.error('Lead notification failed:', error)
     }
 
     return NextResponse.json({ message: 'Lead captured successfully.' }, { status: 200 })

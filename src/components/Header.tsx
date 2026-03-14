@@ -2,6 +2,7 @@
 import React, { useState, useEffect } from 'react'
 import content from '@/data/content.json'
 import Link from 'next/link'
+import Image from 'next/image'
 
 const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false)
@@ -52,14 +53,18 @@ const Header = () => {
     <header className={`fixed w-full z-50 transition-all duration-500 ${isScrolled ? 'bg-[#060b17]/90 backdrop-blur-xl border-b border-slate-700/70 shadow-2xl shadow-black/30' : 'bg-transparent'}`}>
       <div className="container mx-auto px-4">
         <div className="relative flex items-center justify-between h-20">
-          <Link href="/" className="flex items-center group">
+          <Link href="/" className="flex items-center gap-3 group">
+            <Image
+              src="/favicon.png"
+              alt="Pyow Digitals logo"
+              width={48}
+              height={48}
+              className="h-12 w-12 object-contain"
+              priority
+            />
             <div className="flex flex-col">
-              <span className={`font-bold text-lg leading-tight transition-colors ${isScrolled ? 'text-slate-100' : 'text-white'}`}>
-                PYOW
-              </span>
-              <span className={`text-xs font-semibold tracking-wider transition-colors ${isScrolled ? 'text-[#c8ff57]' : 'text-[#c8ff57]'}`}>
-                DIGITALS
-              </span>
+              <span className="font-bold text-lg leading-tight transition-colors text-white">PYOW</span>
+              <span className="text-xs font-semibold tracking-wider transition-colors text-[#c8ff57]">DIGITALS</span>
             </div>
           </Link>
 

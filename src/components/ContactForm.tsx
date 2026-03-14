@@ -1,23 +1,80 @@
 'use client'
-import React, { useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
+import Script from 'next/script'
+
+declare global {
+  interface Window {
+    turnstile?: {
+      render: (
+        container: string | HTMLElement,
+        options: {
+          sitekey: string
+          callback?: (token: string) => void
+          'expired-callback'?: () => void
+          'error-callback'?: () => void
+          theme?: 'light' | 'dark' | 'auto'
+        }
+      ) => string
+      remove?: (widgetId: string) => void
+      reset?: (widgetId: string) => void
+    }
+  }
+}
 
 const ContactForm = () => {
   const calendlyUrl = 'https://calendly.com/pyowdigitals/free-audit-booking'
+  const turnstileSiteKey = process.env.NEXT_PUBLIC_TURNSTILE_SITE_KEY
   const [formData, setFormData] = useState({
     firstName: '',
     lastName: '',
     email: '',
     businessType: '',
     inquiriesPerWeek: '',
-    challenge: ''
+    challenge: '',
+    website: '',
   })
   const [status, setStatus] = useState('')
   const [statusMessage, setStatusMessage] = useState('')
+  const [turnstileToken, setTurnstileToken] = useState('')
+  const [turnstileReady, setTurnstileReady] = useState(false)
+  const turnstileContainerRef = useRef<HTMLDivElement | null>(null)
+  const turnstileWidgetIdRef = useRef<string | null>(null)
+
+  useEffect(() => {
+    if (!turnstileSiteKey || !turnstileReady || !turnstileContainerRef.current || !window.turnstile) {
+      return
+    }
+
+    if (turnstileWidgetIdRef.current) {
+      return
+    }
+
+    turnstileWidgetIdRef.current = window.turnstile.render(turnstileContainerRef.current, {
+      sitekey: turnstileSiteKey,
+      theme: 'dark',
+      callback: (token) => setTurnstileToken(token),
+      'expired-callback': () => setTurnstileToken(''),
+      'error-callback': () => setTurnstileToken(''),
+    })
+
+    return () => {
+      if (turnstileWidgetIdRef.current && window.turnstile?.remove) {
+        window.turnstile.remove(turnstileWidgetIdRef.current)
+        turnstileWidgetIdRef.current = null
+      }
+    }
+  }, [turnstileReady, turnstileSiteKey])
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setStatus('sending')
     setStatusMessage('')
+
+    if (turnstileSiteKey && !turnstileToken) {
+      setStatus('error')
+      setStatusMessage('Please complete the security check before submitting.')
+      return
+    }
 
     try {
       const response = await fetch('/api/contact', {
@@ -33,6 +90,8 @@ const ContactForm = () => {
           businessType: formData.businessType,
           inquiriesPerWeek: formData.inquiriesPerWeek,
           challenge: formData.challenge,
+          website: formData.website,
+          turnstileToken,
           source: 'website-contact-form',
           message: `Business Type: ${formData.businessType || 'N/A'}\nInquiries Per Week: ${formData.inquiriesPerWeek || 'N/A'}\n\nBiggest Challenge:\n${formData.challenge}`,
         }),
@@ -47,8 +106,13 @@ const ContactForm = () => {
           email: '',
           businessType: '',
           inquiriesPerWeek: '',
-          challenge: ''
+          challenge: '',
+          website: '',
         })
+        setTurnstileToken('')
+        if (turnstileWidgetIdRef.current && window.turnstile?.reset) {
+          window.turnstile.reset(turnstileWidgetIdRef.current)
+        }
 
         const calendlyWindow = window.open(calendlyUrl, '_blank', 'noopener,noreferrer')
         if (!calendlyWindow) {
@@ -74,6 +138,14 @@ const ContactForm = () => {
 
   return (
     <form onSubmit={handleSubmit} className="space-y-4">
+      {turnstileSiteKey ? (
+        <Script
+          src="https://challenges.cloudflare.com/turnstile/v0/api.js?render=explicit"
+          strategy="afterInteractive"
+          onLoad={() => setTurnstileReady(true)}
+        />
+      ) : null}
+
       <div className="grid md:grid-cols-2 gap-4">
         <div>
           <label htmlFor="firstName" className="block text-[11px] font-semibold uppercase tracking-[0.08em] text-slate-400 mb-2">
@@ -179,6 +251,26 @@ const ContactForm = () => {
           placeholder="e.g. Leads go cold before we can follow up, or bookings are all manual..."
         />
       </div>
+
+      <div className="hidden" aria-hidden="true">
+        <label htmlFor="website">Website</label>
+        <input
+          type="text"
+          name="website"
+          id="website"
+          tabIndex={-1}
+          autoComplete="off"
+          value={formData.website}
+          onChange={handleChange}
+        />
+      </div>
+
+      {turnstileSiteKey ? (
+        <div className="space-y-2">
+          <div ref={turnstileContainerRef} />
+          <p className="text-xs text-slate-500">This security check helps block spam submissions.</p>
+        </div>
+      ) : null}
 
       {status !== 'success' && (
         <button

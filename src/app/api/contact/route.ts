@@ -11,11 +11,20 @@ type ContactPayload = {
   challenge?: string
   source?: string
   message?: string
+  website?: string
+  turnstileToken?: string
 }
 
 const DEFAULT_N8N_WEBHOOK_URL =
- // 'https://n8n-test.hyperaccess.net/webhook-test/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
+  // 'https://n8n-test.hyperaccess.net/webhook-test/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
   'https://n8n-test.hyperaccess.net/webhook/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
+
+const MAX_BODY_SIZE = 10_000
+const MAX_FIELD_LENGTH = 1_000
+const RATE_LIMIT_WINDOW_MS = 10 * 60 * 1000
+const RATE_LIMIT_MAX_REQUESTS = 5
+const rateLimitStore = new Map<string, { count: number; resetAt: number }>()
+const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
 
 const escapeHtml = (value: string) =>
   value
@@ -49,6 +58,95 @@ const getLeadPriority = (score: number): 'High' | 'Medium' | 'Low' => {
   if (score >= 80) return 'High'
   if (score >= 55) return 'Medium'
   return 'Low'
+}
+
+const trimToLength = (value: string, maxLength = MAX_FIELD_LENGTH) => value.trim().slice(0, maxLength)
+
+const getClientIp = (request: Request) => {
+  const forwardedFor = request.headers.get('x-forwarded-for')
+  if (forwardedFor) {
+    return forwardedFor.split(',')[0].trim()
+  }
+
+  return request.headers.get('x-real-ip') || 'unknown'
+}
+
+const isAllowedOrigin = (request: Request) => {
+  const origin = request.headers.get('origin')
+  if (!origin) return true
+
+  const requestHost = request.headers.get('host')
+  const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL
+
+  try {
+    const originUrl = new URL(origin)
+    if (requestHost && originUrl.host === requestHost) {
+      return true
+    }
+
+    if (configuredSiteUrl) {
+      return originUrl.host === new URL(configuredSiteUrl).host
+    }
+  } catch {
+    return false
+  }
+
+  return false
+}
+
+const isRateLimited = (ip: string) => {
+  const now = Date.now()
+  const current = rateLimitStore.get(ip)
+
+  if (!current || current.resetAt <= now) {
+    rateLimitStore.set(ip, {
+      count: 1,
+      resetAt: now + RATE_LIMIT_WINDOW_MS,
+    })
+    return false
+  }
+
+  if (current.count >= RATE_LIMIT_MAX_REQUESTS) {
+    return true
+  }
+
+  current.count += 1
+  rateLimitStore.set(ip, current)
+  return false
+}
+
+async function verifyTurnstileToken(token: string, ip: string) {
+  const secret = process.env.TURNSTILE_SECRET_KEY
+  if (!secret) {
+    return true
+  }
+
+  if (!token) {
+    return false
+  }
+
+  const formData = new URLSearchParams()
+  formData.append('secret', secret)
+  formData.append('response', token)
+  if (ip && ip !== 'unknown') {
+    formData.append('remoteip', ip)
+  }
+
+  const response = await fetch('https://challenges.cloudflare.com/turnstile/v0/siteverify', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+    },
+    body: formData.toString(),
+    cache: 'no-store',
+  })
+
+  if (!response.ok) {
+    return false
+  }
+
+  const result = (await response.json()) as { success?: boolean }
+  return Boolean(result.success)
 }
 
 async function sendLeadToN8n(payload: {
@@ -285,22 +383,65 @@ async function sendLeadEmail(payload: {
 
 export async function POST(request: Request) {
   try {
-    const body = (await request.json()) as ContactPayload
+    const clientIp = getClientIp(request)
 
-    const firstName = body.firstName?.trim() || ''
-    const lastName = body.lastName?.trim() || ''
-    const name = body.name?.trim() || `${firstName} ${lastName}`.trim()
-    const email = body.email?.trim() || ''
-    const businessType = body.businessType?.trim() || 'Not specified'
-    const inquiriesPerWeek = body.inquiriesPerWeek?.trim() || 'Not specified'
-    const challenge = body.challenge?.trim() || 'Not specified'
-    const source = body.source?.trim() || 'website-contact-form'
+    if (!isAllowedOrigin(request)) {
+      return NextResponse.json({ message: 'Invalid request origin.' }, { status: 403 })
+    }
+
+    if (isRateLimited(clientIp)) {
+      return NextResponse.json(
+        { message: 'Too many submissions. Please wait a few minutes and try again.' },
+        { status: 429 }
+      )
+    }
+
+    const rawBody = await request.text()
+    if (rawBody.length > MAX_BODY_SIZE) {
+      return NextResponse.json({ message: 'Request payload is too large.' }, { status: 413 })
+    }
+
+    let body: ContactPayload
+    try {
+      body = JSON.parse(rawBody) as ContactPayload
+    } catch {
+      return NextResponse.json({ message: 'Invalid request payload.' }, { status: 400 })
+    }
+
+    if (body.website?.trim()) {
+      return NextResponse.json({ message: 'Submission blocked.' }, { status: 400 })
+    }
+
+    const firstName = trimToLength(body.firstName || '', 80)
+    const lastName = trimToLength(body.lastName || '', 80)
+    const name = trimToLength(body.name || `${firstName} ${lastName}`.trim(), 160)
+    const email = trimToLength(body.email || '', 160).toLowerCase()
+    const businessType = trimToLength(body.businessType || 'Not specified', 120)
+    const inquiriesPerWeek = trimToLength(body.inquiriesPerWeek || 'Not specified', 120)
+    const challenge = trimToLength(body.challenge || 'Not specified', 2000)
+    const source = trimToLength(body.source || 'website-contact-form', 120)
     const message =
-      body.message?.trim() ||
+      trimToLength(body.message || '', 2500) ||
       `Business Type: ${businessType}\nInquiries Per Week: ${inquiriesPerWeek}\n\nBiggest Challenge:\n${challenge}`
 
     if (!name || !email || !challenge) {
       return NextResponse.json({ message: 'Missing required fields.' }, { status: 400 })
+    }
+
+    if (!emailPattern.test(email)) {
+      return NextResponse.json({ message: 'Please enter a valid email address.' }, { status: 400 })
+    }
+
+    if (challenge.length < 10) {
+      return NextResponse.json(
+        { message: 'Please provide a bit more detail about your challenge.' },
+        { status: 400 }
+      )
+    }
+
+    const isTurnstileValid = await verifyTurnstileToken(body.turnstileToken?.trim() || '', clientIp)
+    if (!isTurnstileValid) {
+      return NextResponse.json({ message: 'Security verification failed. Please try again.' }, { status: 400 })
     }
 
     const submittedAt = new Date().toLocaleString('en-PH', {

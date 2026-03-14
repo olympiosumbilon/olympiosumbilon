@@ -232,7 +232,7 @@ export default function Home() {
       </section>
 
       <section id="solutions" className="relative z-10 px-5 md:px-8 py-24 bg-[#090f1d]">
-        <div className="mx-auto max-w-[1180px] grid lg:grid-cols-[0.9fr_2fr] gap-10 lg:gap-16">
+        <div className="mx-auto max-w-[1180px] grid items-start lg:grid-cols-[0.9fr_2fr] gap-10 lg:gap-16">
           <aside className="lg:sticky lg:top-24 h-fit">
             <p className="bf-label">Solutions</p>
             <h2 className="bf-title">{content.solution.title}</h2>
@@ -242,14 +242,11 @@ export default function Home() {
             </div>
           </aside>
 
-          <div className="relative border border-slate-800 rounded-xl overflow-hidden bg-slate-800/80">
-            <div className="pointer-events-none absolute inset-x-0 top-0 h-12 bg-gradient-to-b from-[#090f1d] to-transparent z-10 hidden lg:block"></div>
-            <div className="pointer-events-none absolute inset-x-0 bottom-0 h-12 bg-gradient-to-t from-[#090f1d] to-transparent z-10 hidden lg:block"></div>
-            <div className="lg:max-h-[760px] lg:overflow-y-auto scrollbar-hide lg:scroll-smooth lg:snap-y lg:snap-mandatory">
+          <div className="border border-slate-800 rounded-xl overflow-hidden bg-slate-800/80">
             {content.services.items.map((service, index) => (
               <article
                 key={index}
-                className={`bg-[#060b17] p-8 md:p-9 border-b border-slate-800 last:border-b-0 lg:snap-start transition-all duration-300 hover:bg-[#0a1324] ${index === 0 ? 'border-l-2 border-l-[#c8ff57]' : ''}`}
+                className={`bg-[#060b17] p-8 md:p-9 border-b border-slate-800 last:border-b-0 transition-all duration-300 hover:bg-[#0a1324] ${index === 0 ? 'border-l-2 border-l-[#c8ff57]' : ''}`}
               >
                 <div className="inline-flex px-3 py-1 rounded border border-[#c8ff57]/25 bg-[#c8ff57]/10 text-[#c8ff57] text-[11px] uppercase tracking-[0.14em] font-semibold mb-4">
                   {index === 0 ? 'Featured' : 'System'}
@@ -264,7 +261,6 @@ export default function Home() {
                 <p className="text-sm text-slate-400">Outcome: <span className="text-[#c8ff57] font-semibold">{service.outcome}</span></p>
               </article>
             ))}
-            </div>
           </div>
         </div>
       </section>

@@ -1,0 +1,10 @@
+   ▲ Next.js 14.1.0
+   - Local:        http://localhost:3006
+   - Environments: .env.local
+
+ ✓ Ready in 2.5s
+ ○ Compiling /blog/[slug] ...
+ ✓ Compiled /blog/[slug] in 3.2s (563 modules)
+ ✓ Compiled /sitemap.xml in 459ms (317 modules)
+ ✓ Compiled (320 modules)
+[?25h

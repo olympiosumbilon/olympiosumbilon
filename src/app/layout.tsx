@@ -2,6 +2,7 @@ import type { Metadata } from 'next'
 import { Manrope, Space_Grotesk } from 'next/font/google'
 import './globals.css'
 import Script from 'next/script'
+import { absoluteUrl, siteConfig } from '@/lib/seo'
 
 const manrope = Manrope({
   subsets: ['latin'],
@@ -14,11 +15,33 @@ const spaceGrotesk = Space_Grotesk({
 })
 
 export const metadata: Metadata = {
-  title: 'PyowDigitals | Stop Losing Leads with Automated Funnels',
-  description: 'Turn social media inquiries into booked clients with conversion funnels, websites, and marketing automation built for service businesses.',
+  metadataBase: new URL(siteConfig.siteUrl),
+  title: {
+    default: 'Pyow Digitals | Stop Losing Leads with Automated Funnels',
+    template: '%s',
+  },
+  description: siteConfig.description,
   icons: {
     icon: '/favicon.png',
     apple: '/favicon.png',
+  },
+  alternates: {
+    canonical: absoluteUrl('/'),
+  },
+  openGraph: {
+    siteName: siteConfig.name,
+    locale: 'en_US',
+    type: 'website',
+    url: absoluteUrl('/'),
+    title: 'Pyow Digitals | Stop Losing Leads with Automated Funnels',
+    description: siteConfig.description,
+    images: [{ url: absoluteUrl(siteConfig.ogImage), alt: siteConfig.name }],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'Pyow Digitals | Stop Losing Leads with Automated Funnels',
+    description: siteConfig.description,
+    images: [absoluteUrl(siteConfig.ogImage)],
   },
 }
 

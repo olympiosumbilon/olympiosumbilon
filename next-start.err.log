@@ -1,0 +1,11 @@
+Error: ENOENT: no such file or directory, open 'D:\Web Development\olympiosumbilon\.next\BUILD_ID'
+    at async open (node:internal/fs/promises:637:25)
+    at async Object.readFile (node:internal/fs/promises:1269:14)
+    at async setupFsCheck (D:\Web Development\olympiosumbilon\node_modules\next\dist\server\lib\router-utils\filesystem.js:145:19)
+    at async initialize (D:\Web Development\olympiosumbilon\node_modules\next\dist\server\lib\router-server.js:58:23)
+    at async Server.<anonymous> (D:\Web Development\olympiosumbilon\node_modules\next\dist\server\lib\start-server.js:246:36) {
+  errno: -4058,
+  code: 'ENOENT',
+  syscall: 'open',
+  path: 'D:\\Web Development\\olympiosumbilon\\.next\\BUILD_ID'
+}

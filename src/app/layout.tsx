@@ -17,8 +17,8 @@ export const metadata: Metadata = {
   title: 'PyowDigitals | Stop Losing Leads with Automated Funnels',
   description: 'Turn social media inquiries into booked clients with conversion funnels, websites, and marketing automation built for service businesses.',
   icons: {
-    icon: '/favicon.svg',
-    apple: '/favicon.svg',
+    icon: '/favicon.png',
+    apple: '/favicon.png',
   },
 }
 
@@ -30,7 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
-        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <link rel="icon" type="image/png" href="/favicon.png" />
         <Script
           src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GA_ID}`}
           strategy="afterInteractive"

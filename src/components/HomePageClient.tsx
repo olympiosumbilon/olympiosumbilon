@@ -511,7 +511,7 @@ export default function HomePageClient() {
             <div>
               <h4 className="text-xs uppercase tracking-[0.14em] text-slate-500 mb-4 font-semibold">Connect</h4>
               <ul className="space-y-2 text-sm text-slate-300">
-                <li><a href="mailto:olympiosumbilonpersonal@gmail.com" className="hover:text-white">Email</a></li>
+                <li><a href="mailto:hello@pyowdigitals.com" className="hover:text-white">Email</a></li>
                 <li><a href="https://www.linkedin.com/in/olympiosumbilonjr/" target="_blank" rel="noopener noreferrer" className="hover:text-white">LinkedIn</a></li>
                 <li><a href="https://www.facebook.com/olympiosumbilonjr" target="_blank" rel="noopener noreferrer" className="hover:text-white">Facebook</a></li>
               </ul>

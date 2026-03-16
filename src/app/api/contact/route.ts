@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server'
 import nodemailer from 'nodemailer'
+import { getSupabaseAdminClient } from '@/lib/supabase/server'
 
 type ContactPayload = {
   firstName?: string
@@ -14,10 +15,6 @@ type ContactPayload = {
   website?: string
   turnstileToken?: string
 }
-
-const DEFAULT_N8N_WEBHOOK_URL =
-  // 'https://n8n-test.hyperaccess.net/webhook-test/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
-  'https://n8n-test.hyperaccess.net/webhook/7faa6f9d-5ce9-4462-aab2-d9c1070f5ba4'
 
 const MAX_BODY_SIZE = 10_000
 const MAX_FIELD_LENGTH = 1_000
@@ -149,7 +146,7 @@ async function verifyTurnstileToken(token: string, ip: string) {
   return Boolean(result.success)
 }
 
-async function sendLeadToN8n(payload: {
+async function storeLeadDirectly(payload: {
   firstName: string
   lastName: string
   name: string
@@ -163,20 +160,67 @@ async function sendLeadToN8n(payload: {
   leadScore: number
   priority: 'High' | 'Medium' | 'Low'
 }) {
-  const webhookUrl = process.env.N8N_WEBHOOK_URL || DEFAULT_N8N_WEBHOOK_URL
+  const supabase = getSupabaseAdminClient()
 
-  const response = await fetch(webhookUrl, {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json',
-    },
-    body: JSON.stringify(payload),
-    cache: 'no-store',
+  if (!supabase) {
+    throw new Error('Supabase admin client is not configured.')
+  }
+
+  const { data: contact, error: contactError } = await supabase
+    .from('contacts')
+    .upsert(
+      {
+        full_name: payload.name,
+        name: payload.name,
+        email: payload.email,
+        service_interest: 'Lead System Audit',
+        lead_source: 'Website',
+      },
+      { onConflict: 'email' }
+    )
+    .select('id')
+    .single()
+
+  if (contactError || !contact) {
+    throw new Error(contactError?.message || 'Failed to create contact record.')
+  }
+
+  const contactId = contact.id
+
+  const { error: leadError } = await supabase.from('leads').insert({
+    contact_id: contactId,
+    pipeline: 'Agency Sales',
+    stage: 'New Lead',
+    lead_score: payload.leadScore,
+    priority: payload.priority,
   })
 
-  if (!response.ok) {
-    const details = await response.text().catch(() => '')
-    throw new Error(`n8n webhook failed with status ${response.status}${details ? `: ${details}` : ''}`)
+  if (leadError) {
+    throw new Error(leadError.message)
+  }
+
+  const { error: submissionError } = await supabase.from('form_submissions').insert({
+    contact_id: contactId,
+    form_name: 'Website Inquiry',
+    business_type: payload.businessType,
+    inquiries_per_week: payload.inquiriesPerWeek,
+    message: payload.challenge,
+    service_selected: payload.businessType,
+  })
+
+  if (submissionError) {
+    throw new Error(submissionError.message)
+  }
+
+  const { error: activityError } = await supabase.from('activities').insert({
+    contact_id: contactId,
+    type: 'Form Submission',
+    outcome: 'New Inquiry',
+    notes: 'Website contact form submitted',
+  })
+
+  if (activityError) {
+    throw new Error(activityError.message)
   }
 }
 
@@ -455,7 +499,7 @@ export async function POST(request: Request) {
     })
     const priority = getLeadPriority(leadScore)
 
-    await sendLeadToN8n({
+    await storeLeadDirectly({
       firstName,
       lastName,
       name,
@@ -491,7 +535,7 @@ export async function POST(request: Request) {
     console.error('Error processing lead submission:', error)
     return NextResponse.json(
       {
-        message: 'Failed to capture lead. Check the n8n webhook configuration and try again.',
+        message: 'Failed to capture lead. Check the database configuration and try again.',
       },
       { status: 500 }
     )

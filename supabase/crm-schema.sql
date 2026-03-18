@@ -170,7 +170,10 @@ VALUES
   ('lead_no_booking_24h', 'Lead No Booking 24h', true, 'email', 1440, 'lead_no_booking_24h'),
   ('booking_confirmation', 'Booking Confirmation', true, 'email', 0, 'booking_confirmation'),
   ('booking_reminder_24h', 'Booking Reminder 24h', true, 'email', 0, 'booking_reminder_24h'),
-  ('booking_reminder_1h', 'Booking Reminder 1h', true, 'email', 0, 'booking_reminder_1h')
+  ('booking_reminder_1h', 'Booking Reminder 1h', true, 'email', 0, 'booking_reminder_1h'),
+  ('internal_booking_notification', 'Internal Booking Notification', true, 'email', 0, 'internal_booking_notification'),
+  ('internal_booking_reminder_24h', 'Internal Booking Reminder 24h', true, 'email', 0, 'internal_booking_reminder_24h'),
+  ('internal_booking_reminder_1h', 'Internal Booking Reminder 1h', true, 'email', 0, 'internal_booking_reminder_1h')
 ON CONFLICT (key) DO UPDATE
 SET
   name = EXCLUDED.name,

@@ -43,6 +43,27 @@ const AUTOMATION_RULES = [
     delay_minutes: 0,
     template_key: AUTOMATION_RULE_KEYS.bookingReminder1h,
   },
+  {
+    key: AUTOMATION_RULE_KEYS.internalBookingNotification,
+    name: 'Internal Booking Notification',
+    channel: 'email',
+    delay_minutes: 0,
+    template_key: AUTOMATION_RULE_KEYS.internalBookingNotification,
+  },
+  {
+    key: AUTOMATION_RULE_KEYS.internalBookingReminder24h,
+    name: 'Internal Booking Reminder 24h',
+    channel: 'email',
+    delay_minutes: 0,
+    template_key: AUTOMATION_RULE_KEYS.internalBookingReminder24h,
+  },
+  {
+    key: AUTOMATION_RULE_KEYS.internalBookingReminder1h,
+    name: 'Internal Booking Reminder 1h',
+    channel: 'email',
+    delay_minutes: 0,
+    template_key: AUTOMATION_RULE_KEYS.internalBookingReminder1h,
+  },
 ] as const
 
 function getBookingUrl() {
@@ -151,6 +172,62 @@ function buildBookingAutomationJobs(input: BookingAutomationInput) {
         AUTOMATION_TIMING.oneHourInMinutes
       ),
       dedupe_key: `${AUTOMATION_RULE_KEYS.bookingReminder1h}:booking:${input.bookingId}`,
+      payload: {
+        name: input.name,
+        email: input.email,
+        slotDate: input.slotDate,
+        startTime: input.startTime,
+        endTime: input.endTime,
+      },
+    },
+    {
+      rule_key: AUTOMATION_RULE_KEYS.internalBookingNotification,
+      contact_id: input.contactId,
+      lead_id: input.leadId ?? null,
+      booking_id: input.bookingId,
+      status: AUTOMATION_STATUSES.pending,
+      scheduled_for: scheduleAtFromNow(AUTOMATION_TIMING.oneMinute),
+      dedupe_key: `${AUTOMATION_RULE_KEYS.internalBookingNotification}:booking:${input.bookingId}`,
+      payload: {
+        name: input.name,
+        email: input.email,
+        slotDate: input.slotDate,
+        startTime: input.startTime,
+        endTime: input.endTime,
+      },
+    },
+    {
+      rule_key: AUTOMATION_RULE_KEYS.internalBookingReminder24h,
+      contact_id: input.contactId,
+      lead_id: input.leadId ?? null,
+      booking_id: input.bookingId,
+      status: AUTOMATION_STATUSES.pending,
+      scheduled_for: scheduleAtFromBooking(
+        input.slotDate,
+        input.startTime,
+        AUTOMATION_TIMING.oneDayInMinutes
+      ),
+      dedupe_key: `${AUTOMATION_RULE_KEYS.internalBookingReminder24h}:booking:${input.bookingId}`,
+      payload: {
+        name: input.name,
+        email: input.email,
+        slotDate: input.slotDate,
+        startTime: input.startTime,
+        endTime: input.endTime,
+      },
+    },
+    {
+      rule_key: AUTOMATION_RULE_KEYS.internalBookingReminder1h,
+      contact_id: input.contactId,
+      lead_id: input.leadId ?? null,
+      booking_id: input.bookingId,
+      status: AUTOMATION_STATUSES.pending,
+      scheduled_for: scheduleAtFromBooking(
+        input.slotDate,
+        input.startTime,
+        AUTOMATION_TIMING.oneHourInMinutes
+      ),
+      dedupe_key: `${AUTOMATION_RULE_KEYS.internalBookingReminder1h}:booking:${input.bookingId}`,
       payload: {
         name: input.name,
         email: input.email,

@@ -9,6 +9,9 @@ export const AUTOMATION_RULE_KEYS = {
   bookingConfirmation: 'booking_confirmation',
   bookingReminder24h: 'booking_reminder_24h',
   bookingReminder1h: 'booking_reminder_1h',
+  internalBookingNotification: 'internal_booking_notification',
+  internalBookingReminder24h: 'internal_booking_reminder_24h',
+  internalBookingReminder1h: 'internal_booking_reminder_1h',
 } as const
 
 export const AUTOMATION_TIMING = {
